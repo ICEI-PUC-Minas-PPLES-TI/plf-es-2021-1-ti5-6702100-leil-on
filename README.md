@@ -1,18 +1,17 @@
-# Nome do projeto
+# Leil-on
 
-Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.
+O Leil-on é uma plataforma digital que oferece um serviço de leilão em tempo real.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Guilherme Augusto Gomes Cunha
+* Leonardo Antunes Barreto Noman
+* Pedro Henrique Magalhaes Silva
 
 ## Orientadores
 
-* Nome completo do professor 1
-* Nome completo do professor 2
+* Hugo Bastos de Paula
+* Pedro Alves de Oliveira
 
 ## Instruções de utilização
 
