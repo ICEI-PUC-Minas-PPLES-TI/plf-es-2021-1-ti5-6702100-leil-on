@@ -33,7 +33,7 @@ mostrar algum resultado relevante do trabalho (até 10 linhas)._
 
 | **Data** | **Autor** | **Descrição** | **Versão** |
 | --- | --- | --- | --- |
-| **[dd/mm/aaaa]** | [Nome do autor] | [Descrever as principais alterações realizadas no documento, evidenciando as seções ou capítulos alterados] | [X] |
+| **[24/02/2021]** | [Pedro, Guilherme, Leonardo] | [Elaboração da seção 1 do documento de arquitetura] | [1.0] |
 | | | | |
 | | | | |
 
