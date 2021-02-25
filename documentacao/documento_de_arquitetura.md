@@ -79,9 +79,9 @@ _Realização de negociações entre os interessados de forma segura, evitando a
 _O projeto Leil-on tem como objetivo desenvolver um aplicativo que facilite a  negociação entre as partes interessadas.
 
 1.2.1 Objetivos Específicos
-Facilitar a busca de produtos rentáveis para potenciais compradores;
-Possibilitar que vendedores recebam uma melhor oferta pelos produtos;
-Tornar acessível para os usuários, negociações de itens sem a necessidade de estarem presentes fisicamente._
+- Facilitar a busca de produtos rentáveis para potenciais compradores;
+- Possibilitar que vendedores recebam uma melhor oferta pelos produtos;
+- Tornar acessível para os usuários, negociações de itens sem a necessidade de estarem presentes fisicamente._
 
 ## 1.3. Definições e Abreviaturas
 
