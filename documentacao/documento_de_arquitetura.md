@@ -1,19 +1,19 @@
 # TITULO DO PROJETO
 
 
-**Nome completo do Aluno 1, email do aluno 1**
+**Guilherme Augusto Gomes Cunha, guilhermegomescunha@hotmail.com**
 
-**Nome completo do Aluno 2, email do aluno 2**
+**Leonardo Antunes Barreto Noman, leonoman07@gmail.com**
 
-**Nome completo do Aluno 3, email do aluno 3**
+**Pedro Henrique Magalhães Silva, magengsoft@gmail.com**
 
 ---
 
 Professores:
 
-**Prof. Nome do Prof 1**
+**Hugo Bastos de Paula**
 
-**Prof. Nome do Prof 2**
+**Pedro Alves de Oliveira**
 
 
 ---
@@ -67,16 +67,20 @@ mostrar algum resultado relevante do trabalho (até 10 linhas)._
 <a name="apresentacao"></a>
 # 1. Apresentação
 
-_Faça uma introdução ao projeto, apresentando o contexto onde o projeto se situa. É importante deixar claro para o leitor os aspectos que configuram o problema que será apresentado na sequência. Apresente, se possível, números reais que demonstram a relevância do problema apresentado._
+_O alto contágio do vírus COVID-19 fez com que medidas sanitárias fossem tomadas, como o distanciamento social, o que para algumas atividades como a negociação entre pessoas a respeito de um certo produto, tem sido prejudicada indiretamente. Com a desaceleração da economia resultando em desempregos ou encarecimento dos produtos, a procura e a venda de itens usados, tem sido uma prática que vêm crescendo._
 
 
 ## 1.1. Problema
 
-_Nesse momento você deve apresentar o problema que a sua aplicação deve resolver. No entanto, não é a hora de comentar sobre a aplicação._
+_Realização de negociações entre os interessados de forma segura, evitando a transmissão do vírus e possibilitando maior ganho, tanto do comprador interessado quanto para o vendedor._
 
 ## 1.2. Objetivos do trabalho
 
-_Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é apresentar a descrição do projeto arquitetural da aplicação escolhida. Apresente também os objetivos específicos do projeto, descrevendo onde você vai concentrar sua atenção na descrição arquitetural, ou seja, os pontos onde você vai aprofundar no seu trabalho._
+_	O projeto Leil-on tem como objetivo desenvolver um aplicativo que facilite a  negociação entre as partes interessadas.
+1.2.1 Objetivos Específicos
+Facilitar a busca de produtos rentáveis para potenciais compradores;
+Possibilitar que vendedores recebam uma melhor oferta pelos produtos;
+Tornar acessível para os usuários, negociações de itens sem a necessidade de estarem presentes fisicamente._
 
 ## 1.3. Definições e Abreviaturas
 
