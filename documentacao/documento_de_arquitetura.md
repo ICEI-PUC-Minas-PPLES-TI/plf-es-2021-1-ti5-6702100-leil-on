@@ -136,6 +136,7 @@ Coloque aqui as definições, siglas e abreviaturas utilizadas no trabalho._
 | Persistência | Banco de dados relacional| MongoDB |
 | Front end | Kit de desenvolvimento | Flutter |
 | Back end | Ambiente de execução | NodeJS |
+| Integração| Entrega continuas | Heroku + GitHub |
 | Log do sistema | Middleware | Morgan |
 | Teste de Software | Framework | Mocha |
 | Deploy | PaaS | Heroku |
