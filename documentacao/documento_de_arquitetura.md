@@ -24,8 +24,7 @@ _Instituto de Informática e Ciências Exatas – Pontifícia Universidade de Mi
 
 ---
 
-_**Resumo**. Escrever aqui o resumo. O resumo deve contextualizar rapidamente o trabalho, descrever seu objetivo e, ao final, 
-mostrar algum resultado relevante do trabalho (até 10 linhas)._
+_**Resumo**. Leilões são uma forma comum de compra e venda de itens, pessoas que não precisam mais de determinados itens e pessoas que querem ter acesso a esses itens por um preço abaixo do mercado vão atrás de leilões. O objetivo no projeto é desenvolver uma plataforma onde pessoas possam criar e participar de leilões de qualquer lugar que ela tenho acesso a internet. O sistema será hibrido, portanto pessoas apenas com telefones ou algum outro aparelho móvel podem ter acesso a plataforma._
 
 ---
 
