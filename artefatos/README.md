@@ -4,7 +4,7 @@ Liste os artefatos produzidos, com suas localizaçãoes e descrição do conteú
 
 
 * `/atas`
-	* **Ata_xx_ago_2020.docx**: Ata de reunião do dia xx de agosto de 2020.
+	* **Ata Reunião.docx**: Ata de reunião do dia 13 de fevereiro de 2021. Primeira reunião grupo, definindo algumas regras de negócio, levantando requisitos e alguns outros detalhes.
 * `/canvas
 	* **BusinessModelCanvas.pdf**: Canvas do modelo de negócios.
 * `/processos`
