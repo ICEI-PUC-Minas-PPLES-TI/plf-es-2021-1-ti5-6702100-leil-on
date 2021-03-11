@@ -1,4 +1,4 @@
-# TITULO DO PROJETO
+# Leil-on
 
 
 **Guilherme Augusto Gomes Cunha, guilhermegomescunha@hotmail.com**
@@ -67,21 +67,25 @@ mostrar algum resultado relevante do trabalho (até 10 linhas)._
 <a name="apresentacao"></a>
 # 1. Apresentação
 
-_O alto contágio do vírus COVID-19 fez com que medidas sanitárias fossem tomadas, como o distanciamento social, o que para algumas atividades como a negociação entre pessoas a respeito de um certo produto, tem sido prejudicada indiretamente. Com a desaceleração da economia resultando em desempregos ou encarecimento dos produtos, a procura e a venda de itens usados, tem sido uma prática que vêm crescendo._
+Leilão é uma modalidade de negociação, onde o comprador vencedor obtém o produto. A sua dinâmica se baseia na oferta e demanda, o que influencia diretamente no preço final. Essa modalidade de negociação precisa muitas vezes de mobilidade, pesquisas rápidas e fáceis para encontrar os produtos do interessado em sua aquisição.
+   Leilões são um meio simples e fácil de se vender alguns itens usados e comprar produtos com preços abaixo do mercado. Uma das referências utilizadas no projeto são os leilões do site chamado LigaMagic, um site que organiza várias lojas do jogo Magic: the gathering. Nesses leilões é muito comum encontrar preços bem abaixo do mercado, fazendo assim o vendedor ter algum retorno do item que não deseja e o comprador tendo acesso a esse item por um preço melhor.
+
 
 
 ## 1.1. Problema
 
-_Realização de negociações entre os interessados de forma segura, evitando a transmissão do vírus e possibilitando maior ganho, tanto do comprador interessado quanto para o vendedor._
+A dificuldade do potencial comprador em achar os produtos que lhe interessam por um bom preço. Leilões presenciais exigem mobilidade por parte do comprador. Dificuldade por parte do vendedor de se achar interessado no(s) item(s) que deseja vender.
+
 
 ## 1.2. Objetivos do trabalho
 
-_O projeto Leil-on tem como objetivo desenvolver um aplicativo que facilite a  negociação entre as partes interessadas.
+O  Leil-on tem como objetivo desenvolver um aplicativo que facilite a pesquisa por produtos, facilitar negociações e fornecer um meio para compra e venda de itens.
 
-1.2.1 Objetivos Específicos
-- Facilitar a busca de produtos rentáveis para potenciais compradores;
-- Possibilitar que vendedores recebam uma melhor oferta pelos produtos;
-- Tornar acessível para os usuários, negociações de itens sem a necessidade de estarem presentes fisicamente._
+<ul>1.2.1 Objetivos Específicos
+	<li>Facilitar a busca de produtos rentáveis para potenciais compradores;</li>
+	<li>Possibilitar que vendedores recebam uma melhor oferta pelos produtos;</li>
+<li>Tornar acessível para os usuários, negociações de itens sem a necessidade de estarem presentes fisicamente;</li> 
+ </ul>
 
 ## 1.3. Definições e Abreviaturas
 
@@ -90,49 +94,45 @@ Coloque aqui as definições, siglas e abreviaturas utilizadas no trabalho._
 <a name="requisitos"></a>
 # 2. Requisitos
 
-_Esta seção descreve os requisitos comtemplados nesta descrição arquitetural, divididos em dois grupos: funcionais e não funcionais._
+
 
 ## 2.1. Requisitos Funcionais
 
-_Enumere os requisitos funcionais previstos para a sua aplicação. Concentre-se nos requisitos funcionais que sejam críticos para a definição arquitetural. Lembre-se de listar todos os requisitos que são necessários para garantir cobertura arquitetural. Esta seção deve conter uma lista de requisitos ainda sem modelagem. Na coluna Prioridade utilize uma escala (do mais prioritário para o menos): Essencial, Desejável, Opcional._
 
 | **ID** | **Descrição** | **Prioridade** |
 | --- | --- | --- |
-| RF001 | | |
-| RF002 | | |
-| | | |
-| | | |
-| | | |
+| RF001 | Criação do leilão por parte do vendedor | Essencial |
+| RF002 | Listagem dos leilões | Essencial |
+| RF003 | Encontrar leilões | Essencial |
+| RF004 | Propor oferta para o item | Essencial |
+| RF005 | Login e cadastro de usuários | Essencial |
+| RF006 | Sistema notifica o comprador quando ele ganhar um leilão | Essencial |
+| RF007 | Sistema de reputação para compradores e vendedores  | Desejável |
+| RF008 | Fornecer o valor do frete | Desejável |
+| RF009 | Fórum do leilão | Desejável |
 
-Obs: acrescente mais linhas, se necessário.
 
 ## 2.2. Requisitos Não-Funcionais
 
-_Enumere os requisitos não-funcionais previstos para a sua aplicação. Entre os requisitos não funcionais, inclua todos os requisitos que julgar importante do ponto de vista arquitetural ou seja os requisitos que terão impacto na definição da arquitetura. Os requisitos devem ser descritos de forma completa e preferencialmente quantitativa._
 
 | **ID** | **Descrição** |
 | --- | --- |
-| RNF001 | |
-| RNF002 | |
+| RNF001 | O sistema deve suportar 500 usuários simultâneos |
+| RNF002 | O sistema deve responder em até 100 milissegundos |
+| RNF003 | O sistema deve ser hibrido |
 | | |
 | | |
-| | |
-
-Obs: acrescente mais linhas, se necessário.
 
 ## 2.3. Restrições Arquiteturais
 
-_Enumere as restrições arquiteturais. Lembre-se de que as restrições arquiteturais geralmente não são consideradas requisitos uma vez que limitam a solução candidata. Os requisitos não impõem restrição, mas precisam ser satisfeitos._
 
-As restrições impostas ao projeto que afetam sua arquitetura são (por exemplo):
-
-- O software deverá ser desenvolvido em Python/Django;
-- A comunicação da API deve seguir o padrão RESTful.
+<ul>As restrições impostas ao projeto que afetam sua arquitetura são:
+	<ul>O software deverá ser desenvolvido em Javascript/Node.js;</ul>
+	<ul>A comunicação da API deve seguir o padrão RESTful;</ul>
+	<ul>O frontend usará a tecnologia Flutter.</ul>
+</ul>
 
 ## 2.4. Mecanismos Arquiteturais
-
-_Visão geral dos mecanismos que compõem a arquitetura do sosftware baseando-se em três estados: (1) análise, (2) design e (3) implementação. Em termos de Análise devem ser listados os aspectos gerais que compõem a arquitetura do software como: persistência, integração com sistemas legados, geração de logs do sistema, ambiente de front end, tratamento de exceções, formato dos testes, formato de distribuição/implantação (deploy), entre outros. Em Design deve-se identificar o padrão tecnológico a seguir para cada mecanismo identificado na análise. Em Implementação, deve-se identificar o produto a ser utilizado na solução.
- Ex: Análise (Persistência), Design (ORM), Implementação (Hibernate)._
 
 | **Análise** | **Design** | **Implementação** |
 | --- | --- | --- |
