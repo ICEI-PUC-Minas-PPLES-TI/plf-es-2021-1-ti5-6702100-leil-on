@@ -1,4 +1,4 @@
-# TITULO DO PROJETO
+# Leil-on
 
 
 **Guilherme Augusto Gomes Cunha, guilhermegomescunha@hotmail.com**
@@ -67,23 +67,25 @@ mostrar algum resultado relevante do trabalho (até 10 linhas)._
 <a name="apresentacao"></a>
 # 1. Apresentação
 
-_Leilão é uma modalidade de negociação, onde o comprador vencedor obtém o produto. A sua dinâmica se baseia na oferta e demanda, o que influencia diretamente no preço final. Essa modalidade de negociação precisa muitas vezes de mobilidade, pesquisas rápidas e fáceis para encontrar os produtos do interessado em sua aquisição.
+Leilão é uma modalidade de negociação, onde o comprador vencedor obtém o produto. A sua dinâmica se baseia na oferta e demanda, o que influencia diretamente no preço final. Essa modalidade de negociação precisa muitas vezes de mobilidade, pesquisas rápidas e fáceis para encontrar os produtos do interessado em sua aquisição.
    Leilões são um meio simples e fácil de se vender alguns itens usados e comprar produtos com preços abaixo do mercado. Uma das referências utilizadas no projeto são os leilões do site chamado LigaMagic, um site que organiza várias lojas do jogo Magic: the gathering. Nesses leilões é muito comum encontrar preços bem abaixo do mercado, fazendo assim o vendedor ter algum retorno do item que não deseja e o comprador tendo acesso a esse item por um preço melhor.
-_
+
 
 
 ## 1.1. Problema
 
-_A dificuldade do potencial comprador em achar os produtos que lhe interessam por um bom preço. Leilões presenciais exigem mobilidade por parte do comprador. Dificuldade por parte do vendedor de se achar interessado no(s) item(s) que deseja vender._
+A dificuldade do potencial comprador em achar os produtos que lhe interessam por um bom preço. Leilões presenciais exigem mobilidade por parte do comprador. Dificuldade por parte do vendedor de se achar interessado no(s) item(s) que deseja vender.
+
 
 ## 1.2. Objetivos do trabalho
 
-_O projeto Leil-on tem como objetivo desenvolver um aplicativo que facilite a  negociação entre as partes interessadas._
+O  Leil-on tem como objetivo desenvolver um aplicativo que facilite a pesquisa por produtos, facilitar negociações e fornecer um meio para compra e venda de itens.
 
-1.2.1 Objetivos Específicos
-- Facilitar a busca de produtos rentáveis para potenciais compradores;
-- Possibilitar que vendedores recebam uma melhor oferta pelos produtos;
-- Tornar acessível para os usuários, negociações de itens sem a necessidade de estarem presentes fisicamente._
+<ul>1.2.1 Objetivos Específicos
+	<li>Facilitar a busca de produtos rentáveis para potenciais compradores;</li>
+	<li>Possibilitar que vendedores recebam uma melhor oferta pelos produtos;</li>
+<li>Tornar acessível para os usuários, negociações de itens sem a necessidade de estarem presentes fisicamente;</li> 
+ </ul>
 
 ## 1.3. Definições e Abreviaturas
 
@@ -92,85 +94,71 @@ Coloque aqui as definições, siglas e abreviaturas utilizadas no trabalho._
 <a name="requisitos"></a>
 # 2. Requisitos
 
-_Esta seção descreve os requisitos comtemplados nesta descrição arquitetural, divididos em dois grupos: funcionais e não funcionais._
+
 
 ## 2.1. Requisitos Funcionais
 
-_Enumere os requisitos funcionais previstos para a sua aplicação. Concentre-se nos requisitos funcionais que sejam críticos para a definição arquitetural. Lembre-se de listar todos os requisitos que são necessários para garantir cobertura arquitetural. Esta seção deve conter uma lista de requisitos ainda sem modelagem. Na coluna Prioridade utilize uma escala (do mais prioritário para o menos): Essencial, Desejável, Opcional._
 
 | **ID** | **Descrição** | **Prioridade** |
 | --- | --- | --- |
-| RF001 |Criação do leilão por parte do vendedor|Essencial |
-| RF002 |Listagem dos leilões|Essencial |
-|RF003 |Encontrar leilões |Essencial |
-|RF004 |Sistema de reputação para compradores e vendedores |Desejável |
-|RF005 |Propor oferta para o produto |Essencial |
-|RF006 |Login e cadastro dos usuários |Essencial |
-|RF007 |Fornecer o valor do frete |Desejável |
-|RF008 |Fórum do leilão para o vendedor tirar dúvida sobre o produto |Desejável |
-|RF009 |Sistema notifica o comprador quando ele ganha um leilão |Essencial |
+| RF001 | Criação do leilão por parte do vendedor | Essencial |
+| RF002 | Listagem dos leilões | Essencial |
+| RF003 | Encontrar leilões | Essencial |
+| RF004 | Propor oferta para o item | Essencial |
+| RF005 | Login e cadastro de usuários | Essencial |
+| RF006 | Sistema notifica o comprador quando ele ganhar um leilão | Essencial |
+| RF007 | Sistema de reputação para compradores e vendedores  | Desejável |
+| RF008 | Fornecer o valor do frete | Desejável |
+| RF009 | Fórum do leilão | Desejável |
 
-Obs: acrescente mais linhas, se necessário.
 
 ## 2.2. Requisitos Não-Funcionais
 
-_Enumere os requisitos não-funcionais previstos para a sua aplicação. Entre os requisitos não funcionais, inclua todos os requisitos que julgar importante do ponto de vista arquitetural ou seja os requisitos que terão impacto na definição da arquitetura. Os requisitos devem ser descritos de forma completa e preferencialmente quantitativa._
 
 | **ID** | **Descrição** |
 | --- | --- |
-| RNF001 |O sistema deve suportar 500 usuários simultâneos |
-| RNF002 |O sistema deve responder em até 100 millissegundos |
-|RF003 |O sistema deve ser híbrido |
-| | |
-| | |
-
-Obs: acrescente mais linhas, se necessário.
+| RNF001 | O sistema deve suportar 500 usuários simultâneos |
+| RNF002 | O sistema deve responder em até 100 milissegundos |
+| RNF003 | O sistema deve ser hibrido |
 
 ## 2.3. Restrições Arquiteturais
 
-_Enumere as restrições arquiteturais. Lembre-se de que as restrições arquiteturais geralmente não são consideradas requisitos uma vez que limitam a solução candidata. Os requisitos não impõem restrição, mas precisam ser satisfeitos._
 
-As restrições impostas ao projeto que afetam sua arquitetura são (por exemplo):
-
-- O software deverá ser desenvolvido em JavaScript/Node.js;
-- A comunicação da API deve seguir o padrão RESTful.
-- O frontend usará a tecnologia Flutter.
+<ul>As restrições impostas ao projeto que afetam sua arquitetura são:
+	<li>O software deverá ser desenvolvido em Javascript/Node.js;</li>
+	<li>A comunicação da API deve seguir o padrão RESTful;</li>
+	<li>O frontend usará a tecnologia Flutter.</li>
+</ul>
 
 ## 2.4. Mecanismos Arquiteturais
 
-_Visão geral dos mecanismos que compõem a arquitetura do sosftware baseando-se em três estados: (1) análise, (2) design e (3) implementação. Em termos de Análise devem ser listados os aspectos gerais que compõem a arquitetura do software como: persistência, integração com sistemas legados, geração de logs do sistema, ambiente de front end, tratamento de exceções, formato dos testes, formato de distribuição/implantação (deploy), entre outros. Em Design deve-se identificar o padrão tecnológico a seguir para cada mecanismo identificado na análise. Em Implementação, deve-se identificar o produto a ser utilizado na solução.
- Ex: Análise (Persistência), Design (ORM), Implementação (Hibernate)._
-
 | **Análise** | **Design** | **Implementação** |
 | --- | --- | --- |
-| Persistência |Banco de dados relacional |MongoDB |
-| Front end |Kit de desenvolvimento |Flutter |
-| Back end |Ambiente de execução |NodeJS |
-| Integração | | |
-| Log do sistema |Middleware |Morgan |
-| Teste de Software |Framework |Morcha |
-| Deploy |PaaS |Heroku |
+| Persistência | Banco de dados relacional| MongoDB |
+| Front end | Kit de desenvolvimento | Flutter |
+| Back end | Ambiente de execução | NodeJS |
+| Log do sistema | Middleware | Morgan |
+| Teste de Software | Framework | Mocha |
+| Deploy | PaaS | Heroku |
 
 <a name="modelagem"></a>
 # 3. Modelagem e projeto arquitetural
 
 _Apresente uma visão geral da solução proposta para o projeto e explique brevemente esse diagrama de visão geral, de forma textual. Esse diagrama não precisa seguir os padrões da UML, e deve ser completo e tão simples quanto possível, apresentando a macroarquitetura da solução._
 
-![Visão Geral da Solução](imagens/visao.png "Visão Geral da Solução")
+![Visão Geral da Solução](Desenho de arquitetura (1).png "Visão Geral da Solução")
 
 **Figura 1 - Visão Geral da Solução (fonte: https://medium.com)**
 
-Obs: substitua esta imagem por outra, adequada ao seu projeto (cada arquitetura é única).
-
 ## 3.1. Visão de Negócio (Funcionalidades)
 
-_Apresente uma lista simples com as funcionalidades previstas no projeto (escopo do produto)._
+<ol>	
+<li>O sistema deve cadastrar usuários e permitir que esses usuários acessem o sistema.</li>
+<li>O sistema deve permitir criação de um leilão por parte de um vendedor.</li>
+<li>O sistema deve permitir a visualização dos leilões disponíveis</li>
+<li>O sistema deve permitir ao usuário dar um lance num item de um leilão.</li>
+</ol>
 
-1. O sistema deve...
-2. O sistema deve...
-3. ...
-
-Obs: a quantidade e o escopo das funcionalidades deve ser negociado com os professores/orientadores do trabalho.
 
 ### Descrição resumida dos Casos de Uso / Histórias de Usuário
 
@@ -196,13 +184,14 @@ Exemplos de resumo de Casos de Uso:
 | **Requisitos associados** | |
 | **Fluxo Principal** | |
 
-Exemplos de Histórias de Usuário:
+<ul>Exemplos de Histórias de Usuário:
 
-- Como Fulano eu quero poder convidar meus amigos para que a gente possa se reunir...
+<li>Como Comprador eu quero poder ver vários leilões para ter acesso a diversos itens, com o melhor preço.</li>
 
-- Como Cicrano eu quero poder organizar minhas tarefas diárias, para que...
+<li>Como Vendedor eu quero poder criar um leilão, para que possa vender um ou mais itens.</li>
 
-- Como gerente eu quero conseguir entender o progresso do trabalho do meu time, para que eu possa ter relatórios periódicos dos nossos acertos e falhas.
+<li>Como Comprador eu quero receber uma notificação quando um lance meu foi batido.</li>
+</ul>
 
 ## 3.2. Visão Lógica
 
@@ -309,3 +298,6 @@ http://www.pucminas.br/imagedb/documento/DOC\_DSC\_NOME\_ARQUI20160217102425.pdf
 # 6. APÊNDICES
 
 _Inclua o URL do repositório (Github, Bitbucket, etc) onde você armazenou o código da sua prova de conceito/protótipo arquitetural da aplicação como anexos. A inclusão da URL desse repositório de código servirá como base para garantir a autenticidade dos trabalhos._
+Referências
+LEILÕES Liga Magic. In: Liga Magic Leilões. [S. l.]. Disponível em: https://www.ligamagic.com.br/?view=leilao/listar. Acesso em: 18 fev. 2021.
+
