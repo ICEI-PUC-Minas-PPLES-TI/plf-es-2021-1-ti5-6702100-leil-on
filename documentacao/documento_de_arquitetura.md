@@ -147,6 +147,7 @@ Coloque aqui as definições, siglas e abreviaturas utilizadas no trabalho._
 _Apresente uma visão geral da solução proposta para o projeto e explique brevemente esse diagrama de visão geral, de forma textual. Esse diagrama não precisa seguir os padrões da UML, e deve ser completo e tão simples quanto possível, apresentando a macroarquitetura da solução._
 
 ![Visão Geral ](/imagens/Desenho de arquitetura (1).png)
+![Visão Geral 2](/imagens/visao.png)
 
 **Figura 1 - Visão Geral da Solução (fonte: https://medium.com)**
 
