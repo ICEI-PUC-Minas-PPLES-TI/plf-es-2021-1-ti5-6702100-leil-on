@@ -1,6 +1,9 @@
+import 'package:Leil_on/controller/autenticacao.dart';
+import 'package:Leil_on/utils/ExcecaoAcesso.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-enum AythMode { Signup, Login }
+enum AuthMode { Signup, Login }
 
 class Acesso extends StatefulWidget {
   Acesso({Key key}) : super(key: key);
@@ -11,18 +14,77 @@ class Acesso extends StatefulWidget {
 
 class _AcessoState extends State<Acesso> {
   GlobalKey<FormState> _form = GlobalKey();
+  bool _isLoading = false;
+  AuthMode _authMode = AuthMode.Login;
   bool ehLogin = true;
+
+  //Autenticacao auth=
+
+  final Map<String, String> _authData = {
+    'nome': '',
+    'email': '',
+    'senha': '',
+    'celular': '',
+    'CEP': '',
+  };
 
   void _switchAutMod() {
     if (ehLogin) {
       setState(() {
         ehLogin = false;
+        _authMode = AuthMode.Signup;
       });
     } else {
       setState(() {
         ehLogin = true;
+        _authMode = AuthMode.Login;
       });
     }
+  }
+
+  Future<void> _submit() async {
+    if (!_form.currentState.validate()) {
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    _form.currentState.save();
+
+    Autenticacao auth = Provider.of(context, listen: false);
+    print("email salvo: " + _authData["email"]);
+    try {
+      if (_authMode == AuthMode.Login) {
+        if (_authData["senha"].contains("kuskaorn")) {
+          ExcecaoAcesso erro = new ExcecaoAcesso('INVALID_PASSWORD');
+          // _showErrorDialog(erro.toString());
+        } else {
+          await auth.login(
+            _authData["email"],
+            _authData["senha"],
+          );
+        }
+      } else {
+        await auth.signup(
+          _authData["email"],
+          _authData["nome"],
+          _authData["senha"],
+          _authData["CEP"],
+          _authData["celular"],
+        );
+        //   _showConfirmDialog();
+      }
+    } on ExcecaoAcesso catch (error) {
+      // _showErrorDialog(error.toString());
+    } catch (error) {
+      // _showErrorDialog("Ocorreu um erro inesperado !");
+    }
+
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   /*
@@ -57,6 +119,7 @@ class _AcessoState extends State<Acesso> {
     );
   }
 */
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +140,7 @@ class _AcessoState extends State<Acesso> {
                 ),
                 height: MediaQuery.of(context).size.height * 0.9,
                 child: Form(
-                  //  key: _form,
+                  key: _form,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
@@ -115,7 +178,7 @@ class _AcessoState extends State<Acesso> {
                           }
                           return null;
                         },
-                        //  onSaved: (value) => _authData['email'] = value,
+                        onSaved: (value) => _authData['email'] = value,
                       ),
                       TextFormField(
                         keyboardType: TextInputType.text,
@@ -134,7 +197,7 @@ class _AcessoState extends State<Acesso> {
                           }
                           return null;
                         },
-                        //  onSaved: (value) => _authData['senha'] = value,
+                        onSaved: (value) => _authData['senha'] = value,
                         style: TextStyle(
                           fontSize: 20,
                         ),
@@ -190,7 +253,7 @@ class _AcessoState extends State<Acesso> {
                                 }
                                 return null;
                               },
-                              //  onSaved: (value) => _authData['senha'] = value,
+                              onSaved: (value) => _authData['celular'] = value,
                             ),
                       SizedBox(height: 10),
                       ehLogin
@@ -211,36 +274,36 @@ class _AcessoState extends State<Acesso> {
                               style: TextStyle(
                                 fontSize: 20,
                               ),
-                              /*  onSaved: (value) =>
-                              _authData['confirmacao'] = value,*/
+                              onSaved: (value) => _authData['CEP'] = value,
                             ),
                       SizedBox(height: 10),
-                      //if (_isLoading)
-                      //CircularProgressIndicator()
-                      //else
-                      RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        color: Colors.amber[700],
-                        textColor: Colors.white,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 30,
-                          vertical: 8,
-                        ),
-                        child: Text(
-                          //  _authMode == AuthMode.Login
-                          ehLogin ? 'Entrar' : 'Cadastrar',
-                          style: TextStyle(
-                            fontSize: 20,
+                      if (_isLoading)
+                        CircularProgressIndicator()
+                      else
+                        RaisedButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
                           ),
+                          color: Colors.amber[700],
+                          textColor: Colors.white,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 30,
+                            vertical: 8,
+                          ),
+                          child: Text(
+                            _authMode == AuthMode.Login
+                                ? 'Entrar'
+                                : 'Cadastrar',
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
+                          onPressed: _submit,
                         ),
-                        onPressed: () {}, //_submit,
-                      ),
                       FlatButton(
                         onPressed: _switchAutMod,
                         child: Text(
-                          ehLogin ? 'Registrar' : 'Login',
+                          ehLogin ? 'Cadastro' : 'Login',
                           style: TextStyle(
                             color: Colors.amber[700],
                             fontSize: 15,
