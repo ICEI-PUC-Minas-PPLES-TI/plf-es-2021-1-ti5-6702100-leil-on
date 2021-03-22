@@ -106,7 +106,7 @@ Coloque aqui as definições, siglas e abreviaturas utilizadas no trabalho._
 | RF004 | Propor oferta para o item | Essencial |
 | RF005 | Login e cadastro de usuários | Essencial |
 | RF006 | Sistema notifica o comprador quando ele ganhar um leilão | Essencial |
-| RF007 | Chat para que o comprador e o vendedor negocie como sera o pagamento e a entrega | Essencia |
+| RF007 | Chat para que o comprador e o vendedor negocie como sera o pagamento e a entrega | Essencial |
 | RF008 | Sistema de reputação para compradores e vendedores  | Desejável |
 | RF009 | Fornecer o valor do frete | Desejável |
 | RF010 | Fórum do leilão | Desejável |
