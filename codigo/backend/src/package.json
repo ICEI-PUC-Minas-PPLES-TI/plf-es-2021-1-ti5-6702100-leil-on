@@ -1,14 +1,13 @@
 {
-  "name": "flutterauth",
+  "name": "Leil-on",
   "version": "1.0.0",
-  "description": "Authentication system for flutter apps",
+  "description": "Sistema de compra e venda de bens usados.",
   "main": "server.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node server",
     "dev": "cross-env NODE_ENV=development nodemon server"
   },
-  "author": "Rajayogan",
-  "license": "MIT",
+  "author": "Guilherme",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
