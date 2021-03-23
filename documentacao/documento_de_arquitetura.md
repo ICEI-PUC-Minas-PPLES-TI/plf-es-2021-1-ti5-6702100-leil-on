@@ -35,6 +35,7 @@ _**Resumo**. Leilões são uma forma comum de compra e venda de itens, pessoas q
 | **[24/02/2021]** | [Guilherme, Leonardo e Pedro] | [Elaboração da seção 1 do documento de arquitetura] | [1.0] |
 | **02/03/2021** | [Guilherme, Leonardo e Pedro] |  [Elaboração da sessão 2, elaboração de parte da sessão 3 e correção da seção 1] | [1.1] |
 | **11/03/2021** | [Guilherme] | [Pequenas correções em alguns itens e conversão para markdown]| [1.1.1] |
+| **23/03/2021** | [Pedro] | [Criação e alteração das funcionalidades e história de usuário]| [1.1.1] |
 
 ## SUMÁRIO
 
