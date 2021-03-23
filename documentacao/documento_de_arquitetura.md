@@ -89,11 +89,11 @@ O  Leil-on tem como objetivo desenvolver um aplicativo que facilite a pesquisa p
 
 ## 1.3. Definições e Abreviaturas
 
-Flutter é um software de interface de usuário de código aberto.
-Dart é uma linguagem de programação de aplicativos para multiplataforma.
-Node.js é um ambiente de tempo de execução JavaScript de back-end.
-JavaScript é uma linguagem de programação de alto nível.
-MongoDB é um banco de dados não relacional.
+Flutter é um software de interface de usuário de código aberto.  <br />
+Dart é uma linguagem de programação de aplicativos para multiplataforma.  <br />
+Node.js é um ambiente de tempo de execução JavaScript de back-end.  <br />
+JavaScript é uma linguagem de programação de alto nível.  <br />
+MongoDB é um banco de dados não relacional.  <br />
 MongoDB Atlas é uma ferramente de cloud para o MongoDB.
 
 <a name="requisitos"></a>
