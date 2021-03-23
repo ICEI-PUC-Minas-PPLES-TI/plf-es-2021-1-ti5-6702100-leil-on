@@ -89,7 +89,12 @@ O  Leil-on tem como objetivo desenvolver um aplicativo que facilite a pesquisa p
 
 ## 1.3. Definições e Abreviaturas
 
-Coloque aqui as definições, siglas e abreviaturas utilizadas no trabalho._
+Flutter é um software de interface de usuário de código aberto.
+Dart é uma linguagem de programação de aplicativos para multiplataforma.
+Node.js é um ambiente de tempo de execução JavaScript de back-end.
+JavaScript é uma linguagem de programação de alto nível.
+MongoDB é um banco de dados não relacional.
+MongoDB Atlas é uma ferramente de cloud para o MongoDB.
 
 <a name="requisitos"></a>
 # 2. Requisitos
@@ -150,7 +155,7 @@ _Apresente uma visão geral da solução proposta para o projeto e explique brev
 
 ![Visão geral ](imagens/desenho.png "Visão geral ")
 
-**Figura 1 - Visão Geral da Solução (fonte: https://medium.com)**
+**Figura 1 - Visão Geral da Solução**
 
 ## 3.1. Visão de Negócio (Funcionalidades)
 
