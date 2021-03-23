@@ -175,29 +175,7 @@ _Apresente uma visão geral da solução proposta para o projeto e explique brev
 </ol>
 
 
-### Descrição resumida dos Casos de Uso / Histórias de Usuário
-
-_Nesta seção, os casos de uso devem ser resumidos. Esse detalhamento pode ser na forma de um texto sintético ou, alternativamente, você pode optar por descrever estórias de usuários seguindo os métodos ágeis. Neste caso a seção deve chamar &quot;Histórias de usuários&quot;. Lembre-se das características de qualidade das estórias de usuários, ou seja, o que é preciso para descrever boas histórias de usuários._
-
-Exemplos de resumo de Casos de Uso:
-
-#### UC01 – NOME DO CASO DE USO 01
-
-| **Descrição** | |
-| --- | --- |
-| **Atores** | |
-| **Prioridade** | |
-| **Requisitos associados** | |
-| **Fluxo Principal** | |
-
-#### UC02 – NOME DO CASO DE USO 02
-
-| **Descrição** | |
-| --- | --- |
-| **Atores** | |
-| **Prioridade** | |
-| **Requisitos associados** | |
-| **Fluxo Principal** | |
+### Histórias de Usuário
 
 <ul>Exemplos de Histórias de Usuário:
 <li>Como usuário, eu quero comprar e vender produtos, para que eu possa escolher a forma como vou participar de um leilão.</li>
