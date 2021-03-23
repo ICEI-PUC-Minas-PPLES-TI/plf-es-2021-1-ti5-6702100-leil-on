@@ -186,12 +186,21 @@ Exemplos de resumo de Casos de Uso:
 | **Fluxo Principal** | |
 
 <ul>Exemplos de Histórias de Usuário:
-
-<li>Como Comprador eu quero poder ver vários leilões para ter acesso a diversos itens, com o melhor preço.</li>
-
-<li>Como Vendedor eu quero poder criar um leilão, para que possa vender um ou mais itens.</li>
-
-<li>Como Comprador eu quero receber uma notificação quando um lance meu foi batido.</li>
+<li>Como usuário, eu quero comprar e vender produtos, para que eu possa escolher a forma como vou participar de um leilão.</li>
+<li>Como usuário, eu quero editar o meu perfil, para que eu possa atualizar dados pessoais.</li>
+<li>Como usuário, eu quero acompanhar os leilões em que participo e/ou os leilões que criei, para que eu possa visualizar as ofertas.</li>
+<li>Como vendedor, eu quero ver a reputação dos compradores interessados, para que eu possa tomar melhores decisões.</li>
+<li>Como vendedor, eu quero poder gerenciar o leilão que criei, para que eu possa aceitar a oferta, excluir participante ou encerrar o leilão.</li>
+<li>Como vendedor, eu quero estipular o preço mínimo do produto, para que o preço final esteja mais próximo do meu interesse.</li>
+<li>Como Vendedor, eu quero poder criar um leilão, para que possa vender um ou mais itens.</li>
+<li>Como Comprador, eu quero poder procurar os itens do meu interesse , para que eu possa participar de leilões que anuncie esses itens.</li>
+<li>Como Comprador, eu quero receber uma notificação quando um lance meu foi batido, para que eu possa negociar com o vendedor os termos de pagamento e entrega.</li>
+<li>Como comprador, eu quero visualizar informações do leilão, para que eu possa esta ciente do leilão.</li>
+<li>Como comprador, eu quero saber a localização do produto, para melhor estimar o custo do item.</li>
+<li>Como comprador, eu quero ver a reputação do vendedor, para que eu possa avaliar se é seguro participar do leilão.</li>
+<li>Como comprador, eu quero tirar dúvidas do item de meu interesse, para que eu possa escolher uma melhor oferta.</li>
+<li>Como comprador, eu quero ver o prazo do encerramento do leilão, para que eu não perca a oportunidade de comprar o item do meu interesse.</li>
+<li>Como comprador, eu quero realizar ofertas do produto do meu interesse, para que eu possa ter o produto</li>
 </ul>
 
 ## 3.2. Visão Lógica
