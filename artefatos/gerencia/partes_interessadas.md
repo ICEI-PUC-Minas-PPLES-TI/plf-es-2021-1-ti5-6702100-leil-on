@@ -1,18 +1,20 @@
-# Registro das Partes Interessadas - PROJETO
+# Registro das Partes Interessadas - Leil-on
 
 
-**Gerentes de Projeto:**
+**Guilherme Augusto Gomes Cunha, guilhermegomescunha@hotmail.com**
 
-Nome completo do Aluno 1, email do aluno 1
-Nome completo do Aluno 2, email do aluno 2
-Nome completo do Aluno 3, email do aluno 3
+**Leonardo Antunes Barreto Noman, leonoman07@gmail.com**
+
+**Pedro Henrique Magalhães Silva, magengsoft@gmail.com**
 
 ---
 
-**Professores:**
+Professores:
 
-Prof. Nome do Prof 1
-Prof. Nome do Prof 2
+**Hugo Bastos de Paula**
+
+**Pedro Alves de Oliveira**
+
 
 ---
 
@@ -26,18 +28,19 @@ _Instituto de Informática e Ciências Exatas – Pontifícia Universidade de Mi
 
 | Nome | Posição / Cargo | Papel no Projeto | Email | Telefone
 | --- | --- | --- | --- | --- |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
+| Guilherme Augusto Gomes Cunha  | Estudante  | Desenvolvedor  | guilhermegomescunha@hotmail.com  | 31-993897878
+| Pedro Henquire Magalhães Silva | Estudante  |  Gerente do projeto | magensoft@gmail.com  | 31-975737179
+| Leonardo Antunes Barreto Noman | Estudante  | Engenheiro de requisitos  | leonoman07@gmail.com  | 31-991568378
+| Hugo Bastos de Paula | Professor  | Cliente  |  | 
+| Pedro Alves de Oliveira | Professor  | Cliente  |  | 
 
 ## Avaliação
 
 | Nome | Expectativas | Influência | Importância / Poder | Apoio | Observações |
 | --- | --- | --- | --- | --- | --- |
-|   | Aterfatos da projeção da arquitetura do software | Média | Média | Apoiador |
-|   | Software implementado como um aplicativo móvel com arquitetura distribuída e funcionalidades de tempo real | Alta | Alta | Apoiador |
-|   | Software implementado como um aplicativo móvel com arquitetura distribuída e funcionalidades de tempo real | Média | Média | Apoiador |
-|   | Software implementado como um aplicativo móvel com arquitetura distribuída e funcionalidades de tempo real | Alta | Alta | Apoiador |
-|   | Software implementado como um aplicativo móvel com arquitetura distribuída e funcionalidades de tempo real | Média | Média | Apoiador |
-|   | Artefatos de gerenciamento de projeto | Alta | Alta | Apoiador |
-|   | Software implantando nos computadores do estabelecimento com os requisitos solicitados implementados | Alta | Alta | Apoiador |
+| Guilherme Augusto Gomes Cunha | Aprender novas tecnologias  | Alta | Média | Apoiador | Também ajuda com a documentação |
+| Pedro Henquire Magalhães Silva | Desenvolver habilidades de gestão  | Alta | Alta | Apoiador | Também atua como desenvolvedor |
+| Leonardo Antunes Barreto Noman | Aprender novas tecnologias  | Alta | Média | Apoiador | Também atua como desenvolvedor |
+| Hugo Bastos de Paula| O projeto entregue no prazo estabelecido | Alta | Alta | Apoiador | Também atua como orientador |
+| Pedro Alves de Oliveira|A documentação entregue no prazo estabelecido| Alta | Alta | Apoiador | Também atua como orientador |
+
