@@ -164,8 +164,8 @@ _Apresente uma visão geral da solução proposta para o projeto e explique brev
 <li>8- O sistema deve permitir que o usuário tire as suas dúvidas a respeito do produto através de um fórum.</li>
 <li>9- O sistema deve permitir ao usuário dar um lance num item de um leilão.</li>
 <li>10- O sistema deve permitir que o usuário acompanhe o leilão em que esteja participando como comprador</li>
-<li>11- O sistema deve permitir que o usuário< acompanhe o leilão em que esteja participando como vendedor/li>
-<li>10- O sistema deve notificar o usuário que deu o melhor lance do item leiloado.</li>
+<li>11- O sistema deve permitir que o usuário acompanhe o leilão em que esteja participando como vendedor</li>
+<li>12- O sistema deve notificar o usuário que deu o melhor lance do item leiloado.</li>
 </ol>
 
 
@@ -206,7 +206,7 @@ Exemplos de resumo de Casos de Uso:
 <li>Como comprador, eu quero visualizar informações do leilão, para que eu possa esta ciente do leilão.</li>
 <li>Como comprador, eu quero saber a localização do produto, para melhor estimar o custo do item.</li>
 <li>Como comprador, eu quero ver a reputação do vendedor, para que eu possa avaliar se é seguro participar do leilão.</li>
-<li>Como comprador, eu quero tirar dúvidas do item de meu interesse, para que eu possa escolher uma melhor oferta.</li>
+<li>Como comprador, eu quero um fórum, pra que eu tire dúvidas a respeito dos produtos do meu interesse</li>
 <li>Como comprador, eu quero ver o prazo do encerramento do leilão, para que eu não perca a oportunidade de comprar o item do meu interesse.</li>
 <li>Como comprador, eu quero realizar ofertas do produto do meu interesse, para que eu possa ter o produto</li>
 </ul>
