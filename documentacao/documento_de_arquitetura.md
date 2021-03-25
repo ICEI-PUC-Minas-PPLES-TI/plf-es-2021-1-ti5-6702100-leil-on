@@ -160,18 +160,18 @@ _Apresente uma visão geral da solução proposta para o projeto e explique brev
 ## 3.1. Visão de Negócio (Funcionalidades)
 
 <ol>	
-<li>1- O sistema deve cadastrar usuários e permitir que esses usuários acessem o sistema.</li>
-<li>2- O sistema deve permitir criação de um leilão por parte do vendedor.</li>
-<li>3- O sistema deve permitir que o vendedor tenha privilégios de administrador do leilão que ele criou.</li>
-<li>4- O sistema deve permitir que o vendedor e o interessado que deu o lance vencedor negocie os termos de pagamento e de entrega.</li>
-<li>5- O sistema deve permitir um mecanismo de pesquisa por itens em que o usuário esteja interessado.</li>
-<li>6- O sistema deve permitir a visualização dos leilões disponíveis que possuem os itens do interesse do comprador.</li>
-<li>7- O sistema deve permitir que o usuário veja as informações do leilão, dos itens de seu interesse e do vendedor.</li>
-<li>8- O sistema deve permitir que o usuário tire as suas dúvidas a respeito do produto através de um fórum.</li>
-<li>9- O sistema deve permitir ao usuário dar um lance num item de um leilão.</li>
-<li>10- O sistema deve permitir que o usuário acompanhe o leilão em que esteja participando como comprador</li>
-<li>11- O sistema deve permitir que o usuário acompanhe o leilão em que esteja participando como vendedor</li>
-<li>12- O sistema deve notificar o usuário que deu o melhor lance do item leiloado.</li>
+<li> O sistema deve cadastrar usuários e permitir que esses usuários acessem o sistema.</li>
+<li> O sistema deve permitir criação de um leilão por parte do vendedor.</li>
+<li> O sistema deve permitir que o vendedor tenha privilégios de administrador do leilão que ele criou.</li>
+<li> O sistema deve permitir que o vendedor e o interessado que deu o lance vencedor negocie os termos de pagamento e de entrega.</li>
+<li> O sistema deve permitir um mecanismo de pesquisa por itens em que o usuário esteja interessado.</li>
+<li> O sistema deve permitir a visualização dos leilões disponíveis que possuem os itens do interesse do comprador.</li>
+<li> O sistema deve permitir que o usuário veja as informações do leilão, dos itens de seu interesse e do vendedor.</li>
+<li> O sistema deve permitir que o usuário tire as suas dúvidas a respeito do produto através de um fórum.</li>
+<li> O sistema deve permitir ao usuário dar um lance num item de um leilão.</li>
+<li> O sistema deve permitir que o usuário acompanhe o leilão em que esteja participando como comprador</li>
+<li> O sistema deve permitir que o usuário acompanhe o leilão em que esteja participando como vendedor</li>
+<li> O sistema deve notificar o usuário que deu o melhor lance do item leiloado.</li>
 </ol>
 
 
