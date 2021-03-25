@@ -177,7 +177,6 @@ _Apresente uma visão geral da solução proposta para o projeto e explique brev
 
 ### Histórias de Usuário
 
-<ul>Exemplos de Histórias de Usuário:
 <li>Como usuário, eu quero comprar e vender produtos, para que eu possa escolher a forma como vou participar de um leilão.</li>
 <li>Como usuário, eu quero editar o meu perfil, para que eu possa atualizar dados pessoais.</li>
 <li>Como usuário, eu quero acompanhar os leilões em que participo e/ou os leilões que criei, para que eu possa visualizar as ofertas.</li>
