@@ -119,13 +119,13 @@ class _AcessoState extends State<Acesso> {
                             'Leil-on',
                             style: TextStyle(
                               color: Colors.deepPurple[800],
-                              fontSize: 35,
+                              fontSize: 38,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                         SizedBox(
-                          height: 50,
+                          height: 40,
                         ),
                         //    if (_authMode == AuthMode.Signup)
                         ehLogin

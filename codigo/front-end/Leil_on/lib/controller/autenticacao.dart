@@ -75,7 +75,7 @@ class Autenticacao with ChangeNotifier {
   }
 
   logout() {
-    _token = null;
+    // _token = null;
     // _userId = null;
   }
 }
