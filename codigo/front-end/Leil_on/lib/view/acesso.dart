@@ -87,39 +87,6 @@ class _AcessoState extends State<Acesso> {
     });
   }
 
-  /*
-  bool _isLoading = false;
-  final _senhaController = TextEditingController();
-  //AuthMode _authMode = AuthMode.Login;
-
-  final Map<String, String> _authData = {
-    'email': '',
-    'senha': '',
-    'celular': '',
-    'CEP': '',
-  };
-
-  void _showConfirmDialog() {
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: Text('Cadastro realizado!'),
-        content: Text('Será retornado para a tela de login'),
-        actions: <Widget>[
-          FlatButton(
-            onPressed: () {
-             // Auth auth = Provider.of(context, listen: false);
-              //auth.logout();
-              //Navigator.of(context).popAndPushNamed(AppRoutes.AUTHOUFICHAS);
-            },
-            child: Text('Fechar'),
-          ),
-        ],
-      ),
-    );
-  }
-*/
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
