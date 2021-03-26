@@ -6,6 +6,10 @@ class Saudacao extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Tela DashBoard'),
+        backgroundColor: Colors.amber[400],
+      ),
       body: Container(
         color: Colors.grey[200],
         child: Text(
