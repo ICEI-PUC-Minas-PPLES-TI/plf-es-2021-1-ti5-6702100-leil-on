@@ -7,11 +7,13 @@ class Autenticacao with ChangeNotifier {
   String _token;
 
   bool get isAuth {
+    print("eh consultado");
     return _token != null;
   }
 
   String get token {
     if (_token != null) {
+      print("token aqui : " + _token);
       return _token;
     } else {
       return null;
@@ -30,7 +32,7 @@ class Autenticacao with ChangeNotifier {
       },
       body: json.encode(
         {
-          "name": "name",
+          "name": nome,
           "password": senha,
           "email": email,
           "cep": cep,
@@ -65,9 +67,10 @@ class Autenticacao with ChangeNotifier {
     if (responseBody['msg'] != null) {
       print(' dentro ${responseBody['msg']}');
     } else {
+      _token = responseBody['token'];
       notifyListeners();
     }
-    _token = responseBody['token'];
+
     return Future.value();
   }
 
