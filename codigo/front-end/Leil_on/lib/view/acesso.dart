@@ -87,39 +87,6 @@ class _AcessoState extends State<Acesso> {
     });
   }
 
-  /*
-  bool _isLoading = false;
-  final _senhaController = TextEditingController();
-  //AuthMode _authMode = AuthMode.Login;
-
-  final Map<String, String> _authData = {
-    'email': '',
-    'senha': '',
-    'celular': '',
-    'CEP': '',
-  };
-
-  void _showConfirmDialog() {
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: Text('Cadastro realizado!'),
-        content: Text('Será retornado para a tela de login'),
-        actions: <Widget>[
-          FlatButton(
-            onPressed: () {
-             // Auth auth = Provider.of(context, listen: false);
-              //auth.logout();
-              //Navigator.of(context).popAndPushNamed(AppRoutes.AUTHOUFICHAS);
-            },
-            child: Text('Fechar'),
-          ),
-        ],
-      ),
-    );
-  }
-*/
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -141,176 +108,206 @@ class _AcessoState extends State<Acesso> {
                 height: MediaQuery.of(context).size.height * 0.9,
                 child: Form(
                   key: _form,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        child: Text(
-                          'Leil-on',
-                          style: TextStyle(
-                            color: Colors.deepPurple[800],
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 60,
-                      ),
-                      //    if (_authMode == AuthMode.Signup)
-                      TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          labelText: "Email",
-                          labelStyle: TextStyle(
-                            color: Colors.indigo[200],
-                            fontWeight: FontWeight.w400,
-                            fontSize: 20,
-                          ),
-                        ),
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                        validator: (value) {
-                          if (value.isEmpty || !value.contains('@')) {
-                            return 'Informe um e-mail válido ! ';
-                          }
-                          return null;
-                        },
-                        onSaved: (value) => _authData['email'] = value,
-                      ),
-                      TextFormField(
-                        keyboardType: TextInputType.text,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          labelText: "Senha",
-                          labelStyle: TextStyle(
-                            color: Colors.indigo[200],
-                            fontWeight: FontWeight.w400,
-                            fontSize: 20,
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value.isEmpty || value.length < 6) {
-                            return 'Informe uma senha válida';
-                          }
-                          return null;
-                        },
-                        onSaved: (value) => _authData['senha'] = value,
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      ehLogin
-                          ? SizedBox(
-                              height: 10,
-                            )
-                          : TextFormField(
-                              keyboardType: TextInputType.text,
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                labelText: "Confirmar Senha",
-                                labelStyle: TextStyle(
-                                  color: Colors.indigo[200],
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
-                              /*  onSaved: (value) =>
-                              _authData['confirmacao'] = value,*/
-                            ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      ehLogin
-                          ? SizedBox(
-                              height: 10,
-                            )
-                          : TextFormField(
-                              keyboardType: TextInputType.phone,
-                              decoration: InputDecoration(
-                                labelText: "Celular",
-                                labelStyle: TextStyle(
-                                  color: Colors.indigo[200],
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              //controller: _senhaController,
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
-                              validator: (value) {
-                                if (value.isEmpty || value.length < 11) {
-                                  return 'Informe um número válido';
-                                }
-                                return null;
-                              },
-                              onSaved: (value) => _authData['celular'] = value,
-                            ),
-                      SizedBox(height: 10),
-                      ehLogin
-                          ? SizedBox(
-                              height: 10,
-                            )
-                          : //if (_authMode == AuthMode.Signup)
-                          TextFormField(
-                              keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
-                                labelText: "CEP",
-                                labelStyle: TextStyle(
-                                  color: Colors.indigo[200],
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
-                              onSaved: (value) => _authData['CEP'] = value,
-                            ),
-                      SizedBox(height: 10),
-                      if (_isLoading)
-                        CircularProgressIndicator()
-                      else
-                        RaisedButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          color: Colors.amber[700],
-                          textColor: Colors.white,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 30,
-                            vertical: 8,
-                          ),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.all(10),
                           child: Text(
-                            _authMode == AuthMode.Login
-                                ? 'Entrar'
-                                : 'Cadastrar',
+                            'Leil-on',
                             style: TextStyle(
-                              fontSize: 20,
+                              color: Colors.deepPurple[800],
+                              fontSize: 38,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                          onPressed: _submit,
                         ),
-                      FlatButton(
-                        onPressed: _switchAutMod,
-                        child: Text(
-                          ehLogin ? 'Cadastro' : 'Login',
+                        SizedBox(
+                          height: 40,
+                        ),
+                        //    if (_authMode == AuthMode.Signup)
+                        ehLogin
+                            ? SizedBox(
+                                height: 10,
+                              )
+                            : TextFormField(
+                                keyboardType: TextInputType.text,
+                                decoration: InputDecoration(
+                                  labelText: "Nome",
+                                  labelStyle: TextStyle(
+                                    color: Colors.indigo[200],
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: ehLogin ? 20 : 15,
+                                  ),
+                                ),
+                                style: TextStyle(
+                                  fontSize: ehLogin ? 20 : 15,
+                                ),
+                                validator: (value) {
+                                  if (value.isEmpty || value.length < 4) {
+                                    return 'Deve ter no minimo 4 caracteres';
+                                  }
+                                  return null;
+                                },
+                                onSaved: (value) => _authData['nome'] = value,
+                              ),
+
+                        TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            labelText: "Email",
+                            labelStyle: TextStyle(
+                              color: Colors.indigo[200],
+                              fontWeight: FontWeight.w400,
+                              fontSize: ehLogin ? 20 : 15,
+                            ),
+                          ),
                           style: TextStyle(
-                            color: Colors.amber[700],
-                            fontSize: 15,
+                            fontSize: ehLogin ? 20 : 15,
+                          ),
+                          validator: (value) {
+                            if (value.isEmpty || !value.contains('@')) {
+                              return 'Informe um e-mail válido ! ';
+                            }
+                            return null;
+                          },
+                          onSaved: (value) => _authData['email'] = value,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.text,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            labelText: "Senha",
+                            labelStyle: TextStyle(
+                              color: Colors.indigo[200],
+                              fontWeight: FontWeight.w400,
+                              fontSize: ehLogin ? 20 : 15,
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value.isEmpty || value.length < 6) {
+                              return 'Informe uma senha válida';
+                            }
+                            return null;
+                          },
+                          onSaved: (value) => _authData['senha'] = value,
+                          style: TextStyle(
+                            fontSize: ehLogin ? 20 : 15,
                           ),
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          height: 10,
+                        ),
+                        ehLogin
+                            ? SizedBox(
+                                height: 10,
+                              )
+                            : TextFormField(
+                                keyboardType: TextInputType.text,
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                  labelText: "Confirmar Senha",
+                                  labelStyle: TextStyle(
+                                    color: Colors.indigo[200],
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),
+                                /*  onSaved: (value) =>
+                                _authData['confirmacao'] = value,*/
+                              ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        ehLogin
+                            ? SizedBox(
+                                height: 10,
+                              )
+                            : TextFormField(
+                                keyboardType: TextInputType.phone,
+                                decoration: InputDecoration(
+                                  labelText: "Celular",
+                                  labelStyle: TextStyle(
+                                    color: Colors.indigo[200],
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                //controller: _senhaController,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),
+                                validator: (value) {
+                                  if (value.isEmpty || value.length < 11) {
+                                    return 'Informe um número válido';
+                                  }
+                                  return null;
+                                },
+                                onSaved: (value) =>
+                                    _authData['celular'] = value,
+                              ),
+                        SizedBox(height: 10),
+                        ehLogin
+                            ? SizedBox(
+                                height: 10,
+                              )
+                            : //if (_authMode == AuthMode.Signup)
+                            TextFormField(
+                                keyboardType: TextInputType.text,
+                                decoration: InputDecoration(
+                                  labelText: "CEP",
+                                  labelStyle: TextStyle(
+                                    color: Colors.indigo[200],
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),
+                                onSaved: (value) => _authData['CEP'] = value,
+                              ),
+                        SizedBox(height: 10),
+                        if (_isLoading)
+                          CircularProgressIndicator()
+                        else
+                          RaisedButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            color: Colors.amber[700],
+                            textColor: Colors.white,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 30,
+                              vertical: 8,
+                            ),
+                            child: Text(
+                              _authMode == AuthMode.Login
+                                  ? 'Entrar'
+                                  : 'Cadastrar',
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
+                            ),
+                            onPressed: _submit,
+                          ),
+                        FlatButton(
+                          onPressed: _switchAutMod,
+                          child: Text(
+                            ehLogin ? 'Cadastro' : 'Login',
+                            style: TextStyle(
+                              color: Colors.amber[700],
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

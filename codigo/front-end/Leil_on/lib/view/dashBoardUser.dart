@@ -5,9 +5,22 @@ class Saudacao extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('Bem vindo'),
-      alignment: Alignment.center,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Tela DashBoard'),
+        backgroundColor: Colors.amber[400],
+      ),
+      body: Container(
+        color: Colors.grey[200],
+        child: Text(
+          'Bem vindo Pedro',
+          style: TextStyle(
+            color: Colors.amber[300],
+            fontSize: 50.0,
+          ),
+        ),
+        alignment: Alignment.center,
+      ),
     );
   }
 }
