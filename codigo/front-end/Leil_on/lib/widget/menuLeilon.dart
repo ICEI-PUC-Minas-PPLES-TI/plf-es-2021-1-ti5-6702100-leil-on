@@ -32,41 +32,44 @@ class MenuLeilon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height * 0.4,
-            width: double.infinity,
-            padding: EdgeInsets.only(
-              top: 20,
-              left: 10,
-              right: 10,
+      child: Container(
+        color: Colors.amber[400],
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.4,
+              width: double.infinity,
+              padding: EdgeInsets.only(
+                top: 20,
+                left: 10,
+                right: 10,
+              ),
+              color: Colors.amber[400],
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Icon(
+                    Icons.person_rounded,
+                    color: Colors.purple[700],
+                    size: 120.0,
+                  ),
+                ],
+              ),
             ),
-            color: Colors.amber[400],
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Icon(
-                  Icons.person,
-                  color: Colors.deepPurple[800],
-                  size: 120.0,
-                ),
-              ],
+            Container(
+              color: Colors.amber[400],
+              child: Column(
+                children: <Widget>[
+                  _createItem(Icons.add_to_photos, 'Criar leilão'),
+                  _createItem(Icons.settings, 'Configurações'),
+                  _createItem(Icons.chat, 'Chat'),
+                  _createItem(Icons.exit_to_app, 'Sair'),
+                ],
+              ),
             ),
-          ),
-          Container(
-            color: Colors.amber[400],
-            child: Column(
-              children: <Widget>[
-                _createItem(Icons.add_to_photos, 'Criar leilão'),
-                _createItem(Icons.settings, 'Configurações'),
-                _createItem(Icons.chat, 'Chat'),
-                _createItem(Icons.exit_to_app, 'Sair'),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
