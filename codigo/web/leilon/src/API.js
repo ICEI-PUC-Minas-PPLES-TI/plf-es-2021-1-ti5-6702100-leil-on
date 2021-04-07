@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://leil-on.herokuapp.com";
+const API_URL = "http://leil-on.herokuapp.com/";
 
 /**
  * Make a POST request to API with login data and to get accesss token.
@@ -11,7 +11,7 @@ export async function getLoginToken(email, password) {
   try {
     const apiResponse = await axios({
       method: "post",
-      url: API_URL + "/authenticate",
+      url: API_URL + "authenticate/",
       headers: {
         "Content-Type": "application/json",
       },
@@ -43,20 +43,20 @@ export async function getLoginToken(email, password) {
 /**
  * Make a POST request to the API to register a new user.
  */
-export async function registerUser(email, password, name, cell, cep) {
+export async function registerUser(email, password, name, telefone, cep) {
   try {
     const apiResponse = await axios({
       method: "post",
-      url: API_URL + "/adduser",
+      url: API_URL + "adduser/",
       headers: {
         "Content-Type": "application/json",
       },
       data: {
-        email: email,
-        password: password,
         name: name,
-        cell: cell,
+        password: password,
+        email: email,
         cep: cep,
+        telefone: telefone,
       },
     });
 
@@ -79,7 +79,7 @@ export async function registerUser(email, password, name, cell, cep) {
 //   try {
 //     const apiResponse = await axios({
 //       method: "get",
-//       url: API_URL + "getinfo/" + email,
+//       url: API_URL + "/getinfo" + email,
 //       headers: {
 //         authorization: authToken,
 //       },
@@ -94,23 +94,3 @@ export async function registerUser(email, password, name, cell, cep) {
 //     throw err;
 //   }
 // }
-
-/**
- * Make a GET request to the API to get data from a user with a specific email.
- */
-export async function getUserData() {
-  try {
-    const apiResponse = await axios({
-      method: "get",
-      url: API_URL + "getinfo/",
-    });
-
-    if (apiResponse.status === 200) {
-      return apiResponse.data.user;
-    } else {
-      throw apiResponse.data.message;
-    }
-  } catch (err) {
-    throw err;
-  }
-}

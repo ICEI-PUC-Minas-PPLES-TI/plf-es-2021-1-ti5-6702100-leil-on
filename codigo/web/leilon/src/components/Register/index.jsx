@@ -10,7 +10,7 @@ function Register(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [cell, setCell] = useState("");
+  const [telefone, settelefone] = useState("");
   const [cep, setCep] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [alertContent, setAlertContent] = useState("");
@@ -20,13 +20,13 @@ function Register(props) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    if (!(name, email, password) || cell === 0 || cep === 0) {
+    if (!(name, email, password) || telefone === 0 || cep === 0) {
       setAlertContent("Preencha os dados corretamente!");
       setShowAlert(true);
       return;
     }
 
-    registerUser(email, password, name, cell, cep)
+    registerUser(email, password, name, telefone, cep)
       .then((responseData) => {
         const { token } = responseData;
         localStorage.setItem("email", email);
@@ -77,11 +77,11 @@ function Register(props) {
             </Form.Group>
           </Row>
           <Row className="justify-content-md-center row-cols-1">
-            <Form.Group controlId="registerCell">
+            <Form.Group controlId="registertelefone">
               <Form.Label>Celular</Form.Label>
               <Form.Control
-                onChange={(e) => setCell(e.target.value)}
-                value={cell}
+                onChange={(e) => settelefone(e.target.value)}
+                value={telefone}
                 type="number"
               />
             </Form.Group>

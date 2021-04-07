@@ -25,7 +25,16 @@ function Login(props) {
       return;
     }
 
-    setPage("dashboard");
+    getLoginToken(email, password)
+      .then((token) => {
+        localStorage.setItem("email", email);
+        localStorage.setItem("token", token);
+        setPage("userPage");
+      })
+      .catch((err) => {
+        setAlertContent(err.toString());
+        setShowAlert(true);
+      });
   }
 
   return (
