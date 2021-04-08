@@ -196,17 +196,6 @@ _Apresente uma visão geral da solução proposta para o projeto e explique brev
 
 ## 3.2. Visão Lógica
 
-_Apresente os artefatos que serão utilizados descrevendo em linhas gerais as motivações que levaram a equipe a utilizar estes diagramas._
-
-### Diagrama de Classes
-
-![Diagrama de classes](imagens/classes.gif "Diagrama de classes")
-
-
-**Figura 2 – Diagrama de classes (exemplo). Fonte: o próprio autor.**
-
-Obs: Acrescente uma breve descrição sobre o diagrama apresentado na Figura 3.
-
 ### Diagrama de componentes
 
 _Apresente o diagrama de componentes da aplicação, indicando, os elementos da arquitetura e as interfaces entre eles. Liste os estilos/padrões arquiteturais utilizados e faça uma descrição sucinta dos componentes indicando o papel de cada um deles dentro da arquitetura/estilo/padrão arquitetural. Indique também quais componentes serão reutilizados (navegadores, SGBDs, middlewares, etc), quais componentes serão adquiridos por serem proprietários e quais componentes precisam ser desenvolvidos._
@@ -220,20 +209,18 @@ _Apresente uma descrição detalhada dos artefatos que constituem o diagrama de 
 Ex: conforme diagrama apresentado na Figura X, as entidades participantes da solução são:
 
 - **Componente 1** -Leil-on Sistema de leilão de online. Engloba o sistema inteiro com seus componentes.
-- **Componente 2** - Express é um framework para aplicações web para Node.js, é usado no projeto para ter acesso a suas várias tecnologias e serviços como: Morgan, passport e cors
-- **Componente 2** - Praesent nec nisi hendrerit, ullamcorper tortor non, rutrum sem. In non lectus tortor. Nulla vel tincidunt eros.
-- **Componente 2** - Praesent nec nisi hendrerit, ullamcorper tortor non, rutrum sem. In non lectus tortor. Nulla vel tincidunt eros.
+- **Componente 2** - Express é um framework para aplicações web para Node.js, é usado no projeto para ter acesso a suas várias tecnologias e serviços como: Morgan, passport e cors.
+- **Componente 3** - Heroku é usado para o "deploy" do sistema.
+- **Componente 4** - MongoDB é um banco de dados não relacional, é usado para armazenar e persistir os dados.
+- **Componente 5** - MongoDBAtlas é o cluster do MongoDB para armazenar os dados na nuvem.
 
 
-## 3.3. Modelo de dados (opcional)
+## 3.3. Modelo de dados 
 
-_Caso julgue necessário para explicar a arquitetura, apresente o diagrama de classes ou diagrama de Entidade/Relacionamentos ou tabelas do banco de dados. Este modelo pode ser essencial caso a arquitetura utilize uma solução de banco de dados distribuídos ou um banco NoSQL._
 
 ![Diagrama de Entidade Relacionamento (ER) ](imagens/der.png "Diagrama de Entidade Relacionamento (ER) ")
 
 **Figura 4 – Diagrama de Entidade Relacionamento (ER) - exemplo. Fonte: o próprio autor.**
-
-Obs: Acrescente uma breve descrição sobre o diagrama apresentado na Figura 3.
 
 <a name="avaliacao"></a>
 # 4. Avaliação da Arquitetura
