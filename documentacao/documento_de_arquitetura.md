@@ -219,8 +219,11 @@ _Apresente uma descrição detalhada dos artefatos que constituem o diagrama de 
 
 Ex: conforme diagrama apresentado na Figura X, as entidades participantes da solução são:
 
-- **Componente 1** - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nunc magna, accumsan eget porta a, tincidunt sed mauris. Suspendisse orci nulla, sagittis a lorem laoreet, tincidunt imperdiet ipsum. Morbi malesuada pretium suscipit.
+- **Componente 1** -Leil-on Sistema de leilão de online. Engloba o sistema inteiro com seus componentes.
+- **Componente 2** - Express é um framework para aplicações web para Node.js, é usado no projeto para ter acesso a suas várias tecnologias e serviços como: Morgan, passport e cors
 - **Componente 2** - Praesent nec nisi hendrerit, ullamcorper tortor non, rutrum sem. In non lectus tortor. Nulla vel tincidunt eros.
+- **Componente 2** - Praesent nec nisi hendrerit, ullamcorper tortor non, rutrum sem. In non lectus tortor. Nulla vel tincidunt eros.
+
 
 ## 3.3. Modelo de dados (opcional)
 
