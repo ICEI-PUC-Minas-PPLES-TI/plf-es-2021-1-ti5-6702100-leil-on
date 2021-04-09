@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Form, Row, Alert } from "react-bootstrap";
 import { registerUser } from "../../API";
 import "./Register.css";
+import { Link } from "react-router-dom";
 
 /**
  * User Registration component.
@@ -14,8 +15,6 @@ function Register(props) {
   const [cep, setCep] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [alertContent, setAlertContent] = useState("");
-
-  const { setPage } = props;
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -31,7 +30,6 @@ function Register(props) {
         const { token } = responseData;
         localStorage.setItem("email", email);
         localStorage.setItem("token", token);
-        setPage("dashboard");
       })
       .catch((err) => {
         setAlertContent(err.toString());
@@ -98,23 +96,21 @@ function Register(props) {
           </Row>
 
           <Row className="justify-content-md-center">
-            <Button
-              onClick={handleSubmit}
-              className="registrationButton"
-              variant="primary"
-              type="Submit"
-            >
-              Registrar
-            </Button>
-            <Button
-              onClick={() => {
-                setPage("login");
-              }}
-              className="registrationButton"
-              variant="warning"
-            >
-              Cancelar
-            </Button>
+            <Link to="/dashboard">
+              <Button
+                onClick={handleSubmit}
+                className="registrationButton"
+                variant="primary"
+                type="Submit"
+              >
+                Registrar
+              </Button>
+            </Link>
+            <Link to="/">
+              <Button className="registrationButton" variant="warning">
+                Cancelar
+              </Button>
+            </Link>
           </Row>
         </Form>
       </Row>

@@ -1,27 +1,16 @@
 import "./Header.css";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function Header(props) {
-  const { setPage } = props;
-
   return (
     <div className="navbar">
-      <Button
-        className="btn btn-light"
-        onClick={() => {
-          setPage("dashboard");
-        }}
-      >
-        Leil-on
-      </Button>
-      <Button
-        className="btn btn-danger"
-        onClick={() => {
-          setPage("login");
-        }}
-      >
-        Logout
-      </Button>
+      <Link to="/dashboard">
+        <Button className="btn btn-light">Leil-on</Button>
+      </Link>
+      <Link to="/">
+        <Button className="btn btn-danger">Logout</Button>
+      </Link>
     </div>
   );
 }

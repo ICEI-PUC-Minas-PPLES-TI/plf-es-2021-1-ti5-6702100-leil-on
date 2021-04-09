@@ -1,26 +1,12 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import Dashboard from "./components/Dashboard";
+import Routes from "./routes";
 
 function App() {
-  const [currentPageName, setCurrentPageName] = useState("dashboard");
-
-  function getCurrentPageComponent() {
-    return {
-      login: <Login setPage={setCurrentPageName} />,
-      register: <Register setPage={setCurrentPageName} />,
-      dashboard: <Dashboard setPage={setCurrentPageName} />,
-    }[currentPageName];
-  }
   return (
-    <>
-      <main className="Container App">
-        <main>{getCurrentPageComponent()}</main>
-      </main>
-    </>
+    <div>
+      <Routes />
+    </div>
   );
 }
 

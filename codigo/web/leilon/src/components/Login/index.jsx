@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Form, Row, Alert } from "react-bootstrap";
 import { getLoginToken } from "../../API";
 import "./Login.css";
+import { Link } from "react-router-dom";
 
 /**
  * User Login component.
@@ -13,8 +14,6 @@ function Login(props) {
   const [password, setPassword] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [alertContent, setAlertContent] = useState("");
-
-  const { setPage } = props;
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -29,7 +28,6 @@ function Login(props) {
       .then((token) => {
         localStorage.setItem("email", email);
         localStorage.setItem("token", token);
-        setPage("dashboard");
       })
       .catch((err) => {
         setAlertContent(err.toString());
@@ -60,23 +58,21 @@ function Login(props) {
               type="password"
             />
           </Form.Group>
-          <Button
-            onClick={handleSubmit}
-            className="loginButton"
-            variant="primary"
-            type="Submit"
-          >
-            Entrar
-          </Button>
-          <Button
-            onClick={() => {
-              setPage("register");
-            }}
-            className="registerButton"
-            variant="warning"
-          >
-            Registrar
-          </Button>
+          <Link to="/dashboard">
+            <Button
+              onClick={handleSubmit}
+              className="loginButton"
+              variant="primary"
+              type="Submit"
+            >
+              Entrar
+            </Button>
+          </Link>
+          <Link to="/register">
+            <Button className="registerButton" variant="warning">
+              Registrar
+            </Button>
+          </Link>
         </Form>
       </Row>
       <Row className="justify-content-md-center">
