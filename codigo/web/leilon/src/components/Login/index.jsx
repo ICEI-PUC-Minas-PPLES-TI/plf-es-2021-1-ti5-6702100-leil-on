@@ -29,7 +29,7 @@ function Login(props) {
       .then((token) => {
         localStorage.setItem("email", email);
         localStorage.setItem("token", token);
-        setPage("userPage");
+        setPage("dashboard");
       })
       .catch((err) => {
         setAlertContent(err.toString());

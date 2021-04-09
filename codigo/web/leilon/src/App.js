@@ -6,13 +6,13 @@ import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 
 function App() {
-  const [currentPageName, setCurrentPageName] = useState("login");
+  const [currentPageName, setCurrentPageName] = useState("dashboard");
 
   function getCurrentPageComponent() {
     return {
       login: <Login setPage={setCurrentPageName} />,
       register: <Register setPage={setCurrentPageName} />,
-      dashboard: <Dashboard setPAge={setCurrentPageName} />,
+      dashboard: <Dashboard setPage={setCurrentPageName} />,
     }[currentPageName];
   }
   return (
