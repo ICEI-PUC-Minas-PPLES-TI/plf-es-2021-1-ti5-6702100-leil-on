@@ -6,7 +6,7 @@ function Header(props) {
   return (
     <div className="navbar">
       <Link to="/dashboard">
-        <Button className="btn btn-light">Leil-on</Button>
+        <h3>Leil-on</h3>
       </Link>
       <Link to="/">
         <Button className="btn btn-danger">Logout</Button>

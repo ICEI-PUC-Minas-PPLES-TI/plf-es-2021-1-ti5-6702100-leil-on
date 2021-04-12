@@ -94,3 +94,80 @@ export async function registerUser(email, password, name, telefone, cep) {
 //     throw err;
 //   }
 // }
+
+/**
+ * Make a POST request to the API to register a new auction.
+ */
+export async function registerAuction(name, items, owner, endDate) {
+  try {
+    const apiResponse = await axios({
+      method: "post",
+      url: API_URL + "addauction/",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        name: name,
+        items: items,
+        owner: owner,
+        endDate: endDate,
+      },
+    });
+
+    return Object.assign({}, apiResponse.data);
+  } catch (err) {
+    if (err.response) {
+      throw String(
+        "Houve um erro no servidor ao tentar registrar um novo leilão!"
+      );
+    } else {
+      throw String("Não foi possível conectar ao servidor!");
+    }
+  }
+}
+
+/**
+ * Make a POST request to the API to register a new item.
+ */
+export async function registerItem(
+  name,
+  price,
+  image,
+  itemOwner,
+  linkedAuction,
+  description,
+  historic,
+  highestbidder,
+  categories
+) {
+  try {
+    const apiResponse = await axios({
+      method: "post",
+      url: API_URL + "additem/",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        name: name,
+        price: price,
+        image: image,
+        itemOwner: itemOwner,
+        linkedAuction: linkedAuction,
+        description: description,
+        historic: historic,
+        highestbidder: highestbidder,
+        categories: categories,
+      },
+    });
+
+    return Object.assign({}, apiResponse.data);
+  } catch (err) {
+    if (err.response) {
+      throw String(
+        "Houve um erro no servidor ao tentar registrar um novo item!"
+      );
+    } else {
+      throw String("Não foi possível conectar ao servidor!");
+    }
+  }
+}
