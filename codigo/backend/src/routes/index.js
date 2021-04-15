@@ -1,28 +1,37 @@
 const express = require('express')
 const actions = require('../methods/actions')
 const router = express.Router()
-const path = require('path')
-const { response } = require('express');
 
 router.get('/', (req, res) => {
-    res.send('O fumaça mandou você me dar 20 reais')
+    res.send('Hello World')
 })
 
-router.get('/dashboard', (req, res) => {
-    res.send('Dashboard')
-})
-
-//@desc Adding new user
+//@desc Adicionando novo usuário
 //@route POST /adduser
 router.post('/adduser', actions.addNew)
 
-//@desc Authenticate a user
+//@desc Adicionando novo item
+//@route POST /additem
+router.post('/additem', actions.addNewItem)
+
+//@desc Procurando um item
+//@route POST /finditem
+router.post('/finditem', actions.findItem)
+
+//@desc Adicionando novo leilão
+//@route POST /addauction
+router.post('/addauction', actions.addNewAuction)
+
+//@desc Autenticação de um usuário
 //@route POST /authenticate
 router.post('/authenticate', actions.authenticate)
 
-//@desc Get info on a user
+//@desc Pegar token de um usuário
 //@route GET /getinfo
 router.get('/getinfo', actions.getinfo)
 
+//@desc Pegar token de um usuário
+//@route GET /getinfo
+router.post('/sendemail', actions.sendemail)
 
 module.exports = router

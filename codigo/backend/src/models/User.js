@@ -6,7 +6,11 @@ var userSchema = new Schema({
         type: String,
         require: true
     },
-    password: {
+    email: {
+        type: String,
+        require: true
+    },
+      telefone: {
         type: String,
         require: true
     },
@@ -14,7 +18,7 @@ var userSchema = new Schema({
         type: Number,
         require: true
     },
-    email: {
+    password: {
         type: String,
         require: true
     }

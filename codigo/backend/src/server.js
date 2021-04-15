@@ -24,4 +24,4 @@ require('./config/passport')(passport)
 
 const PORT = process.env.PORT || 3000
 
-app.listen(PORT, console.log(`Servidor rodando no modo ${process.env.NODE_ENV} na porta ${PORT}`))
+app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`))
