@@ -36,6 +36,7 @@ _**Resumo**. Leilões são uma forma comum de compra e venda de itens, pessoas q
 | **02/03/2021** | [Guilherme, Leonardo e Pedro] |  [Elaboração da sessão 2, elaboração de parte da sessão 3 e correção da seção 1] | [1.1] |
 | **11/03/2021** | [Guilherme] | [Pequenas correções em alguns itens e conversão para markdown]| [1.1.1] |
 | **23/03/2021** | [Pedro] | [Criação e alteração das funcionalidades e história de usuário]| [1.1.2] |
+| **15/04/2021** | [Guilherme] | [Correção dos diagramas e listagem dos componentes. ]| [1.8] |
 
 ## SUMÁRIO
 
@@ -213,7 +214,8 @@ Ex: conforme diagrama apresentado na Figura X, as entidades participantes da sol
 - **Componente 3** - Heroku é usado para o "deploy" do sistema.
 - **Componente 4** - MongoDB é um banco de dados não relacional, é usado para armazenar e persistir os dados.
 - **Componente 5** - MongoDBAtlas é o cluster do MongoDB para armazenar os dados na nuvem.
-
+- **Componente 6** - Flutter é um kit de desenvolvimento de interface de usuário, usado para criar e gerenciar a interface do usuário na parte mobile.
+- **Componente 7** - O React é uma biblioteca utilizada no projeto para criar e gerenciar a interface do usuário na parte Web.
 
 ## 3.3. Modelo de dados 
 
