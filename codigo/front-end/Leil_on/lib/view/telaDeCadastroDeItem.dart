@@ -22,6 +22,9 @@ class _TelaDeCadastroDeitemState extends State<TelaDeCadastroDeitem> {
   @override
   void _dispose() {
     // TODO: implement dispose
+    super.dispose();
+    _precoMinimoFocusNode.dispose();
+    _descricaoFocusNode.dispose();
     //_form.currentState.save();
 
     // Item itemCadastrado = new Item();
@@ -30,6 +33,7 @@ class _TelaDeCadastroDeitemState extends State<TelaDeCadastroDeitem> {
   void _salvarFormulario(String nomeLeilao) {
     _form.currentState.save();
     print('testando aqui : ' + nomeLeilao);
+
     CadastroItem novoItem = Provider.of<CadastroItem>(context, listen: false);
     novoItem.adicionarInformacoesDoItem(nomeLeilao, _formulario['nomeProduto'],
         _formulario['precoProduto'], _formulario['descricao']);

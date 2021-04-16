@@ -31,7 +31,7 @@ class CadastroItem with ChangeNotifier {
       categoria2: segundaCategoria,
       descricao: descricaoProduto,
     );
-    imagens.removeRange(0, 2);
+    imagens = [];
     notifyListeners();
   }
 }
