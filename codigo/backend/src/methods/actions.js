@@ -22,7 +22,9 @@ var functions = {
                             password: req.body.password,
                             email: req.body.email,
                             cep: req.body.cep,
-                            telefone: req.body.telefone
+                            telefone: req.body.telefone,
+                            reputation: -1,
+                            counttransaction: 0
                         })
                         newUser.save(function (err, newUser) {
                             if (err) {
@@ -106,7 +108,7 @@ console.log("Dei um lance")
        },
        // Função para cadastrar um leilão no banco de dados
     addNewAuction: function (req, res) {
-        if ((!req.body.name) || (!req.body.items)|| (!req.body.endDate) || (!req.body.owner)) {
+        if ((!req.body.time) || (!req.body.name) || (!req.body.items)|| (!req.body.endDate) || (!req.body.owner)|| (!req.body.description)|| (!req.body.owneremail)) {
                res.json({success: false, msg: 'Preencha todos os campos'})
            }
            else {
@@ -114,14 +116,17 @@ console.log("Dei um lance")
                    name: req.body.name,
                    items: req.body.items,
                    owner: req.body.owner,
-                   endDate: req.body.endDate
+                   owneremail: req.body.owneremail,
+                   endDate: req.body.endDate,
+                   description: req.body.description
                });
+                timeoutAuction(newAuction, req.body.time)
                newAuction.save(function (err, newAuction) {
                    if (err) {
-                       res.json({success: false, msg: 'Falha ao gravar o leilão.'})
+                       res.json({success: false, msg: 'Falha ao gravar o leilão' + newAuction.name})
                    }
                    else {
-                       res.json({success: true, msg: 'Leilão gravado com sucesso.'})
+                       res.json({success: true, msg: 'Leilão gravado com sucesso ' + newAuction.name})
                    }
                })
            }
@@ -177,7 +182,38 @@ console.log("Dei um lance")
         else {
             return res.json({success: false, msg: 'Sem headers'})
         }
-    }
+    },
+    teste: function(req, res){
+        Auction.findOneAndDelete({name: req.body.name,
+        owner: req.body.owner,
+        endDate: req.body.endDate,
+        items: req.body.items,
+        description: req.body.description,
+        emailowner: req.body.emailowner
+    }, function(err){
+        if(err)
+            res.json({sucess:false, msg: err})
+        else
+            res.json({sucess:true})
+        
+    })
+    
 }
+}
+
+async function timeoutAuction(auc, time){
+    setTimeout(async function(){
+        Auction.findOneAndDelete({name: auc.name,
+            owner: auc.owner,
+            endDate: auc.endDate,
+            items: auc.items,
+            description: auc.description,
+            emailowner: auc.emailowner
+        }, function(err){
+            if(err)
+                console.log(err)
+        }) }, time*3600000)
+}
+
 
 module.exports = functions

@@ -1,9 +1,20 @@
 const express = require('express')
 const actions = require('../methods/actions')
 const router = express.Router()
+const Auction = require('../models/auction')
+const User = require('../models/user')
 
 router.get('/', (req, res) => {
-    res.send('Hello World')
+    res.send(`
+    <html>
+        <head>
+            <meta charset="utf-8">
+        </head>
+        <body>
+            <h1>Rota padrão</h1>
+        </body>
+    </html>
+`)
 })
 
 //@desc Adicionando novo usuário
@@ -13,6 +24,18 @@ router.post('/adduser', actions.addNew)
 //@desc Adicionando novo item
 //@route POST /additem
 router.post('/additem', actions.addNewItem)
+
+//@desc Retornando todos os leilões cadastrados no banco
+//@desc GET /getauctions
+router.get('/getauctions', (req,res) =>{
+    Auction.find(function(err,auction){
+        res.json(auction)
+    })
+})
+
+//@desc Retornando todos os leilões cadastrados no banco
+//@desc GET /getauctions
+router.get('/teste', actions.teste)
 
 //@desc Procurando um item
 //@route POST /finditem

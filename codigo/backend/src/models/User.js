@@ -21,6 +21,14 @@ var userSchema = new Schema({
     password: {
         type: String,
         require: true
+    },
+    reputation: {
+        type: Number,
+        require: true
+    },
+    counttransaction: {
+        type: Number,
+        require: true
     }
 })
 

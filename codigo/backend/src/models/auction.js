@@ -21,6 +21,9 @@ var auctionSchema = new Schema({
     description: {
         type: String,
         require: true
+    }, emailowner: {
+        type: String,
+        require: true
     }
 })
 
