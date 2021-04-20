@@ -26,8 +26,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => new Autenticacao(),
         ),
-        ChangeNotifierProvider(
-          create: (ctx) => new CadastroLeilao(),
+        ChangeNotifierProxyProvider<Autenticacao, CadastroLeilao>(
+          create: (_) => new CadastroLeilao(null, null),
+          update: (ctx, auth, cadastroLeilao) => new CadastroLeilao(
+            auth.userNome,
+            auth.userEmail,
+          ),
         ),
         ChangeNotifierProvider(
           create: (ctx) => new CadastroItem(),

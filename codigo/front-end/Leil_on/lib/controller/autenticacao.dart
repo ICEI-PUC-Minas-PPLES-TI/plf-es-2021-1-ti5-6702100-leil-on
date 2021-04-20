@@ -6,7 +6,8 @@ import 'package:http/http.dart' as http;
 class Autenticacao with ChangeNotifier {
   String _token;
   String _userId;
-  String _userNome;
+  String userNome;
+  String userEmail;
   //id, nome ,senha,email,cep,telefone
   bool get isAuth {
     print("eh consultado");
@@ -70,8 +71,10 @@ class Autenticacao with ChangeNotifier {
       print(' dentro ${responseBody['msg']}');
     } else {
       _token = responseBody['token'];
-      _userNome = responseBody['decodedtoken']['name'];
-      print('Nome do usuario : ' + _userNome);
+      userNome = responseBody['decodedtoken']['name'];
+      userEmail = responseBody['decodedtoken']['email'];
+      print('Nome do usuario : ' + userNome);
+      print('Email do usuario : ' + userEmail);
       notifyListeners();
     }
 

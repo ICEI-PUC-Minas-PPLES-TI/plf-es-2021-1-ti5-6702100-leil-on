@@ -12,6 +12,7 @@ class Leilao {
   Leilao({
     this.nomeLeilao,
     this.nomeVendedor,
+    this.emailVendedor,
     this.descricao,
     this.dataTermino,
   });
