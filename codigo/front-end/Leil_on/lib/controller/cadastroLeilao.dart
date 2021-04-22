@@ -45,9 +45,11 @@ class CadastroLeilao with ChangeNotifier {
     notifyListeners();
   }
 
+// cadastro do leilao
   Future<void> addLeilao() async {
     novoLeilao.itensCadastrados = itens;
     final urlCadastroLeilao = 'http://leil-on.herokuapp.com/addauction';
+
     final response = await http.post(
       urlCadastroLeilao,
       headers: {
@@ -56,7 +58,11 @@ class CadastroLeilao with ChangeNotifier {
       },
       body: json.encode({
         'name': novoLeilao.nomeLeilao,
-        'items': novoLeilao.itensCadastrados,
+        'items': novoLeilao.itensCadastrados
+            .map((item) => {
+                  'name': item.nomeProduto,
+                })
+            .toList(),
         'owner': novoLeilao.nomeVendedor,
         'owneremail': novoLeilao.emailVendedor,
         'endDate': novoLeilao.dataTermino,
@@ -65,8 +71,35 @@ class CadastroLeilao with ChangeNotifier {
     );
 
     var responseBody = json.decode(response.body);
+
     print(responseBody);
   }
 
-  
+// cadastro dos itens cadastrando apenas uma imagem
+
+  Future<void> cadastrarItem(Item item) async {
+    List<int> imageBytes = item.imagens[0].readAsBytesSync().toList();
+    String base64Image = base64Encode(imageBytes);
+    final urlCadastrarItem = 'http://leil-on.herokuapp.com/additem';
+    final response = await http.post(
+      urlCadastrarItem,
+      headers: {
+        "Accept": "application/json",
+        "content-type": "application/json",
+      },
+      body: json.encode(
+        {
+          'name': item.nomeProduto,
+          'price': item.precoMinimo,
+          'itemOwner': novoLeilao.nomeVendedor,
+          'image': '$base64Image',
+          'description': item.descricao,
+          'linkedAuction': item.nomeLeilao,
+          'categories': [item.categoria1, item.categoria2],
+        },
+      ),
+    );
+    var responseBody = json.decode(response.body);
+    print('resposta da porra toda : ' + responseBody);
+  }
 }

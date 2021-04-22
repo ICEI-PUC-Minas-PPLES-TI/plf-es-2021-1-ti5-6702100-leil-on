@@ -54,6 +54,7 @@ class _TelaDeItensCadastradosState extends State<TelaDeItensCadastrados> {
   Widget build(BuildContext context) {
     //Leilao dadosLeilao = Provider.of<CadastroLeilao>(context).novoLeilao;
     List<Item> itens = Provider.of<CadastroLeilao>(context).itens;
+    Leilao novoLeilao = Provider.of<CadastroLeilao>(context).novoLeilao;
     final larguraTotal = MediaQuery.of(context).size.width;
     final alturaTotal = MediaQuery.of(context).size.height * 0.8;
     return Scaffold(
@@ -200,7 +201,14 @@ class _TelaDeItensCadastradosState extends State<TelaDeItensCadastrados> {
                 Icons.arrow_forward_ios_rounded,
                 color: Colors.white,
               ),
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  Provider.of<CadastroLeilao>(context, listen: false)
+                      .addLeilao();
+                  Provider.of<CadastroLeilao>(context, listen: false)
+                      .cadastrarItem(itens[0]);
+                });
+              },
             )
           ],
         ),
