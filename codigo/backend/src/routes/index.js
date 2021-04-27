@@ -3,6 +3,7 @@ const actions = require('../methods/actions')
 const router = express.Router()
 const Auction = require('../models/auction')
 const User = require('../models/user')
+const Item = require('../models/item')
 
 router.get('/', (req, res) => {
     res.send(`
@@ -27,6 +28,14 @@ router.post('/additem', actions.addNewItem)
 
 //@desc Retornando todos os leilões cadastrados no banco
 //@desc GET /getauctions
+router.get('/getauctions', (req,res) =>{
+    Auction.find(function(err,auction){
+        res.json(auction)
+    })
+})
+
+//@desc Retornando todos os itens cadastrados no banco
+//@desc GET /getitens
 router.get('/getauctions', (req,res) =>{
     Auction.find(function(err,auction){
         res.json(auction)

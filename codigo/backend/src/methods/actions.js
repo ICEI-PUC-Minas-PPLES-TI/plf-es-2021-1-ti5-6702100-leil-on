@@ -4,6 +4,9 @@ var Item = require('../models/item')
 var jwt = require('jwt-simple')
 var config = require('../config/dbconfig')
 var emailconfig = require('../config/emailconfig')
+const gdrive = require("../config/imageupload");
+var drive = require("../config/driveId")
+var fs = require('fs')
 
 var functions = {
     // Função para cadastrar novo usuário 
@@ -81,29 +84,38 @@ console.log("Dei um lance")
     },
     // Função para cadastrar um item no banco de dados
     addNewItem: function (req, res) {
-        if ((!req.body.name) || (!req.body.price)|| (!req.body.linkedAuction)|| (!req.body.image) || (!req.body.itemOwner) || (!req.body.description) || (!req.body.historic) || (!req.body.hightestbidder) || (!req.body.categories) ) {
+        if ((!req.body.name) || (!req.body.price)|| (!req.body.linkedAuction)|| (!req.body.imagens) || (!req.body.itemOwner) || (!req.body.description) || (!req.body.categories) ) {
                res.json({success: false, msg: 'Preencha todos os campos'})
            }
            else {
-            var newItem = Item({
-                   name: req.body.name,
-                   price: req.body.price,
-                   image: req.body.image,
-                   itemOwner: req.body.itemOwner,
-                   linkedAuction: req.body.linkedAuction,
-                   description: req.body.description,
-                   historic: req.body.historic,
-                   hightestbidder: req.body.hightestbidder,
-                   categories: req.body.categories
-               });
-               newItem.save(function (err, newItem) {
-                   if (err) {
-                       res.json({success: false, msg: 'Falha ao gravar o item ' + newItem.name})
-                   }
-                   else {
-                       res.json({success: true, msg: 'Item gravado com sucesso' + newItem.name})
-                   }
-               })
+               for(i = 0; i < imagens.length; i++){
+
+               }
+            saveInDrive(req.body.image, req.body.name)
+            fs.readFile("./temp/link.txt",'utf8',function (err,data){
+                if(err) throw err
+                var newItem = Item({
+                    name: req.body.name,
+                    price: req.body.price,
+                    image: data,
+                    itemOwner: req.body.itemOwner,
+                    linkedAuction: req.body.linkedAuction,
+                    description: req.body.description,
+                    historic: undefined,
+                    hightestbidder: undefined,
+                    categories: req.body.categories
+                });
+                newItem.save(function (err, newItem) {
+                    if (err) {
+                        remove(newItem.name)
+                        res.json({success: false, msg: 'Falha ao gravar o item ' + newItem.name})
+                    }
+                    else {
+                     remove(newItem.name)
+                        res.json({success: true, msg: 'Item gravado com sucesso' + newItem.name})
+                    }
+                })    
+            })
            }
        },
        // Função para cadastrar um leilão no banco de dados
@@ -184,22 +196,10 @@ console.log("Dei um lance")
         }
     },
     teste: function(req, res){
-        Auction.findOneAndDelete({name: req.body.name,
-        owner: req.body.owner,
-        endDate: req.body.endDate,
-        items: req.body.items,
-        description: req.body.description,
-        emailowner: req.body.emailowner
-    }, function(err){
-        if(err)
-            res.json({sucess:false, msg: err})
-        else
-            res.json({sucess:true})
-        
-    })
-    
+        console.log('teste')
+    }
 }
-}
+
 
 async function timeoutAuction(auc, time){
     setTimeout(async function(){
@@ -214,6 +214,29 @@ async function timeoutAuction(auc, time){
                 console.log(err)
         }) }, time*3600000)
 }
+
+function saveInDrive(str,name) {
+    var decodedStr = str.replace(/^data:image\/\w+;base64,/, '');
+
+    fs.writeFile("./temp/" + name +".jpg", decodedStr,{encoding: 'base64'}, function(err) {
+            console.log(err);
+    });
+
+    gdrive.imageUpload(name+".jpg", "./temp/" + name +".jpg",(fileId) =>{
+       console.log(fileId)
+       link = "https://drive.google.com/file/d/" + fileId + "/view"
+       fs.writeFile("./temp/link.txt", link,function(err){
+           if (err) throw err
+       })        
+    })
+    
+      }
+
+  function remove(name){
+      fs.unlink("./temp/" + name +".jpg",function(err){
+              if(err) throw err
+          })
+  }
 
 
 module.exports = functions
