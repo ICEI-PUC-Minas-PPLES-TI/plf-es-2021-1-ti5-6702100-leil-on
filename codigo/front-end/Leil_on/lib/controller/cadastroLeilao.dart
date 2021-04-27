@@ -80,6 +80,8 @@ class CadastroLeilao with ChangeNotifier {
   Future<void> cadastrarItem(Item item) async {
     List<int> imageBytes = item.imagens[0].readAsBytesSync().toList();
     String base64Image = base64Encode(imageBytes);
+    //final urlCadastrarItem =
+    //    'https://teste-b8c97-default-rtdb.firebaseio.com/additem.json';
     final urlCadastrarItem = 'http://leil-on.herokuapp.com/additem';
     final response = await http.post(
       urlCadastrarItem,
@@ -92,7 +94,11 @@ class CadastroLeilao with ChangeNotifier {
           'name': item.nomeProduto,
           'price': item.precoMinimo,
           'itemOwner': novoLeilao.nomeVendedor,
-          'image': '$base64Image',
+          'image': base64Image,
+          /*'imagens': item.imagens
+              .map((imagem) =>
+                  {'image': base64Encode(imagem.readAsBytesSync().toList())})
+              .toList(),*/
           'description': item.descricao,
           'linkedAuction': item.nomeLeilao,
           'categories': [item.categoria1, item.categoria2],
@@ -100,6 +106,6 @@ class CadastroLeilao with ChangeNotifier {
       ),
     );
     var responseBody = json.decode(response.body);
-    print('resposta da porra toda : ' + responseBody);
+    print('resposta  : ' + responseBody);
   }
 }

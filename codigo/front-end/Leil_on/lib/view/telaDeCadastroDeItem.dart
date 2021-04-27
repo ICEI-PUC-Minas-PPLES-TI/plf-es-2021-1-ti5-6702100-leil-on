@@ -1,8 +1,8 @@
 import 'package:Leil_on/controller/cadastroItem.dart';
 import 'package:Leil_on/controller/cadastroLeilao.dart';
-import 'package:Leil_on/model/item.dart';
+
 import 'package:Leil_on/model/leilao.dart';
-import 'package:Leil_on/widget/formularioItem.dart';
+
 import 'package:Leil_on/widget/imagensProduto.dart';
 import 'package:Leil_on/widget/menuCategoriaForm.dart';
 import 'package:flutter/material.dart';
@@ -178,38 +178,6 @@ class _TelaDeCadastroDeitemState extends State<TelaDeCadastroDeitem> {
               ],
             ),
           ),
-        ),
-      ),
-      backgroundColor: Colors.amber[400],
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.purple,
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-      ),
-      bottomNavigationBar: BottomAppBar(
-        //elevation: 50.0,
-        color: Colors.purple,
-        shape: CircularNotchedRectangle(),
-        notchMargin: 5.0,
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {},
-            )
-          ],
         ),
       ),
     );

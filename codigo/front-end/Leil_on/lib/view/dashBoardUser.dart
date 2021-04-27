@@ -20,13 +20,14 @@ class Saudacao extends StatelessWidget {
     //var domingo =
 
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.purple, size: 50.0),
         title: Text(
           'Cadastro Leilao',
           style: TextStyle(
-            color: Colors.grey[100],
+            color: Colors.black87,
           ),
         ),
         backgroundColor: Colors.amber[400],
@@ -52,13 +53,13 @@ class Saudacao extends StatelessWidget {
                 fontSize: 40.0,
               ),
             ),
-            Text(
+            /*Text(
               'data agora $agora',
               style: TextStyle(
                 color: Colors.amber[300],
                 fontSize: 40.0,
               ),
-            ),
+            ),*/
           ],
         ),
         alignment: Alignment.center,
