@@ -83,39 +83,40 @@ console.log("Dei um lance")
          }
     },
     // Função para cadastrar um item no banco de dados
-    addNewItem: function (req, res) {
+    addNewItem: async function (req, res) {
         if ((!req.body.name) || (!req.body.price)|| (!req.body.linkedAuction)|| (!req.body.imagens) || (!req.body.itemOwner) || (!req.body.description) || (!req.body.categories) ) {
                res.json({success: false, msg: 'Preencha todos os campos'})
            }
            else {
-               for(i = 0; i < imagens.length; i++){
-
-               }
-            saveInDrive(req.body.image, req.body.name)
-            fs.readFile("./temp/link.txt",'utf8',function (err,data){
-                if(err) throw err
-                var newItem = Item({
-                    name: req.body.name,
-                    price: req.body.price,
-                    image: data,
-                    itemOwner: req.body.itemOwner,
-                    linkedAuction: req.body.linkedAuction,
-                    description: req.body.description,
-                    historic: undefined,
-                    hightestbidder: undefined,
-                    categories: req.body.categories
-                });
-                newItem.save(function (err, newItem) {
-                    if (err) {
-                        remove(newItem.name)
-                        res.json({success: false, msg: 'Falha ao gravar o item ' + newItem.name})
+            var links = [] 
+            for(i = 0; i < req.body.imagens.length; i++){
+                saveInDrive(req.body.imagens[i], req.body.name + i, function(link){
+                    links.push(link)
+                    if(links.length == req.body.imagens.length){
+                        var newItem = Item({
+                            name: req.body.name,
+                            price: req.body.price,
+                            imagens: links,
+                            itemOwner: req.body.itemOwner,
+                            linkedAuction: req.body.linkedAuction,
+                            description: req.body.description,
+                            historic: undefined,
+                            hightestbidder: undefined,
+                            categories: req.body.categories
+                        });
+                        newItem.save(function (err, newItem) {
+                            if (err) {
+                                remove(newItem.name, 4)
+                                res.json({success: false, msg: 'Falha ao gravar o item ' + newItem.name})
+                            }
+                            else {
+                                remove(newItem.name,4)
+                               res.json({success: true, msg: 'Item gravado com sucesso ' + newItem.name})
+                            }
+                        })
                     }
-                    else {
-                     remove(newItem.name)
-                        res.json({success: true, msg: 'Item gravado com sucesso' + newItem.name})
-                    }
-                })    
-            })
+                })
+               }     
            }
        },
        // Função para cadastrar um leilão no banco de dados
@@ -134,8 +135,8 @@ console.log("Dei um lance")
                });
                 timeoutAuction(newAuction, req.body.time)
                newAuction.save(function (err, newAuction) {
-                   if (err) {
-                       res.json({success: false, msg: 'Falha ao gravar o leilão' + newAuction.name})
+                   if (err) {   
+                    res.json({success: false, msg: 'Falha ao gravar o leilão' + newAuction.name})
                    }
                    else {
                        res.json({success: true, msg: 'Leilão gravado com sucesso ' + newAuction.name})
@@ -200,7 +201,6 @@ console.log("Dei um lance")
     }
 }
 
-
 async function timeoutAuction(auc, time){
     setTimeout(async function(){
         Auction.findOneAndDelete({name: auc.name,
@@ -215,28 +215,26 @@ async function timeoutAuction(auc, time){
         }) }, time*3600000)
 }
 
-function saveInDrive(str,name) {
+// Função que gera o arquivo baseado na String Base64 que é passada, gera o arquivo e o salva no drive. Retorna o link
+ function saveInDrive(str,name, callback) {
     var decodedStr = str.replace(/^data:image\/\w+;base64,/, '');
-
-    fs.writeFile("./temp/" + name +".jpg", decodedStr,{encoding: 'base64'}, function(err) {
-            console.log(err);
+        fs.writeFileSync("./temp/" + name +".jpg", decodedStr,{encoding: 'base64'}, function(err) {
+            if(err) throw err
     });
-
-    gdrive.imageUpload(name+".jpg", "./temp/" + name +".jpg",(fileId) =>{
-       console.log(fileId)
-       link = "https://drive.google.com/file/d/" + fileId + "/view"
-       fs.writeFile("./temp/link.txt", link,function(err){
-           if (err) throw err
-       })        
-    })
+     gdrive.imageUpload(name+".jpg", "./temp/" + name +".jpg",(fileId) =>{
+        link = "https://drive.google.com/file/d/" + fileId + "/view"      
+        return callback(link)  
+     })
     
       }
 
-  function remove(name){
-      fs.unlink("./temp/" + name +".jpg",function(err){
-              if(err) throw err
-          })
+      // Função assíncrona para remover os arquivos temp gerados para gravar no drive
+  async function remove(name, quant){
+    for(i = 0; i < quant; i++){
+          fs.unlink("./temp/" + name+ i +".jpg",function(err){
+            if(err) throw err
+        })
+    }   
   }
-
 
 module.exports = functions

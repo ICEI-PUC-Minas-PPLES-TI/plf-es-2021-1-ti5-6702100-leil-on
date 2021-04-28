@@ -6,12 +6,10 @@ function imageUpload(fileName, filePath, callback){
         const fileMetadata = {
             name: fileName
         };
-
         const media = {
             mimeType: "image/jpeg",
             body: fs.createReadStream(filePath)
         }
-        
         const drive = google.drive({version: 'v3', auth});
         
         drive.files.create({

@@ -36,8 +36,8 @@ router.get('/getauctions', (req,res) =>{
 
 //@desc Retornando todos os itens cadastrados no banco
 //@desc GET /getitens
-router.get('/getauctions', (req,res) =>{
-    Auction.find(function(err,auction){
+router.get('/getitens', (req,res) =>{
+    Item.find(function(err,auction){
         res.json(auction)
     })
 })

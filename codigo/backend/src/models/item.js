@@ -14,8 +14,8 @@ var itemSchema = new Schema({
         type: String,
         require: true,
     },
-    image: {
-        type: String,
+    imagens: {
+        type: [],
         require: true
     },
     description: {
