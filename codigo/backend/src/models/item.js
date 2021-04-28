@@ -33,6 +33,9 @@ var itemSchema = new Schema({
     hightestbidder: {
         type: String,
         require: false
+    }, hightestbidderEmail: {
+        type: String,
+        require: false
     }, 
     categories: {
         type: [],

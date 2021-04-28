@@ -66,4 +66,9 @@ router.get('/getinfo', actions.getinfo)
 //@route GET /getinfo
 router.post('/sendemail', actions.sendemail)
 
+
+//@desc Dar um lance
+//@route POST /bid
+router.post('/bid', actions.bid)
+
 module.exports = router
