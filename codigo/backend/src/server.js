@@ -3,9 +3,9 @@ const morgan = require('morgan')
 const cors = require('cors')
 const connectDB = require('./config/db')
 const passport = require('passport')
-const bodyParser = require('body-parser')
+var bodyParser = require('body-parser')
 const routes = require('./routes/index')
-
+const handlebars = require('express-handlebars')
 
 connectDB()
 
@@ -15,9 +15,11 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
 
+app.engine('handlebars', handlebars({defaultLayout: 'main'}))
+app.set('view engine', 'handlebars')
 app.use(cors())
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyParser.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 app.use(routes)
 app.use(passport.initialize())
 require('./config/passport')(passport)

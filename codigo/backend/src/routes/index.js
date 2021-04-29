@@ -6,16 +6,7 @@ const User = require('../models/user')
 const Item = require('../models/item')
 
 router.get('/', (req, res) => {
-    res.send(`
-    <html>
-        <head>
-            <meta charset="utf-8">
-        </head>
-        <body>
-            <h1>Rota padrão</h1>
-        </body>
-    </html>
-`)
+    res.send("TÀ FUNCIONANDO")
 })
 
 //@desc Adicionando novo usuário
@@ -65,7 +56,6 @@ router.get('/getinfo', actions.getinfo)
 //@desc Pegar token de um usuário
 //@route GET /getinfo
 router.post('/sendemail', actions.sendemail)
-
 
 //@desc Dar um lance
 //@route POST /bid

@@ -130,7 +130,7 @@ var functions = {
            }
            else {
             var links = [] 
-            for(i = 0; i < req.body.imagens.length; i++){
+            for(i = 0; i < 4; i++){
                 saveInDrive(req.body.imagens[i], req.body.name + i, function(link){
                     links.push(link)
                     if(links.length == req.body.imagens.length){
@@ -152,7 +152,7 @@ var functions = {
                                 res.json({success: false, msg: 'Falha ao gravar o item ' + newItem.name})
                             }
                             else {
-                                remove(newItem.name, links.length)
+                                remove(newItem.name,links.length)
                                res.json({success: true, msg: 'Item gravado com sucesso ' + newItem.name})
                             }
                         })
