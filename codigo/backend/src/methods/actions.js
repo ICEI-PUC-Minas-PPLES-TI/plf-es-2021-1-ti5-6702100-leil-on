@@ -4,9 +4,7 @@ var Item = require('../models/item')
 var jwt = require('jwt-simple')
 var config = require('../config/dbconfig')
 var emailconfig = require('../config/emailconfig')
-const gdrive = require("../config/imageupload");
-var drive = require("../config/driveId")
-var fs = require('fs')
+var dataActions = require('./dataActions')
 const { sendMail } = require('../config/emailconfig')
 
 var functions = {
@@ -131,7 +129,7 @@ var functions = {
            else {
             var links = [] 
             for(i = 0; i < 4; i++){
-                saveInDrive(req.body.imagens[i], req.body.name + i, function(link){
+                dataActions.saveInDrive(req.body.imagens[i], req.body.name + i, function(link){
                     links.push(link)
                     if(links.length == req.body.imagens.length){
                         var newItem = Item({
@@ -148,11 +146,9 @@ var functions = {
                         });
                         newItem.save(function (err, newItem) {
                             if (err) {
-                                remove(newItem.name, links.length)
                                 res.json({success: false, msg: 'Falha ao gravar o item ' + newItem.name})
                             }
                             else {
-                                remove(newItem.name,links.length)
                                res.json({success: true, msg: 'Item gravado com sucesso ' + newItem.name})
                             }
                         })
@@ -175,7 +171,7 @@ var functions = {
                    endDate: req.body.endDate,
                    description: req.body.description
                });
-                timeoutAuction(newAuction, req.body.time)
+               dataActions.timeoutAuction(newAuction, req.body.time)
                newAuction.save(function (err, newAuction) {
                    if (err) {   
                     res.json({success: false, msg: 'Falha ao gravar o leilão' + newAuction.name})
@@ -188,6 +184,7 @@ var functions = {
        },
        // Função para encontrar um item, ele passa o nome do item, o dono e o leilão que ele está vinculado
        findItem: function(req, res){  
+        console.log(req.body.name+ req.body.itemOwner+req.body.linkedAuction)
         Item.findOne({
             name: req.body.name,
             itemOwner: req.body.itemOwner,
@@ -227,15 +224,37 @@ var functions = {
         }
         )
     },
-    // Procura um usuário e retorna seu token
-    getinfo: function (req, res) {
-        if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
-            var token = req.headers.authorization.split(' ')[1]
-            var decodedtoken = jwt.decode(token, config.secret)
-            return res.json({success: true, msg: 'Olá ' + decodedtoken.name})
+    // Procura um tipo de objeto do banco e retorna 
+    search: function (req, res) {
+        if ((!req.body.type) || (!req.body.obj) ) {
+            res.json({success: false, msg: 'Preencha todos os campos'})
         }
         else {
-            return res.json({success: false, msg: 'Sem headers'})
+        switch(req.body.type){
+            case "auction":
+                Auction.find({name: req.body.obj}, function(err, auction){
+                    if(err) res.json({sucess:false, msg: 'Houve um erro ' + err})
+                    if(!auction) res.json({sucess:false, msg: 'Nenhum leilão encontrado'})
+                    res.json({sucess:true, msg:'Leilão encontrado', leilão: auction})
+                })
+                break;
+            case "item":Item.findOne({name: req.body.obj}, function(err, item){
+                if(err) res.json({sucess:false, msg: 'Houve um erro ' + err})
+                if(!item){
+                    res.json({sucess:false, msg: 'Nenhum item encontrado'})
+                }else
+                 res.json({sucess:true, msg:'Item encontrado', item: item})
+            })
+            break;
+            case "user":User.find({"name": req.body.obj}, function(err, user){
+                if(err) res.json({sucess:false, msg: 'Houve um erro ' + err})
+                if(!user) res.json({sucess:false, msg: 'Nenhum usuário encontrado'})
+                res.json({sucess:true, msg:'Usuário encontrado', Usuário: user})
+            })
+            break;
+            default:
+                res.json({sucess:false, msg:'Tipo errado'})
+        }   
         }
     },
     teste: function(req, res){
@@ -243,48 +262,5 @@ var functions = {
     }
 }
 
-async function timeoutAuction(auc, time){
-    setTimeout(async function(){
-        Auction.findOneAndDelete({name: auc.name,
-            owner: auc.owner,
-            endDate: auc.endDate,
-            items: auc.items,
-            description: auc.description,
-            emailowner: auc.emailowner
-        }, function(err){
-            for(i = 0; i < auc.items.length;i++){
-                Item.findOneAndDelete({
-                    name: auc.items[i],
-                    linkedAuction: auc.name
-                }, function(err, item){
-                    if(err) throw err
-                    sendemail(item.name,item.hightestbidderEmail, auc.emailowner )
-                })
-            }
-            if(err) throw err
-        }) }, time*3600000)
-}
-
-// Função que gera o arquivo baseado na String Base64 que é passada, gera o arquivo e o salva no drive. Retorna o link
- function saveInDrive(str,name, callback) {
-    var decodedStr = str.replace(/^data:image\/\w+;base64,/, '');
-        fs.writeFileSync("./temp/" + name +".jpg", decodedStr,{encoding: 'base64'}, function(err) {
-            if(err) throw err
-    });
-     gdrive.imageUpload(name+".jpg", "./temp/" + name +".jpg",(fileId) =>{
-        link = "https://drive.google.com/file/d/" + fileId + "/view"      
-        return callback(link)  
-     })
-    
-      }
-
-      // Função assíncrona para remover os arquivos temp gerados para gravar no drive
-  async function remove(name, quant){
-    for(i = 0; i < quant; i++){
-          fs.unlink("./temp/" + name+ i +".jpg",function(err){
-            if(err) throw err
-        })
-    }   
-  }
 
 module.exports = functions
