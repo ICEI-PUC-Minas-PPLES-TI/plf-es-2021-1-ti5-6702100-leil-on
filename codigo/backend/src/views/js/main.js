@@ -1,26 +1,19 @@
-(function($) {
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+const emailLogin = document.getElementById('emailLogin');
+const passwordLogin = document.getElementById('passwordLogin');
+const btnLogin = document.getElementById('btnLogin')
+const auctionsList = document.getElementById('auctionsList')
 
-	"use strict";
+signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
 
-	var fullHeight = function() {
+signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
 
-		$('.js-fullheight').css('height', $(window).height());
-		$(window).resize(function(){
-			$('.js-fullheight').css('height', $(window).height());
-		});
-
-	};
-	fullHeight();
-
-	$(".toggle-password").click(function() {
-
-	  $(this).toggleClass("fa-eye fa-eye-slash");
-	  var input = $($(this).attr("toggle"));
-	  if (input.attr("type") == "password") {
-	    input.attr("type", "text");
-	  } else {
-	    input.attr("type", "password");
-	  }
-	});
-
-})(jQuery);
+auctionsList.onload = function(){
+	
+}

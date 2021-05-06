@@ -38,7 +38,7 @@ var functions = {
                         })
                       }
                     else {
-                        res.json({sucess: false, msg: 'Usuário já cadastrado'})
+                        res.json({success: false, msg: 'Usuário já cadastrado'})
                     }
             }
             )           
@@ -47,7 +47,7 @@ var functions = {
     // Função para fazer um lance, atualiza o maior lance e o histórico de lances
     bid: function(req,res){
        if(!req.body.hightestbidder || !req.body.hightestbidderEmail || !req.body.itemName || !req.body.linkedAuction || !req.body.bid){
-           res.json({sucess:false, msg:'Preencha todos os campos.'})
+           res.json({success:false, msg:'Preencha todos os campos.'})
        }else{
         Item.findOne({
             name: req.body.itemName,
@@ -55,11 +55,11 @@ var functions = {
            }, function(err, item){
                if(err) throw err
                if(!item){
-                   res.status(403).send({sucess: false, msg: 'Falha ao procurar o item, item não existe ou os dados estão errados'})
+                   res.status(403).send({success: false, msg: 'Falha ao procurar o item, item não existe ou os dados estão errados'})
                }
                else{
                 if(req.body.bid <= item.price)
-                res.json({sucess:false, msg:'Valor menor ou igual ao valor atual, dê um lance maior'})
+                res.json({success:false, msg:'Valor menor ou igual ao valor atual, dê um lance maior'})
                var historic = []
                historic = item.historic
                historic.push(req.body.hightestbidder + "-" +req.body.bid)
@@ -83,9 +83,9 @@ var functions = {
                     
                 },function(err){
                     if(err)
-                    res.json({sucess:false, msg:'Não atualizou'})
+                    res.json({success:false, msg:'Não atualizou'})
                     else
-                    res.json({sucess:true, msg:'Lance computado'})
+                    res.json({success:true, msg:'Lance computado'})
                 })
             }
            }
@@ -108,13 +108,13 @@ var functions = {
              }
              emailconfig.sendMail(mailOption1, function(error, info){
                 if (error) {
-                  res.json({sucess: false, msg: 'Email não foi enviado ', error: error})
+                  res.json({success: false, msg: 'Email não foi enviado ', error: error})
                 } else {
                     transporter.sendMail(mailOption2, function(error, info){
                         if (error) {
-                            res.json({sucess: false, msg: 'Email não foi enviado ', error: error})
+                            res.json({success: false, msg: 'Email não foi enviado ', error: error})
                         } else {
-                            res.json({sucess:true, msg: info.response});
+                            res.json({success:true, msg: info.response});
                         }
                       });
                 }
@@ -127,35 +127,29 @@ var functions = {
                res.json({success: false, msg: 'Preencha todos os campos'})
            }
            else {
-            var links = [] 
-            for(i = 0; i < 4; i++){
-                dataActions.saveInDrive(req.body.imagens[i], req.body.name + i, function(link){
-                    links.push(link)
-                    if(links.length == req.body.imagens.length){
-                        var newItem = Item({
-                            name: req.body.name,
-                            price: req.body.price,
-                            imagens: links,
-                            itemOwner: req.body.itemOwner,
-                            linkedAuction: req.body.linkedAuction,
-                            description: req.body.description,
-                            historic: undefined,
-                            hightestbidder: undefined,
-                            hightestbidderEmail: undefined,
-                            categories: req.body.categories
-                        });
-                        newItem.save(function (err, newItem) {
-                            if (err) {
-                                res.json({success: false, msg: 'Falha ao gravar o item ' + newItem.name})
-                            }
-                            else {
-                               res.json({success: true, msg: 'Item gravado com sucesso ' + newItem.name})
-                            }
-                        })
+            for(i = 0; i < 4; i ++){
+                    dataActions.generateImg(req.body.imagens[i], req.body.name + i)       
+                } var newItem = Item({
+                    name: req.body.name,
+                    price: req.body.price,
+                    imagens: req.body.imagens,
+                    itemOwner: req.body.itemOwner,
+                    linkedAuction: req.body.linkedAuction,
+                    description: req.body.description,
+                    historic: undefined,
+                    hightestbidder: undefined,
+                    hightestbidderEmail: undefined,
+                    categories: req.body.categories
+                });
+                newItem.save(function (err, newItem) {
+                    if (err) {
+                        res.json({success: false, msg: 'Falha ao gravar o item ' + newItem.name})
+                    }
+                    else {
+                       res.json({success: true, msg: 'Item gravado com sucesso ' + newItem.name})
                     }
                 })
-               }     
-           }
+              }
        },
        // Função para cadastrar um leilão no banco de dados
     addNewAuction: function (req, res) {
@@ -163,23 +157,31 @@ var functions = {
                res.json({success: false, msg: 'Preencha todos os campos'})
            }
            else {
-            var newAuction = Auction({
-                   name: req.body.name,
-                   items: req.body.items,
-                   owner: req.body.owner,
-                   owneremail: req.body.owneremail,
-                   endDate: req.body.endDate,
-                   description: req.body.description
-               });
-               dataActions.timeoutAuction(newAuction, req.body.time)
-               newAuction.save(function (err, newAuction) {
-                   if (err) {   
-                    res.json({success: false, msg: 'Falha ao gravar o leilão' + newAuction.name})
-                   }
-                   else {
-                       res.json({success: true, msg: 'Leilão gravado com sucesso ' + newAuction.name})
-                   }
-               })
+            Auction.findOne({
+                name: req.body.name
+            }, function (err, auction) {
+                if(!auction){
+                    var newAuction = Auction({
+                        name: req.body.name,
+                        items: req.body.items,
+                        owner: req.body.owner,
+                        owneremail: req.body.owneremail,
+                        endDate: req.body.endDate,
+                        description: req.body.description
+                    });
+                    dataActions.timeoutAuction(newAuction, req.body.time)
+                    newAuction.save(function (err, newAuction) {
+                        if (err) {   
+                         res.json({success: false, msg: 'Falha ao gravar o leilão' + newAuction.name})
+                        }
+                        else {
+                            res.json({success: true, msg: 'Leilão gravado com sucesso ' + newAuction.name})
+                        }
+                    })
+                } else {
+                    res.json({success: false, msg:'Já possui um leilão com esse nome, espere ele encerrar ou escolha outro.'})
+                }
+            }) 
            }
        },
        // Função para encontrar um item, ele passa o nome do item, o dono e o leilão que ele está vinculado
@@ -192,16 +194,16 @@ var functions = {
            }, function(err, item){
                if(err) throw err
                if(!item){
-                   res.status(403).send({sucess: false, msg: 'Falha ao procurar o item, item não existe ou os dados estão errados'})
+                   res.status(403).send({success: false, msg: 'Falha ao procurar o item, item não existe ou os dados estão errados'})
                }
                else{
-                   res.json({sucess: true, msg:'Item encontrado.',item: item})
+                   res.json({success: true, msg:'Item encontrado.',item: item})
                }
            }
            )
        },
        // Autenticação do usuário, procura se o usuário existe e caso esse usuário exista verifica se a senha está certa
-    authenticate: function (req, res) {
+    authenticate: function (req, res,callback) {
         User.findOne({
             email: req.body.email
         }, function (err, user) {
@@ -217,8 +219,9 @@ var functions = {
                             res.json({success: true, token: token, decodedtoken: decodedtoken })
                         }
                         else {
-                            return res.status(403).send({success: false, msg: ' Autenticação falhou, senha errada'})
-                        }
+                        res.status(403).send({success: false, msg: ' Autenticação falhou, senha errada'})
+                        return callback(null, decodedtoken)   
+                    }
                     })
                 }
         }
@@ -233,32 +236,45 @@ var functions = {
         switch(req.body.type){
             case "auction":
                 Auction.find({name: req.body.obj}, function(err, auction){
-                    if(err) res.json({sucess:false, msg: 'Houve um erro ' + err})
-                    if(!auction) res.json({sucess:false, msg: 'Nenhum leilão encontrado'})
-                    res.json({sucess:true, msg:'Leilão encontrado', leilão: auction})
+                    if(err) res.json({success:false, msg: 'Houve um erro ' + err})
+                    if(!auction) res.json({success:false, msg: 'Nenhum leilão encontrado'})
+                    res.json({success:true, msg:'Leilão encontrado', leilão: auction})
                 })
                 break;
-            case "item":Item.findOne({name: req.body.obj}, function(err, item){
-                if(err) res.json({sucess:false, msg: 'Houve um erro ' + err})
+            case "item":Item.find({name: req.body.obj}, function(err, item){
+                if(err) res.json({success:false, msg: 'Houve um erro ' + err})
                 if(!item){
-                    res.json({sucess:false, msg: 'Nenhum item encontrado'})
+                    res.json({success:false, msg: 'Nenhum item encontrado'})
                 }else
-                 res.json({sucess:true, msg:'Item encontrado', item: item})
+                 res.json({success:true, msg:'Item encontrado', item: item})
             })
             break;
-            case "user":User.find({"name": req.body.obj}, function(err, user){
-                if(err) res.json({sucess:false, msg: 'Houve um erro ' + err})
-                if(!user) res.json({sucess:false, msg: 'Nenhum usuário encontrado'})
-                res.json({sucess:true, msg:'Usuário encontrado', Usuário: user})
+            case "user":User.find({name: req.body.obj}, function(err, user){
+                if(err) res.json({success:false, msg: 'Houve um erro ' + err})
+                if(!user) res.json({success:false, msg: 'Nenhum usuário encontrado'})
+                res.json({success:true, msg:'Usuário encontrado', Usuário: user})
             })
             break;
             default:
-                res.json({sucess:false, msg:'Tipo errado'})
+                res.json({success:false, msg:'Tipo errado'})
         }   
         }
     },
-    teste: function(req, res){
-        console.log('teste')
+    searchItems: function(req, res){
+       if(!req.body.linkedAuction){
+           res.json({success:false, msg:'Não passou o leilão.'})
+       }else{
+           Item.find({linkedAuction: req.body.linkedAuction}, function(err, items){
+               if(err) res.json({success:false, msg:'Ocorreu o erro ' + err})
+               else{
+                   if(!items){
+                       res.json({success:false, msg:'Nenhum item encontrado'})
+                   }else{
+                       res.json({success:true, items: items})
+                   }
+               }
+           })
+       }
     }
 }
 
