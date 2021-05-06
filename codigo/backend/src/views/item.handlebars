@@ -1,0 +1,35 @@
+<head>
+  <script src="../temp/"></script>
+</head>
+
+{{>_navbar}}
+{{>_msg}}
+<div class="container">
+<h2>Leil-on</h2> 
+  <div class="card" >
+    
+          
+    <div class="card-body">
+        <h4 class="card-title">{{name}}</h4>
+     <div class="container mt-4">
+                    <img src="{{image1}}" alt="img" width="200" height="200">
+                    <img src="{{image2}}" alt="img" width="200" height="200">
+                   <img src="{{image3}}" alt="img" width="200" height="200">
+                   <img src="{{image4}}" alt="img" width="200" height="200">
+             </div>
+    <p class="card-text">{{description}}</p>
+    <p class="card-text">{{categorias}}</p>
+    <p class="card-text">Preço R$:{{price}}</p>
+    {{#if hightestbidder}}
+    <p class="card-text">Maior lance: Ninguém</p>
+    <p class="card-text">Histórico de lances: Sem lances</p>
+    {{else}}
+    <p class="card-text">Maior lance: {{hightestbidder}}</p>        
+    <p class="card-text">Histórico de lances: {{historic}}</p>        
+    {{/if}}
+    <input id="bid" placeholder="Dê seu lance">
+    <a href="/item/{{_id}}" class="btn btn-primary">Dar Lance</a>
+  </div>
+</div>
+
+</div>

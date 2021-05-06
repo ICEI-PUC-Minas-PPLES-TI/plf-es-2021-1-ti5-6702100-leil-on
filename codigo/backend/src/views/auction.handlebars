@@ -1,0 +1,21 @@
+
+{{>_navbar}}
+{{>_msg}}
+<div class="container">
+<h2>Leil-on</h2> 
+  
+    {{#each items}}
+    
+         <div class="card" >
+             <div class="container mt-4">
+             </div>
+    <div class="card-body">
+    <h5 class="card-title">{{name}}</h5>
+    <p class="card-text">{{description}}</p>
+    
+    <a href="/item/{{_id}}" class="btn btn-primary">Dar Lance</a>
+  </div>
+</div>
+    {{else}}
+    {{/each}}
+</div>

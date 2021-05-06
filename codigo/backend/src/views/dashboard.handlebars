@@ -1,0 +1,12 @@
+{{>_navbar}}
+{{>_msg}}
+<div class="container mt-4">
+    <h2>Leil-on</h2>
+    <a href="#" class="list-group-item list-group-item-action active">
+                Leilões ativos
+            </a>
+	{{#each auctions}}
+       <a href="/auction/{{_id}}" class="list-group-item list-group-item-action">{{name}}</a>
+        {{else}}
+    {{/each}}
+</div>
