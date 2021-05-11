@@ -6,6 +6,7 @@ var config = require('../config/dbconfig')
 var emailconfig = require('../config/emailconfig')
 var dataActions = require('./dataActions')
 const { sendMail } = require('../config/emailconfig')
+const localFunctions = require('../scratch/store')
 
 var functions = {
     // Função para cadastrar novo usuário 
@@ -122,65 +123,48 @@ var functions = {
          
     },
     // Função para cadastrar um item no banco de dados
-    addNewItem: async function (req, res) {
-        if ((!req.body.name) || (!req.body.price)|| (!req.body.linkedAuction)|| (!req.body.imagens) || (!req.body.itemOwner) || (!req.body.description) || (!req.body.categories) ) {
-               res.json({success: false, msg: 'Preencha todos os campos'})
-           }
-           else {
+    addNewItem: async function (name, price, itemOwner, linkedAuction, description, callback) {
             var links = [] 
-            for(i = 0; i < 4; i++){
-                dataActions.saveInDrive(req.body.imagens[i], req.body.name + i, function(link){
-                    links.push(link)
-                    if(links.length == req.body.imagens.length){
-                        var newItem = Item({
-                            name: req.body.name,
-                            price: req.body.price,
+         var newItem = Item({
+                            name: name,
+                            price: price,
                             imagens: links,
-                            itemOwner: req.body.itemOwner,
-                            linkedAuction: req.body.linkedAuction,
-                            description: req.body.description,
+                            itemOwner: itemOwner,
+                            linkedAuction: linkedAuction,
+                            description: description,
                             historic: undefined,
                             hightestbidder: undefined,
                             hightestbidderEmail: undefined,
-                            categories: req.body.categories
+                            categories: undefined
                         });
                         newItem.save(function (err, newItem) {
                             if (err) {
-                                res.json({success: false, msg: 'Falha ao gravar o item ' + newItem.name})
-                            }
+                                return callback(false) }
                             else {
-                               res.json({success: true, msg: 'Item gravado com sucesso ' + newItem.name})
-                            }
+                               return callback(true)}
                         })
-                    }
-                })
-               }     
-           }
+           
        },
        // Função para cadastrar um leilão no banco de dados
-    addNewAuction: function (req, res) {
-        if ((!req.body.time) || (!req.body.name) || (!req.body.items)|| (!req.body.endDate) || (!req.body.owner)|| (!req.body.description)|| (!req.body.owneremail)) {
-               res.json({success: false, msg: 'Preencha todos os campos'})
-           }
-           else {
+    addNewAuction: function (name, items, owner, owneremail,endDate,description, time, callback) {
             var newAuction = Auction({
-                   name: req.body.name,
-                   items: req.body.items,
-                   owner: req.body.owner,
-                   owneremail: req.body.owneremail,
-                   endDate: req.body.endDate,
-                   description: req.body.description
+                   name: name,
+                   items: items,
+                   owner: owner,
+                   owneremail: owneremail,
+                   endDate: endDate,
+                   description: description
                });
-               dataActions.timeoutAuction(newAuction, req.body.time)
+               dataActions.timeoutAuction(newAuction, time)
                newAuction.save(function (err, newAuction) {
                    if (err) {   
-                    res.json({success: false, msg: 'Falha ao gravar o leilão' + newAuction.name})
-                   }
+                    return callback(false)
+                }
                    else {
-                       res.json({success: true, msg: 'Leilão gravado com sucesso ' + newAuction.name})
-                   }
+                     return callback(true)   
+                }
                })
-           }
+           
        },
        // Função para encontrar um item, ele passa o nome do item, o dono e o leilão que ele está vinculado
        findItem: function(req, res){  
@@ -215,6 +199,7 @@ var functions = {
                             var token = jwt.encode(user, config.secret)
                             var decodedtoken = jwt.decode(token, config.secret)
                             req.flash('success_msg','Login feito com sucesso!')
+                            localFunctions.setEmail(email)
                             return callback({success: true, token: token, decodedtoken: decodedtoken })
                         }
                         else {
@@ -236,13 +221,7 @@ var functions = {
                  res.json({sucess:true, msg:'Item encontrado', item: item})
             })
        // }
-    },generateImg: function (str,name) {
-        var decodedStr = str.replace(/^data:image\/\w+;base64,/, ''); 
-        fs.writeFileSync("./temp/" + name +".jpg", decodedStr,{encoding: 'base64'}, function(err) {
-                if(err) throw err
-                else console.log('Gerei a imagem')
-        });
-          },
+    },
     searchItems: function(req, res, callback){
         if(!req.body.linkedAuction){
             res.json({success:false, msg:'Não passou o leilão.'})

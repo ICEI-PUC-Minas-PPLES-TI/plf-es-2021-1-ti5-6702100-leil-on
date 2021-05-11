@@ -52,9 +52,15 @@ router.get('/auction/:id', (req,res) =>{
                         auctionItems.push(item)
                     }
                 })
-                //var email = actions.findCookie('email')
-                //console.log('Cookie ' + email )
-                res.render('auction', {items : auctionItems})
+                var name = auction.name
+                var endDate = auction.endDate
+                var description = auction.description
+                var owner = auction.owner
+                res.render('auction', {name: name,
+                    endDate: endDate,
+                    items : auctionItems,
+                    description: description,
+                owner: owner})
             }).catch((err)=>{
                 console.log(err)
                 res.redirect('/dashboard')

@@ -1,6 +1,8 @@
 var Auction = require('../models/auction')
 var Item = require('../models/item')
 var fs = require('fs')
+const actions = require('./actions')
+
 
 var functions = {
     timeoutAuction: async function timeoutAuction(auc, time){
@@ -18,11 +20,11 @@ var functions = {
                         linkedAuction: auc.name
                     }, function(err, item){
                         if(err) throw err
-                        sendemail(item.name,item.hightestbidderEmail, auc.emailowner )
+                        actions.sendemail(item.name,item.hightestbidderEmail, auc.emailowner )
                     })
                 }
                 if(err) throw err
-            }) }, time*3600000)
+            }) }, time)
     },
          remove:     // Função assíncrona para remover os arquivos temp gerados para gravar no drive
          async function remove(name, quant){
@@ -39,11 +41,14 @@ var functions = {
                     if(err) throw err
                     else console.log('Gerei a imagem')
             });
+              },
+              returnDays: function(dayA,monthA,yearA, callback){
+                  var date = new Date()
+                  var auctionDate = new Date(yearA,monthA,dayA, 0, 0, 0, 0)
+                  console.log('data ' + auctionDate.getDate())
+                  var timeDiff = Math.abs(auctionDate.getTime() - date.getTime())
+                  return callback(timeDiff)
               }
 }
 
 module.exports = functions
-
-
-
-  

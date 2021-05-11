@@ -1,0 +1,33 @@
+{{>_navbar}}
+{{>_msg}}
+<div class="container mt-4">
+      <h3>Cadastro de Item</h3>
+ 
+   <form action="/registeritem" method="POST">
+   <form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Nome</label>
+    <input id="nameAuction" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="Nome do item">
+    <small class="form-text text-muted">Digite o nome do seu item.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Descrição</label>
+    <input id="descriptionAuction" class="form-control" name="description" aria-describedby="emailHelp" placeholder="Descrição">
+    <small class="form-text text-muted">Uma breve descrição do seu item.</small>
+  </div>
+  <div class="form-group">
+<label for="exampleInputEmail1">Preço</label>
+    <input name="price" type="number" min="1" step="any">
+   </div>
+  <button class="btn btn-primary">Cadastrar item</a>
+
+</form>
+   </form>
+</form>
+<form action="/finalize" method="POST" class="form mt-2">
+ <br>
+ <button class="btn btn-primary">Finalizar cadastro</a>
+</div>
+
+  <script type"text/javascript" src="js/main.js"></script>
+  <script src="../scratch/store.js"></script>

@@ -43,8 +43,13 @@ const flash = require('connect-flash')
   // Passport config
   require('./config/passport')(passport)
   // Middleware
+  app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
   app.use((req,res,next) =>{
-      res.locals.success_msg = req.flash("success")
+      res.locals.success_msg = req.flash("success_msg")
       res.locals.error_msg = req.flash("error_msg")
       next()
   })

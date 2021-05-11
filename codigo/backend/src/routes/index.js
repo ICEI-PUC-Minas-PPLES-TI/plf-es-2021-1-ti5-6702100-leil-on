@@ -1,15 +1,20 @@
 const express = require('express')
 const actions = require('../methods/actions')
 const webActions = require('../methods/webActions')
+const dataActions = require('../methods/dataActions')
 const router = express.Router()
 const Auction = require('../models/auction')
 const User = require('../models/user')
 const Item = require('../models/item')
 
+const localFunctions = require('../scratch/store')
+if (typeof localStorage === "undefined" || localStorage === null) {
+    var LocalStorage = require('node-localstorage').LocalStorage;
+    localStorage = new LocalStorage('./scratch');
+  }
 
-router.get('/', (req, res) => {
-    res.render('login')
-})
+
+router.get('/', (req, res) => {res.render('login')})
 
 
 //@desc Adicionando novo usuário
@@ -39,7 +44,10 @@ router.get('/getitens', (req,res) =>{
 //@desc Retornando todos os leilões cadastrados no banco
 //@desc GET /getauctions
 router.get('/teste', (req,res) =>{
-    res.render('teste')
+    var date = localStorage.getItem('date')
+    var formatedDate = date.split('-')
+    dataActions.returnDays(formatedDate[2],formatedDate[1], formatedDate[0])
+    res.send(date)
 })
 
 //@desc Procurando um item
@@ -64,8 +72,71 @@ router.get('/dashboard', (req,res) => {
     })
 })
 
-router.get('/registerauction/:email', (req,res) => {
-    res.render('addauction')
+router.post('/additemWeb', (req,res)=> {
+    if(!req.body.name || !req.body.description || !req.body.endDate){
+        res.redirect('/')
+    }else{
+        localFunctions.setDataEmail(req.body.name, req.body.description, req.body.endDate)
+        res.render('additem')     
+    }
+   })
+
+router.post('/finalize', (req,res)=> {
+    var nameAuction = localStorage.getItem('nameAuction')
+    var email = localStorage.getItem('email')
+    var description = localStorage.getItem('description')
+    var items = localStorage.getItem('items')
+    var date = localStorage.getItem('date')
+    var formatedDate = date.split('-')
+    dataActions.returnDays(formatedDate[2],formatedDate[1], formatedDate[0], function(timeDiff){
+        User.find({email: email}, function(err, user){
+            webActions.addNewAuction(nameAuction, items, user.name, email, date, description, timeDiff, function(success){
+                 if(success == true){
+                     localStorage.removeItem('items')
+                     req.flash('success_msg', 'Leilão gravado com sucesso')
+                     res.redirect('dashboard')
+                 }else{
+                    localStorage.removeItem('items')
+                    req.flash('error_msg', 'Leilão não gravado')
+                    res.redirect('dashboard')
+                 }
+            } )
+        })
+    })
+    
+})
+
+router.post('/registerItem', (req,res) => {
+    localFunctions.getEmail(function(email){
+        User.find({email: email}, function(err, user){
+            var linkedAuction = localStorage.getItem('nameAuction')
+            webActions.addNewItem(req.body.name, req.body.price, user.name, linkedAuction, req.body.description, function(success){
+                if(success == true){
+                    req.flash('success_msg', 'Item cadastrado com sucesso')
+                    var items = localStorage.getItem('items')
+                    localStorage.removeItem('items')
+                    if(items == null){
+                        localStorage.setItem('items', req.body.name + ',')
+                    }else{
+                        localStorage.setItem('items', items + req.body.name + ',')
+                    }
+                    res.render('additem')
+                }else{
+                    req.flash('error_msg', 'Item não foi cadastrado')
+                    res.render('additem')
+                }
+            })
+        })
+    })
+    
+    
+})
+
+router.get('/registerauction/', (req,res) => {res.render('addauction')})
+
+router.get('/logout', (req,res) => {
+    localFunctions.delete()
+    res.redirect('./')
 })
 
 //@desc Autenticação de um usuário
@@ -74,7 +145,9 @@ router.post('/authenticateweb', (req,res) => {
     webActions.authenticate(req, req.body.email, req.body.password, function(response){
         if(response.success == true){
             Auction.find().lean().then((auctions) => {
-                    res.render('dashboard', {auctions: auctions, email: req.body.email})
+                localStorage.setItem('items','')
+                localFunctions.delete()
+                res.render('dashboard', {auctions: auctions, email: req.body.email})
             }).catch((err)=>{
                 res.render('login')
             }) 
@@ -96,6 +169,5 @@ router.post('/sendemail', actions.sendemail)
 //@desc Dar um lance
 //@route POST /bid
 router.post('/bid', actions.bid)
-
 
 module.exports = router
