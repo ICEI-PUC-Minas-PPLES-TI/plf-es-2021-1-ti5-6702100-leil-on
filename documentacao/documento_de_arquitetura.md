@@ -37,6 +37,7 @@ _**Resumo**. Leilões são uma forma comum de compra e venda de itens, pessoas q
 | **11/03/2021** | [Guilherme] | [Pequenas correções em alguns itens e conversão para markdown]| [1.1.1] |
 | **23/03/2021** | [Pedro] | [Criação e alteração das funcionalidades e história de usuário]| [1.1.2] |
 | **15/04/2021** | [Guilherme] | [Correção dos diagramas e listagem dos componentes. ]| [1.8] |
+| **12/05/2021** | [Guilherme] | [Correção nas tecnologias e funcionalidades. ]| [2.0] |
 
 ## SUMÁRIO
 
@@ -143,6 +144,7 @@ MongoDB Atlas é uma ferramente de cloud para o MongoDB.
 | --- | --- | --- |
 | Persistência | Banco de dados relacional| MongoDB |
 | Front end | Kit de desenvolvimento | Flutter |
+| Front end | Processador de templates | Handlebars |
 | Back end | Ambiente de execução | NodeJS |
 | Integração| Entrega continuas | Heroku + GitHub |
 | Log do sistema | Middleware | Morgan |
