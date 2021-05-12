@@ -1,11 +1,10 @@
 # Leil-on
 
-O Leil-on é uma plataforma digital que oferece um serviço de leilão em tempo real.
+O Leil-on é uma plataforma digital gratuita que oferece um serviço de leilão em tempo real. Os usuários podem criar leilões para vender seus itens e podem também comprar itens de leilões de outros usuários. 
 
 ## Integrantes
 
 * Guilherme Augusto Gomes Cunha
-* Leonardo Antunes Barreto Noman
 * Pedro Henrique Magalhaes Silva
 
 ## Orientadores
@@ -15,7 +14,7 @@ O Leil-on é uma plataforma digital que oferece um serviço de leilão em tempo 
 
 ## Instruções de utilização
 
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+Para usar a aplicação basta acessar o link https://leil-on.herokuapp.com em qualquer browser. Qualquer usuário com internet terá acesso a todas funcionalidades da plataforma, sem restrição.
 
 ## Histórico de versões
 
