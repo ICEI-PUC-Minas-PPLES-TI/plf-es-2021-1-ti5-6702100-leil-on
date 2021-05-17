@@ -1,12 +1,9 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:Leil_on/model/item.dart';
 import 'package:Leil_on/model/leilao.dart';
 //import 'package:dio/dio.dart' as dio;
-import 'package:dio/dio.dart';
-import 'package:dio/dio.dart';
-import 'package:dio/dio.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 //import 'package:dio/dio.dart' as dio;
@@ -19,13 +16,15 @@ class CadastroLeilao with ChangeNotifier {
   CadastroLeilao(this.nomeUsuario, this.nomeEmail);
 
   void regInfoDoLeilao(String nomeLeilao, String nomeVendedor, String descricao,
-      String dataTermino) {
+      String dataTermino, DateTime data) {
+    String diferenca = data.difference(DateTime.now()).inHours.toString();
     novoLeilao = new Leilao(
       nomeLeilao: nomeLeilao,
       nomeVendedor: nomeVendedor,
       emailVendedor: nomeEmail,
       descricao: descricao,
       dataTermino: dataTermino,
+      time: diferenca,
     );
     notifyListeners();
   }
@@ -49,7 +48,7 @@ class CadastroLeilao with ChangeNotifier {
   Future<void> addLeilao() async {
     novoLeilao.itensCadastrados = itens;
     final urlCadastroLeilao = 'http://leil-on.herokuapp.com/addauction';
-
+    print('diferenca em horas : ' + novoLeilao.time);
     final response = await http.post(
       urlCadastroLeilao,
       headers: {
@@ -57,6 +56,7 @@ class CadastroLeilao with ChangeNotifier {
         "content-type": "application/json"
       },
       body: json.encode({
+        'time': novoLeilao.time,
         'name': novoLeilao.nomeLeilao,
         'items': novoLeilao.itensCadastrados
             .map((item) => {
@@ -78,9 +78,10 @@ class CadastroLeilao with ChangeNotifier {
 // cadastro dos itens cadastrando apenas uma imagem
 
   Future<void> cadastrarItem(Item item) async {
-    List<int> imageBytes = item.imagens[0].readAsBytesSync().toList();
-    String base64Image = base64Encode(imageBytes);
+    // List<int> imageBytes = item.imagens[0].readAsBytesSync().toList();
+    // String base64Image = base64Encode(imageBytes);
     //final urlCadastrarItem =
+    //base64Encode(imagem.readAsBytesSync().toList())
     //    'https://teste-b8c97-default-rtdb.firebaseio.com/additem.json';
     final urlCadastrarItem = 'http://leil-on.herokuapp.com/additem';
     final response = await http.post(
@@ -94,18 +95,35 @@ class CadastroLeilao with ChangeNotifier {
           'name': item.nomeProduto,
           'price': item.precoMinimo,
           'itemOwner': novoLeilao.nomeVendedor,
-          'image': base64Image,
-          /*'imagens': item.imagens
+          //'imagens': 'SW1hZ2VtIDE=',
+          'imagens': [
+            base64Encode(item.imagens[0].readAsBytesSync().toList()),
+            base64Encode(item.imagens[1].readAsBytesSync().toList()),
+            base64Encode(item.imagens[2].readAsBytesSync().toList()),
+            base64Encode(item.imagens[3].readAsBytesSync().toList()),
+          ],
+          /*item.imagens
               .map((imagem) =>
                   {'image': base64Encode(imagem.readAsBytesSync().toList())})
               .toList(),*/
           'description': item.descricao,
           'linkedAuction': item.nomeLeilao,
-          'categories': [item.categoria1, item.categoria2],
+          'categories': [item.categoria1, item.categoria2].toList(),
         },
       ),
     );
+
+    if (response.statusCode == 200) print('ok deu certo');
+
+    print('oiii');
+
     var responseBody = json.decode(response.body);
+    print('oiii');
     print('resposta  : ' + responseBody);
+    print('oiii');
+  }
+
+  void addItens() {
+    itens.forEach((item) => {cadastrarItem(item)});
   }
 }

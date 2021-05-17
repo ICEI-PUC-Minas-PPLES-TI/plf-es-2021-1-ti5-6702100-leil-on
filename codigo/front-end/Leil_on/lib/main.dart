@@ -1,6 +1,7 @@
 import 'package:Leil_on/controller/autenticacao.dart';
 import 'package:Leil_on/controller/cadastroItem.dart';
 import 'package:Leil_on/controller/cadastroLeilao.dart';
+import 'package:Leil_on/controller/listagem.dart';
 import 'package:Leil_on/utils/app_routes.dart';
 import 'package:Leil_on/utils/authOrUser.dart';
 import 'package:Leil_on/view/acesso.dart';
@@ -10,6 +11,7 @@ import 'package:Leil_on/view/telaDeCadastroDeItem.dart';
 import 'package:Leil_on/view/telaDeDadosLeilao.dart';
 import 'package:Leil_on/view/telaDeItemCadastrado.dart';
 import 'package:Leil_on/view/telaDeItensCadastrados.dart';
+import 'package:Leil_on/view/telaDePesquisa.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,6 +38,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (ctx) => new CadastroItem(),
         ),
+        ChangeNotifierProvider(
+          create: (ctx) => new Listagem(),
+        ),
       ],
       child: MaterialApp(
           title: 'Flutter Demo',
@@ -54,6 +59,7 @@ class MyApp extends StatelessWidget {
             AppRoutes.TELADEITENSCADASTRADOS: (ctx) => TelaDeItensCadastrados(),
             AppRoutes.TELADEITEMCADASTRADO: (ctx) => TelaDeItemCadastrado(),
             AppRoutes.CADASTRARITEM: (ctx) => TelaDeCadastroDeitem(),
+            //AppRoutes.TELADEPESQUISA: (ctx) => TelaDePesquisa(),
           }),
     );
   }

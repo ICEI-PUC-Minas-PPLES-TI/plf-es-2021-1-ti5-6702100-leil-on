@@ -7,8 +7,8 @@ import 'package:provider/provider.dart';
 class AuthOrUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //Autenticacao auth = Provider.of(context);
-    //return auth.isAuth ? Saudacao() : Acesso();
-    return Saudacao();
+    Autenticacao auth = Provider.of(context);
+    return auth.isAuth ? Saudacao() : Acesso();
+    //return Saudacao();
   }
 }

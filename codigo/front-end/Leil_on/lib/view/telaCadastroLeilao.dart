@@ -30,11 +30,11 @@ class _TelaCadastroLeilaoState extends State<TelaCadastroLeilao> {
   void _salvarFormulario() {
     _form.currentState.save();
     Provider.of<CadastroLeilao>(context, listen: false).regInfoDoLeilao(
-      _formulario['nomeLeilao'],
-      'Lucas',
-      _formulario['descricao'],
-      '${_dataTermino.day}/${_dataTermino.month}/${_dataTermino.year}',
-    );
+        _formulario['nomeLeilao'],
+        'Lucas',
+        _formulario['descricao'],
+        '${_dataTermino.day}/${_dataTermino.month}/${_dataTermino.year}',
+        _dataTermino);
   }
 
   @override

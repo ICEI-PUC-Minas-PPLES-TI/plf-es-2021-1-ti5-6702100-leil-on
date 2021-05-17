@@ -7,6 +7,8 @@ class Leilao {
   String descricao;
   String dataTermino;
   List<Item> itensCadastrados = [];
+  List<String> itensAnunciados = [];
+  String time;
   //
   //
   Leilao({
@@ -15,6 +17,8 @@ class Leilao {
     this.emailVendedor,
     this.descricao,
     this.dataTermino,
+    this.time,
+    this.itensAnunciados,
   });
 }
 

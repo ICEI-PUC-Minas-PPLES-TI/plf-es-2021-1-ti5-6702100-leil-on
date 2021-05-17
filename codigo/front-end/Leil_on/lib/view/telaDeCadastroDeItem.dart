@@ -43,8 +43,6 @@ class _TelaDeCadastroDeitemState extends State<TelaDeCadastroDeitem> {
 
   @override
   Widget build(BuildContext context) {
-    final larguraTotal = MediaQuery.of(context).size.width;
-    final alturaTotal = MediaQuery.of(context).size.height;
     Leilao novoLeilao = Provider.of<CadastroLeilao>(context).novoLeilao;
 
     return Scaffold(

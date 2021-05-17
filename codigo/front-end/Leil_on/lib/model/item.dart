@@ -1,8 +1,12 @@
+import 'dart:ffi';
 import 'dart:io';
+
+import 'dart:typed_data';
 
 class Item {
   String nomeLeilao;
   List<File> imagens = [];
+  List<Uint8List> imagens1 = [];
   String nomeProduto;
   double precoMinimo;
   //double precoDeEncerramento;
@@ -15,6 +19,7 @@ class Item {
     this.imagens,
     this.nomeProduto,
     this.precoMinimo,
+    this.imagens1,
     //this.precoDeEncerramento,
     this.categoria1,
     this.categoria2,

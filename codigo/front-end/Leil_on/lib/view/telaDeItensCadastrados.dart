@@ -206,7 +206,7 @@ class _TelaDeItensCadastradosState extends State<TelaDeItensCadastrados> {
                   Provider.of<CadastroLeilao>(context, listen: false)
                       .addLeilao();
                   Provider.of<CadastroLeilao>(context, listen: false)
-                      .cadastrarItem(itens[0]);
+                      .addItens();
                   Navigator.of(context).pushNamed(AppRoutes.AUTHOUUSER);
                 });
               },

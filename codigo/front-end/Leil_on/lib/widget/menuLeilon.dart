@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class MenuLeilon extends StatelessWidget {
-  const MenuLeilon({Key key}) : super(key: key);
+  final String nomeUsuario;
+  const MenuLeilon(this.nomeUsuario);
 
   Widget _createItem(IconData icon, String label, Function ontap) {
     return Container(
@@ -49,15 +50,34 @@ class MenuLeilon extends StatelessWidget {
                 right: 10,
               ),
               color: Colors.amber[400],
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Icon(
-                    Icons.person_rounded,
-                    color: Colors.purple[700],
-                    size: 120.0,
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10.0,
+                  vertical: 15.0,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Icon(
+                          Icons.person_rounded,
+                          color: Colors.purple[700],
+                          size: 120.0,
+                        ),
+                      ],
+                    ),
+                    Text(
+                      nomeUsuario,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18.0,
+                        color: Colors.black87,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
             Container(
