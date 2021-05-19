@@ -4,9 +4,16 @@
 <div class="container">
 <h2>{{name}}</h2> 
   
+    <h6>Descrição</h6>  
   <p>{{description}}</p>
+  <h6>Data de encerramento</h6>
   <p>{{endDate}}</p>
-  <p>Dono(a):{{owner}}</p>
+  <h6>Dono(a)</h6>
+  <p>{{owner}}</p>
+  {{#if admin}}
+  <button class="btn btn-danger">Encerrar leilão</button>
+  {{/if}}
+  <br>
     {{#each items}}
     
          <div class="card" >

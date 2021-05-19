@@ -1,6 +1,12 @@
 <head>
         <link rel="stylesheet" href="/css/style.css">
 </head>
+{{#if success}}
+ <div class="alert alert-success">Usuário cadastrado com sucesso</div>
+{{/if}}
+{{#if error}}
+ <div class="alert alert-danger">{{msg}}</div>
+{{/if}}
 <h2>Leil-on</h2>
 <div class="container" id="container">
 	<div class="form-container sign-up-container">

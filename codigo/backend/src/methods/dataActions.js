@@ -6,6 +6,7 @@ const actions = require('./actions')
 
 var functions = {
     timeoutAuction: async function timeoutAuction(auc, time){
+        console.log('o time é de ' + time)
         setTimeout(async function(){
             Auction.findOneAndDelete({name: auc.name,
                 owner: auc.owner,
@@ -35,20 +36,19 @@ var functions = {
            }   
          },
          generateImg: function (str,name) {
-            
             var decodedStr = str.replace(/^data:image\/\w+;base64,/, ''); 
             fs.writeFileSync("./views/images/" + name +".jpg", decodedStr,{encoding: 'base64'}, function(err) {
                     if(err) throw err
                     else console.log('Gerei a imagem')
             });
               },
-              returnDays: function(dayA,monthA,yearA, callback){
-                  var date = new Date()
-                  var auctionDate = new Date(yearA,monthA,dayA, 0, 0, 0, 0)
-                  console.log('data ' + auctionDate.getDate())
-                  var timeDiff = Math.abs(auctionDate.getTime() - date.getTime())
-                  return callback(timeDiff)
+              returnTime: function(yearA,monthA,dayA, callback){
+                  const now = new Date(); // Data de hoje
+                  const past = new Date(yearA + '-' +monthA + '-' +dayA); // Outra data no passado
+                  const diff = Math.abs(now.getTime() - past.getTime()); // Subtrai uma data pela outra
+                  return callback(diff)
+                },
               }
-}
+
 
 module.exports = functions

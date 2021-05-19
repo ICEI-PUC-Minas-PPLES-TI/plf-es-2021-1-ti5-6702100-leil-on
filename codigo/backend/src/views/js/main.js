@@ -1,8 +1,7 @@
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
-const btnAddItem = document.getElementById('btnAddItem')
-const btnTeste = document.getElementById('btnTeste')
+const btnLogin = document.getElementById('btnLogin');
 
 signUpButton.addEventListener('click', () => {
 	console.log('entrei')
@@ -14,6 +13,6 @@ signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
 
-btnTeste.addEventListener('click', ()=>{
-	console.log('teste deu certo')
+btnLogin.addEventListener('click',()=> {
+	sessionStorage.setItem('email', document.getElementById("emailLogin").value)
 })

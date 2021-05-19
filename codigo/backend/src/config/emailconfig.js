@@ -1,14 +1,17 @@
 const nodemailer = require ('nodemailer')
 
-var trasponter = nodemailer.createTransport({
-    service: 'gmail',
-    secure: false,
-    requireTLS: true,
-    port: 587,
+transporter = nodemailer.createTransport({
+    host: "smtp-mail.outlook.com", // hostname
+    secureConnection: false, // TLS requires secureConnection to be false
+    port: 587, // port for secure SMTP
+    tls: {
+       ciphers:'SSLv3'
+    },
     auth: {
-        user: 'plataformadeleiloesleilon@gmail.com',
-        pass: 'projetotis5'
+        user: 'plataformaleiloesleilon@outlook.com',
+        pass: 'projetotis5' 
     }
-})
+});
 
-module.exports = trasponter
+
+module.exports = transporter

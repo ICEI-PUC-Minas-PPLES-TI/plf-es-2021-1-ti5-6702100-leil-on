@@ -46,7 +46,7 @@ var functions = {
     },
     // Função para fazer um lance, atualiza o maior lance e o histórico de lances
     bid: function(req,res){
-       if(!req.body.hightestbidder || !req.body.hightestbidderEmail || !req.body.itemName || !req.body.linkedAuction || !req.body.bid){
+       if(!req.body.itemName || !req.body.linkedAuction || !req.body.bid){
            res.json({success:false, msg:'Preencha todos os campos.'})
        }else{
         Item.findOne({
@@ -60,33 +60,35 @@ var functions = {
                else{
                 if(req.body.bid <= item.price)
                 res.json({success:false, msg:'Valor menor ou igual ao valor atual, dê um lance maior'})
-               var historic = []
-               historic = item.historic
-               historic.push(req.body.hightestbidder + "-" +req.body.bid)
-                Item.findOneAndUpdate({
-                    "name": item.name,
-                    "itemOwner": item.itemOwner,
-                    "linkedAuction": item.linkedAuction },
-                    {
-                        $set:{
-                            "historic": historic,
-                            "hightestbidder": req.body.hightestbidder,
-                            "name": item.name,
-                            "price": req.body.bid,
-                            "imagens": item.imagens,
-                            "itemOwner": item.itemOwner,
-                            "linkedAuction": req.body.linkedAuction,
-                            "description": item.description,
-                            "hightestbidderEmail": req.body.hightestbidderEmail,
-                            "categories": item.categories
-                        }
-                    
-                },function(err){
-                    if(err)
-                    res.json({success:false, msg:'Não atualizou'})
-                    else
-                    res.json({success:true, msg:'Lance computado'})
-                })
+               else{
+                var historic = []
+                historic = item.historic
+                historic.push(req.body.hightestbidder + "-" +req.body.bid)
+                 Item.findOneAndUpdate({
+                     "name": item.name,
+                     "itemOwner": item.itemOwner,
+                     "linkedAuction": item.linkedAuction },
+                     {
+                         $set:{
+                             "historic": historic,
+                             "hightestbidder": req.body.hightestbidder,
+                             "name": item.name,
+                             "price": req.body.bid,
+                             "imagens": item.imagens,
+                             "itemOwner": item.itemOwner,
+                             "linkedAuction": req.body.linkedAuction,
+                             "description": item.description,
+                             "hightestbidderEmail": req.body.hightestbidderEmail,
+                             "categories": item.categories
+                         }
+                     
+                 },function(err){
+                     if(err)
+                     res.json({success:false, msg:'Não atualizou'})
+                     else
+                     res.json({success:true, msg:'Lance computado'})
+                 })
+               }
             }
            }
            )
@@ -275,7 +277,59 @@ var functions = {
                }
            })
        }
-    }
+    },sendmsg: function(req,res){
+        Item.findOne({
+            name: req.body.item,
+            linkedAuction: req.body.linkedAuction
+           }, function(err, item){
+               if(err) {
+                   res.json({success:false, msg:'Houve um erro ' + err})
+               }
+               if(!item){
+                res.json({success:false, msg:'Item não encontrado'})
+               }
+               else{
+                var decodedMsg = req.body.user + ' - ' + req.body.msg
+                var forum = []
+                if (item.forum == undefined){
+                    forum.push({mensagem: decodedMsg})
+                }
+                else{
+                    forum = item.forum
+                    forum.push({mensagem: decodedMsg})
+                }
+                Item.findOneAndUpdate({
+                     "name": item.name,
+                     "itemOwner": item.itemOwner,
+                     "linkedAuction": item.linkedAuction },
+                     {
+                         $set:{
+                             "historic": item.historic,
+                             "hightestbidder": item.hightestbidder,
+                             "name": item.name,
+                             "price": item.price,
+                             "imagens": item.imagens,
+                             "itemOwner": item.itemOwner,
+                             "linkedAuction": item.linkedAuction,
+                             "itemOwnerEmail": item.itemOwnerEmail,
+                             "description": item.description,
+                             "hightestbidderEmail": item.hightestbidderEmail,
+                             "categories": item.categories,
+                             "forum": forum
+                         }
+                 },function(err){
+                     if(err){
+                        res.json({success:false, msg:'Houve um erro ' + err})
+                     }
+                     else{
+                        res.json({success:true, msg:'Mensagem postada com sucesso'})
+                     }
+                 })
+               
+            }
+           }
+           )
+     }
 }
 
 

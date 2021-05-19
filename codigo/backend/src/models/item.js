@@ -40,6 +40,10 @@ var itemSchema = new Schema({
     categories: {
         type: [],
         require: true
+    }, forum: {
+        type: []
+    }, itemOwnerEmail: {
+        type: String
     }
 })
 
