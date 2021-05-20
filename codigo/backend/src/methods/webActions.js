@@ -65,7 +65,7 @@ var functions = {
                  historic = item.historic
                  historic.push(personName + "-" +bid)
                  if (item.historic != undefined){
-                    sendnotificationemail(personName, item.hightestbidderEmail, item.name ) 
+                    sendnotificationemail(personName, item.hightestbidderEmail, item.name) 
                  }
                  Item.findOneAndUpdate({
                       "name": item.name,
@@ -223,14 +223,36 @@ var functions = {
     },
     // Procura um tipo de objeto do banco e retorna 
     search: function (req,res,linkedAuction) {
-        Item.find({linkeadAuction: linkedAuction}, function(err, item){
-                if(err) res.json({sucess:false, msg: 'Houve um erro ' + err})
+        if ((!req.body.type) || (!req.body.obj) ) {
+            res.json({success: false, msg: 'Preencha todos os campos'})
+        }
+        else {
+        switch(req.body.type){
+            case "Leilão":
+                Auction.find({"name": req.body.obj}, function(err, auction){
+                    if(err) res.redirect('/dashboard')
+                    if(!auction) res.json({success:false, msg: 'Nenhum leilão encontrado'})
+                    else res.render('dashboard', {auctions:auction})
+                })
+                break;
+            case "Item":Item.find({"name": req.body.obj}, function(err, item){
+                if(err) res.redirect('/dashboard')
                 if(!item){
-                    res.json({sucess:false, msg: 'Nenhum item encontrado'})
+                    res.json({success:false, msg: 'Nenhum item encontrado'})
                 }else
-                 res.json({sucess:true, msg:'Item encontrado', item: item})
+                 res.json({success:true, msg:'Item encontrado', item: item})
             })
-       // }
+            break;
+            case "Usuário":User.find({"name": req.body.obj}, function(err, user){
+                if(err) res.redirect('/dashboard')
+                if(!user) res.redirect('/dashboard')
+                else res.render('dashboard', {user: true, users: user})
+            })
+            break;
+            default:
+                res.json({success:false, msg:'Tipo errado'})
+        }   
+        }
     },
     searchItems: function(req, res, callback){
         if(!req.body.linkedAuction){
@@ -249,7 +271,8 @@ var functions = {
                 }
             })
         }
-     },sendmsg: function(msg,user,item,linkedAuction, callback){
+     },
+     sendmsg: function(msg,user,item,linkedAuction, callback){
         Item.findOne({
             name: item,
             linkedAuction: linkedAuction
@@ -304,11 +327,29 @@ var functions = {
             }
            }
            )
+     },
+     finishauction: function(req,res){
+        var id = localStorage.getItem('id')
+        Auction.findByIdAndRemove(id, function(err,auc){
+              if (err) res.render('dashboard', {error: true, msg:'Houve um erro na hora de encerrar o leilão.'})
+              else{
+                  console.log('Deletando o leilão ' + auc.name)
+                  for ( let i = 0; i < auc.items.length; i++){
+                      deleteItem(auc.name)
+                  }
+                  res.redirect('/dashboard')
+              }
+          })
+     },
+     editauction: function(req,res){
+         res.render('editauction')
+     },
+     chat: function(req,res){
+         res.render('chat')
      }
-     
 }
-//req.body.msg, user.name,req.params.name, req.params.linkedAuction
- async function sendnotificationemail(buyer, loser, item){
+
+async function sendnotificationemail(buyer, loser, item){
     var mailOption = {
      from: 'plataformaleiloesleilon@outlook.com',
      to: loser,
@@ -316,14 +357,21 @@ var functions = {
      text: 'Seu lance foi batido por ' + buyer +'.' + 
      'Acesse nosso site em leil-on.herokuapp.com'
     }
-
      if(buyer != undefined){
          emailconfig.sendMail(mailOption, function(error, info){
              if (error) {
                  console.log('erro ' + error)
                  throw error} 
              })  
-           }   
+           } 
+           
+}
+
+async function deleteItem(auction){
+    Item.findOneAndDelete({linkedAuction: auction}, function(err, item){
+        if (err) throw err
+        console.log('Exclui o item')
+    })
 }
 
 module.exports = functions

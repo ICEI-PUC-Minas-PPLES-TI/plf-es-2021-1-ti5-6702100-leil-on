@@ -93,7 +93,7 @@ router.get('/auction/:id', (req,res) =>{
                 var admin = true
                 else
                 var admin = false
-                console.log('estou enviando ' + admin)
+                localStorage.setItem('id', req.params.id)
                 res.render('auction', {name: name,
                     endDate: endDate,
                     items : auctionItems,

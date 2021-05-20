@@ -17,7 +17,10 @@
           <a class="nav-link active" href="/myauctions">Meus leilões</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/registerauction">Chat</a>
+          <a class="nav-link active" href="/registerauction">Minhas negociações</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/chatWeb">Chat</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="/faq">Perguntas frequentes</a>
@@ -27,7 +30,7 @@
         </li>
         
   <li class="nav-item">
-<form action="search" class="d-flex justify-content-end">
+<form action="/searchweb" method="POST" class="d-flex justify-content-end">
   
 <div class="collapse navbar-collapse">
   <select name="type" id="type">
@@ -36,7 +39,7 @@
   <option value="Item">Item</option>
 </select>
 </div>
-        <input class="form-control me-2" type="search" placeholder="Busca..." aria-label="Search">
+        <input class="form-control me-2" type="search" name="obj" placeholder="Busca..." aria-label="Search">
         <button class="btn btn-success" type="submit">Buscar</button>
       </form>
   </li>

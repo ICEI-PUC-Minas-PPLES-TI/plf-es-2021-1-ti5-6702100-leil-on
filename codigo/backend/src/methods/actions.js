@@ -167,7 +167,7 @@ var functions = {
                         name: req.body.name,
                         items: req.body.items,
                         owner: req.body.owner,
-                        owneremail: req.body.owneremail,
+                        emailowner: req.body.owneremail,
                         endDate: req.body.endDate,
                         description: req.body.description
                     });
@@ -237,13 +237,13 @@ var functions = {
         else {
         switch(req.body.type){
             case "auction":
-                Auction.find({name: req.body.obj}, function(err, auction){
+                Auction.find({"name": req.body.obj}, function(err, auction){
                     if(err) res.json({success:false, msg: 'Houve um erro ' + err})
                     if(!auction) res.json({success:false, msg: 'Nenhum leilão encontrado'})
                     res.json({success:true, msg:'Leilão encontrado', leilão: auction})
                 })
                 break;
-            case "item":Item.find({name: req.body.obj}, function(err, item){
+            case "item":Item.find({"name": req.body.obj}, function(err, item){
                 if(err) res.json({success:false, msg: 'Houve um erro ' + err})
                 if(!item){
                     res.json({success:false, msg: 'Nenhum item encontrado'})
@@ -251,7 +251,7 @@ var functions = {
                  res.json({success:true, msg:'Item encontrado', item: item})
             })
             break;
-            case "user":User.find({name: req.body.obj}, function(err, user){
+            case "user":User.find({"name": req.body.obj}, function(err, user){
                 if(err) res.json({success:false, msg: 'Houve um erro ' + err})
                 if(!user) res.json({success:false, msg: 'Nenhum usuário encontrado'})
                 res.json({success:true, msg:'Usuário encontrado', Usuário: user})
@@ -277,7 +277,8 @@ var functions = {
                }
            })
        }
-    },sendmsg: function(req,res){
+    },
+    sendmsg: function(req,res){
         Item.findOne({
             name: req.body.item,
             linkedAuction: req.body.linkedAuction
@@ -332,5 +333,22 @@ var functions = {
      }
 }
 
+async function sendnotificationemail(buyer, loser, item){
+    var mailOption = {
+     from: 'plataformaleiloesleilon@outlook.com',
+     to: loser,
+     subject: 'Seu lance no item ' + item + ' foi batido',
+     text: 'Seu lance foi batido por ' + buyer +'.' + 
+     'Acesse nosso site em leil-on.herokuapp.com'
+    }
 
+     if(buyer != undefined){
+         emailconfig.sendMail(mailOption, function(error, info){
+             if (error) {
+                 console.log('erro ' + error)
+                 throw error} 
+             })  
+           } 
+              
+}
 module.exports = functions
