@@ -1,4 +1,5 @@
 import 'package:Leil_on/model/leilao.dart';
+import 'package:Leil_on/view/telaDoLeilao.dart';
 import 'package:flutter/material.dart';
 
 class CardLeilao extends StatelessWidget {
@@ -40,7 +41,13 @@ class CardLeilao extends StatelessWidget {
                         fontSize: 14,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => TelaDoLeilao(leilao),
+                        ),
+                      );
+                    },
                   ),
                 ),
                 ExpansionTile(

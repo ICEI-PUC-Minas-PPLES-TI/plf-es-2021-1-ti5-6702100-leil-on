@@ -21,7 +21,7 @@ class Listagem with ChangeNotifier {
           "content-type": "application/json"
         },
         body: json.encode({'type': tipoPesquisa, 'obj': pesquisa}));
-    // print('esse print deu certo : ' + response.body);
+    print('esse print deu certo : ' + response.body);
     Map<String, dynamic> data = jsonDecode(response.body);
 
     itensPesquisados.clear();
@@ -37,6 +37,7 @@ class Listagem with ChangeNotifier {
                         _image.add(Base64Decoder().convert(imagem.toString())),
                       },
                     ),
+                    print('teste' + item['name'].toString()),
                     itensPesquisados.add(
                       new Item(
                         nomeLeilao: item['linkedAuction'].toString(),

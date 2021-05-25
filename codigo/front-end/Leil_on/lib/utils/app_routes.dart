@@ -9,4 +9,5 @@ class AppRoutes {
   static const TELADEITEMCADASTRADO = '/telaDeItemCadastrado';
   static const CADASTRARITEM = '/cadastrarItem';
   static const TELADEPESQUISA = '/telaDePesquisa';
+  static const TELADOLEILAO = '/telaDeLeilao';
 }

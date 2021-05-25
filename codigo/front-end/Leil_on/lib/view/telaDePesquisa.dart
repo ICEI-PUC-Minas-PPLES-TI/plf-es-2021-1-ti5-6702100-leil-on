@@ -90,7 +90,8 @@ class _TelaDePesquisaState extends State<TelaDePesquisa> {
                           return CardLeilao(
                               leilao); //Text('ok'); //CardLeilao(leilao);
                         },
-                      )),
+                      ),
+              ),
       ),
       backgroundColor: Colors.amber[100],
     );

@@ -119,7 +119,7 @@ class CadastroLeilao with ChangeNotifier {
 
     var responseBody = json.decode(response.body);
     print('oiii');
-    print('resposta  : ' + responseBody);
+    //print('resposta  : ' + responseBody);
     print('oiii');
   }
 
