@@ -1,4 +1,5 @@
 import 'package:Leil_on/view/telaChat.dart';
+import 'package:Leil_on/view/telaDeChat.dart';
 import 'package:flutter/material.dart';
 
 class CardItemLeilaoSelecionado extends StatelessWidget {
@@ -83,8 +84,8 @@ class CardItemLeilaoSelecionado extends StatelessWidget {
                   _createItem(Icons.forum_rounded, 'Fórum', () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (_) => Chat(item, 'forum'),
-                      ),
+                          builder: (_) => TelaDeChat() //Chat(item, 'forum'),
+                          ),
                     );
                   }),
                 ],

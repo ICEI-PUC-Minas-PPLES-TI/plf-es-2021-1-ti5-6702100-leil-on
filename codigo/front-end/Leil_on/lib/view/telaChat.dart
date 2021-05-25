@@ -1,5 +1,5 @@
 import 'package:Leil_on/controller/leilaoController.dart';
-import 'package:adhara_socket_io/adhara_socket_io.dart';
+//import 'package:adhara_socket_io/adhara_socket_io.dart';
 //import 'package:Leil_on/model/item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +21,7 @@ class _ChatState extends State<Chat> {
   //TextEditingController _chatTextController = TextEditingController();
   final inputController = TextEditingController();
   List<String> messageList = [];
-  SocketIO _socket;
+  var _socket;
   //------------------------
 
   setOnChatMessageReceiveListener(Function onMessageReceived) {
