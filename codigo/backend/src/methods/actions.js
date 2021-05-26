@@ -171,7 +171,7 @@ var functions = {
                         endDate: req.body.endDate,
                         description: req.body.description
                     });
-                    dataActions.timeoutAuction(newAuction, req.body.time)
+                  //  dataActions.timeoutAuction(newAuction, req.body.time)
                     newAuction.save(function (err, newAuction) {
                         if (err) {   
                          res.json({success: false, msg: 'Falha ao gravar o leilão' + newAuction.name})
@@ -237,13 +237,13 @@ var functions = {
         else {
         switch(req.body.type){
             case "auction":
-                Auction.find({"name": req.body.obj}, function(err, auction){
+                Auction.find({name: req.body.obj}, function(err, auction){
                     if(err) res.json({success:false, msg: 'Houve um erro ' + err})
                     if(!auction) res.json({success:false, msg: 'Nenhum leilão encontrado'})
                     res.json({success:true, msg:'Leilão encontrado', leilão: auction})
                 })
                 break;
-            case "item":Item.find({"name": req.body.obj}, function(err, item){
+            case "item":Item.find({name: req.body.obj}, function(err, item){
                 if(err) res.json({success:false, msg: 'Houve um erro ' + err})
                 if(!item){
                     res.json({success:false, msg: 'Nenhum item encontrado'})
@@ -251,7 +251,7 @@ var functions = {
                  res.json({success:true, msg:'Item encontrado', item: item})
             })
             break;
-            case "user":User.find({"name": req.body.obj}, function(err, user){
+            case "user":User.find({name: req.body.obj}, function(err, user){
                 if(err) res.json({success:false, msg: 'Houve um erro ' + err})
                 if(!user) res.json({success:false, msg: 'Nenhum usuário encontrado'})
                 res.json({success:true, msg:'Usuário encontrado', Usuário: user})

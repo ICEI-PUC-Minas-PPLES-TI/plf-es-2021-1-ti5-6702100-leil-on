@@ -55,9 +55,10 @@ router.post('/additemWeb', (req,res)=> {
     }
    })
 
-   router.post('/saveimg',(req,res)=>{
+router.post('/saveimg',(req,res)=>{
     var linkedAuction = localStorage.getItem('nameAuction')
     console.log('salvei a img')
+    localStorage.removeItem('img')
     localStorage.setItem('img' + linkedAuction, req.body.imagens)
     res.send('ok')
 })
@@ -168,14 +169,20 @@ router.post('/editauctionWeb', (req,res) => {
     Auction.findByIdAndUpdate(id,
          { name: req.body.name,
             description: req.body.description,
-            endDate: req.body.endDate
          },function(err,auction){
         if (err) throw err
         else {
-            Item.findOneAndUpdate({linkedAuction:auction.name},
+            Item.findOneAndUpdate({
+                "linkedAuction": req.body.name },
                 {
-                    linkedAuction: auction.name
-                })
+                    $set:{
+                        "linkedAuction": req.body.name,
+                    }
+            },function(err){
+                if(err)
+                  throw err
+               
+            }).lean()
             res.redirect('/dashboard')
         }
     })

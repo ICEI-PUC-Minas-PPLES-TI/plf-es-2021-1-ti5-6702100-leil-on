@@ -6,6 +6,7 @@ const router = express.Router()
 const Auction = require('../models/auction')
 const User = require('../models/user')
 const Item = require('../models/item')
+const Transaction = require('../models/transaction')
 const fs = require('fs')
 var FileReader = require('filereader')
   , fileReader = new FileReader()
@@ -106,23 +107,37 @@ router.get('/myauctions', (req,res) => {
                 res.redirect('/dashboard')
             })
         })
-
-        
     } 
 })
 
-router.get('/chatWeb', (req,res) => {
-    res.render('chat')
+router.get('/mytransactions', (req,res) => {
+    var email = localStorage.getItem('email')
+    if(email == null)
+    res.redirect('/',{error:true, msg:'Faça o login para ter acesso ao site'})
+    else{
+        Transaction.find({"involvedEmail": email}).lean().then((trans) =>{
+            res.render('transaction', {transactions: trans})
+        })
+    } 
 })
+
+router.get('/chatWeb', (req,res) => {  res.render('chat')})
 
 //@desc Retornando todos os leilões cadastrados no banco
 //@desc GET /getauctions
 router.get('/teste', (req,res) =>{
-    dataActions.returnTime(21,5,2021,function(days){
-        console.log('dias ' + days)
+    var newTransaction = Transaction({
+       involved: 'Urza',
+       negotiator: 'Karn',
+       negotiatorEmail:'email',
+       involvedEmail:'email2',
+       note: -1,
+       rated: false
+    })
+    newTransaction.save(function(err, trans){
+        if (err) console.log('erro ' + err)
     })
 })
-
 
 //@desc Rota padrão
 //@route GET /

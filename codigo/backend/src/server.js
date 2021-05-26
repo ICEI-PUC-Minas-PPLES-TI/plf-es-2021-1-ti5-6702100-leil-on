@@ -100,7 +100,6 @@ io.on("connection", function(socket){
 
 
 	socket.on("enviar mensagem", function(dados, callback){
-
 		var mensagem_enviada = dados.msg;
 		var usuario = dados.usu;
 		if(usuario == null)
@@ -108,6 +107,7 @@ io.on("connection", function(socket){
 
 		mensagem_enviada = "[ " + pegarDataAtual() + " ] " + socket.apelido + " diz: " + mensagem_enviada;
 		var obj_mensagem = {msg: mensagem_enviada, tipo: ''};
+		socket.broadcast.emit("receive_message", obj_mensagem)
 
 		if(usuario == ''){
 			io.sockets.emit("atualizar mensagens", obj_mensagem);
