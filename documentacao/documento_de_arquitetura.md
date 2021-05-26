@@ -222,7 +222,7 @@ Ex: conforme diagrama apresentado na Figura X, as entidades participantes da sol
 ## 3.3. Modelo de dados 
 
 
-![Diagrama de Entidade Relacionamento (ER) ](imagens/der.png "Diagrama de Entidade Relacionamento (ER) ")
+![Diagrama de Entidade Relacionamento (ER) ](imagens/der2.png "Diagrama de Entidade Relacionamento (ER) ")
 
 **Figura 4 – Diagrama de Entidade Relacionamento (ER) - exemplo. Fonte: o próprio autor.**
 
