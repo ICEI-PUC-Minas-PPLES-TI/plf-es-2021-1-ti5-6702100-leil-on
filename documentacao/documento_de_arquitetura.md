@@ -114,7 +114,7 @@ MongoDB Atlas é uma ferramente de cloud para o MongoDB.
 | RF004 | Propor oferta para o item | Essencial |
 | RF005 | Login e cadastro de usuários | Essencial |
 | RF006 | Sistema notifica o comprador quando ele ganhar um leilão | Essencial |
-| RF007 | Chat para que o comprador e o vendedor negocie como sera o pagamento e a entrega | Essencial |
+| RF007 | Chat para que os usuários possam conversar sobre os leilões e itens | Essencial |
 | RF008 | Sistema de reputação para compradores e vendedores  | Desejável |
 | RF009 | Fornecer o valor do frete | Desejável |
 | RF010 | Fórum do leilão | Desejável |
@@ -126,7 +126,7 @@ MongoDB Atlas é uma ferramente de cloud para o MongoDB.
 | **ID** | **Descrição** |
 | --- | --- |
 | RNF001 | O sistema deve suportar 500 usuários simultâneos |
-| RNF002 | O sistema deve responder em até 100 milissegundos |
+| RNF002 | O sistema deve responder em até 500 milissegundos |
 | RNF003 | O sistema deve ser hibrido |
 
 ## 2.3. Restrições Arquiteturais
@@ -229,19 +229,11 @@ Ex: conforme diagrama apresentado na Figura X, as entidades participantes da sol
 <a name="avaliacao"></a>
 # 4. Avaliação da Arquitetura
 
-_Esta seção descreve a avaliação da arquitetura apresentada, baseada no método ATAM._
-
 ## 4.1. Cenários
 
-_Apresente os cenários de testes utilizados na realização dos testes da sua aplicação. Escolha cenários de testes que demonstrem os requisitos não funcionais sendo satisfeitos. Os requisitos a seguir são apenas exemplos de possíveis requisitos, devendo ser revistos, adequados a cada projeto e complementados de forma a terem uma especificação completa e auto-explicativa._
+**Cenário 1 - Eficiência -  RNF002 :** O sistema responde a maioria das rotas que deram certo num tempo de execução menor do que 500 ms, o que foi previsto inicialmente seria 100 e depois alterado para 500. 
 
-**Cenário 1 - Acessibilidade:** Suspendisse consequat consectetur velit. Sed sem risus, dictum dictum facilisis vitae, commodo quis leo. Vivamus nulla sem, cursus a mollis quis, interdum at nulla. Nullam dictum congue mauris. Praesent nec nisi hendrerit, ullamcorper tortor non, rutrum sem. In non lectus tortor. Nulla vel tincidunt eros.
-
-**Cenário 2 - Interoperabilidade:** Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce ut accumsan erat. Pellentesque in enim tempus, iaculis sem in, semper arcu.
-
-**Cenário 3 - Manutenibilidade:** Phasellus magna tellus, consectetur quis scelerisque eget, ultricies eu ligula. Sed rhoncus fermentum nisi, a ullamcorper leo fringilla id. Nulla lacinia sem vel magna ornare, non tincidunt ipsum rhoncus. Nam euismod semper ante id tristique. Mauris vel elit augue.
-
-**Cenário 4 - Segurança:** Suspendisse consectetur porta tortor non convallis. Sed lobortis erat sed dignissim dignissim. Nunc eleifend elit et aliquet imperdiet. Ut eu quam at lacus tincidunt fringilla eget maximus metus. Praesent finibus, sapien eget molestie porta, neque turpis congue risus, vel porttitor sapien tortor ac nulla. Aliquam erat volutpat.
+![tempo img ](imagens/tempo.png "tempo img ")
 
 ## 4.2. Avaliação
 
