@@ -3,8 +3,6 @@
 
 **Guilherme Augusto Gomes Cunha, guilhermegomescunha@hotmail.com**
 
-**Leonardo Antunes Barreto Noman, leonoman07@gmail.com**
-
 **Pedro Henrique Magalhães Silva, magengsoft@gmail.com**
 
 ---
@@ -38,6 +36,7 @@ _**Resumo**. Leilões são uma forma comum de compra e venda de itens, pessoas q
 | **23/03/2021** | [Pedro] | [Criação e alteração das funcionalidades e história de usuário]| [1.1.2] |
 | **15/04/2021** | [Guilherme] | [Correção dos diagramas e listagem dos componentes. ]| [1.8] |
 | **12/05/2021** | [Guilherme] | [Correção nas tecnologias e funcionalidades. ]| [2.0] |
+| **27/05/2021** | [Guilherme] | [Correção em alguns campos, atualização de diagramas e última parte feita. ]| [3.0] |
 
 ## SUMÁRIO
 
@@ -233,58 +232,48 @@ Ex: conforme diagrama apresentado na Figura X, as entidades participantes da sol
 
 **Cenário 1 - Eficiência -  RNF002 :** O sistema responde a maioria das rotas que deram certo num tempo de execução menor do que 500 ms, o que foi previsto inicialmente seria 100 e depois alterado para 500. 
 
-![tempo img ](imagens/tempo.png "tempo img ")
+**Cenário 2 - Sistema Hibrido -  RNF003 :** O sistema funciona na parte mobile e na parte Web, são interligados.
 
 ## 4.2. Avaliação
 
-_Apresente as medidas registradas na coleta de dados. O que não for possível quantificar apresente uma justificativa baseada em evidências qualitativas que suportam o atendimento do requisito não-funcional. Apresente uma avaliação geral da arquitetura indicando os pontos fortes e as limitações da arquitetura proposta._
 
-| **Atributo de Qualidade:** | Segurança |
+| **Atributo de Qualidade:** | Eficiência |
 | --- | --- |
-| **Requisito de Qualidade** | Acesso aos recursos restritos deve ser controlado |
-| **Preocupação:** | Os acessos de usuários devem ser controlados de forma que cada um tenha acesso apenas aos recursos condizentes as suas credenciais. |
-| **Cenários(s):** | Cenário 4 |
+| **Requisito de Qualidade** | O sistema deve ter uma resposta rápida. |
+| **Preocupação:** | Em algumas rotas o sistema não está otimizado ou o sistema tem que fazer muita coisa. |
+| **Cenários(s):** | Cenário 1 |
 | **Ambiente:** | Sistema em operação normal |
-| **Estímulo:** | Acesso do administrador do sistema as funcionalidades de cadastro de novos produtos e exclusão de produtos. |
-| **Mecanismo:** | O servidor de aplicação (Rails) gera um _token_ de acesso para o usuário que se autentica no sistema. Este _token_ é transferido para a camada de visualização (Angular) após a autenticação e o tratamento visual das funcionalidades podem ser tratados neste nível. |
-| **Medida de Resposta:** | As áreas restritas do sistema devem ser disponibilizadas apenas quando há o acesso de usuários credenciados. |
+| **Estímulo:** | Acesso do front as funcionalidades do back. |
+| **Mecanismo:** | O front faz a requisição a parte do back esperando uma resposta. |
+| **Medida de Resposta:** | Otimizar o código, dividir funções entre as rotas. |
 
 **Considerações sobre a arquitetura:**
 
 | **Riscos:** | Não existe |
 | --- | --- |
 | **Pontos de Sensibilidade:** | Não existe |
-| _ **Tradeoff** _ **:** | Não existe |
+| _ **Tradeoff** _ **:** | Mais eficiência implica numa maior complexidade. |
 
 Evidências dos testes realizados
 
-_Apresente imagens, descreva os testes de tal forma que se comprove a realização da avaliação._
+![tempo img ](imagens/tempo.png "tempo img ")
+Tempo de resposta do sistema.
+![mobile img ](imagens/televisaoweb.png "mobile img ")
+Item em leilão na parte mobile
+![web img ](imagens/televisaomobile.png "web img ")
+Item em leilão na parte web
+
 
 <a name="referencias"></a>
 # 5. REFERÊNCIAS
 
-_Como um projeto da arquitetura de uma aplicação não requer revisão bibliográfica, a inclusão das referências não é obrigatória. No entanto, caso você deseje incluir referências relacionadas às tecnologias, padrões, ou metodologias que serão usadas no seu trabalho, relacione-as de acordo com a ABNT._
-
-Verifique no link abaixo como devem ser as referências no padrão ABNT:
-
-http://www.pucminas.br/imagedb/documento/DOC\_DSC\_NOME\_ARQUI20160217102425.pdf
-
-
 **[1]** - _LEILÕES Liga Magic. In: Liga Magic Leilões. [S. l.]. Disponível em: https://www.ligamagic.com.br/?view=leilao/listar. Acesso em: 18 fev. 2021._
-
-**[2]** - _COPPIN, Ben. **Inteligência artificial**. Rio de Janeiro, RJ: LTC, c2010. E-book. ISBN 978-85-216-2936-8._
-
-**[3]** - _CORMEN, Thomas H. et al. **Algoritmos: teoria e prática**. Rio de Janeiro, RJ: Elsevier, Campus, c2012. xvi, 926 p. ISBN 9788535236996._
-
-**[4]** - _SUTHERLAND, Jeffrey Victor. **Scrum: a arte de fazer o dobro do trabalho na metade do tempo**. 2. ed. rev. São Paulo, SP: Leya, 2016. 236, [4] p. ISBN 9788544104514._
-
-**[5]** - _RUSSELL, Stuart J.; NORVIG, Peter. **Inteligência artificial**. Rio de Janeiro: Elsevier, c2013. xxi, 988 p. ISBN 9788535237016._
 
 
 <a name="apendices"></a>
 # 6. APÊNDICES
 
-_Inclua o URL do repositório (Github, Bitbucket, etc) onde você armazenou o código da sua prova de conceito/protótipo arquitetural da aplicação como anexos. A inclusão da URL desse repositório de código servirá como base para garantir a autenticidade dos trabalhos._
+https://github.com/ICEI-PUC-Minas-PPLES-TI/Leil-on
 
 
 
