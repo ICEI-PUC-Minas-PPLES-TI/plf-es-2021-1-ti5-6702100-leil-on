@@ -1,17 +1,16 @@
+import 'package:Leil_on/controller/autenticacao.dart';
 import 'package:Leil_on/controller/leilaoController.dart';
-//import 'package:adhara_socket_io/adhara_socket_io.dart';
-//import 'package:Leil_on/model/item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-//import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:socket_io_client/socket_io_client.dart' as io;
 
 class Chat extends StatefulWidget {
   //TelaDeLances({Key key}) : super(key: key);
   //final Item itemLeiloado;
-  final String itemLeiloado, tipoChat;
+  final String itemLeiloado, tipoChat, nomeLeilao;
 
   // TelaDeLances(this.itemLeiloado);
-  Chat(this.itemLeiloado, this.tipoChat);
+  Chat(this.nomeLeilao, this.itemLeiloado, this.tipoChat);
 
   @override
   _ChatState createState() => _ChatState();
@@ -21,13 +20,26 @@ class _ChatState extends State<Chat> {
   //TextEditingController _chatTextController = TextEditingController();
   final inputController = TextEditingController();
   List<String> messageList = [];
-  var _socket;
-  //------------------------
 
-  setOnChatMessageReceiveListener(Function onMessageReceived) {
-    _socket.on("entrar", (data) {
-      onMessageReceived(data);
+  _enviaMensagem() {
+    Provider.of<LeilaoController>(context, listen: false).enviarMensagem(
+        inputController.text,
+        widget.nomeLeilao,
+        Provider.of<Autenticacao>(context, listen: false).userNome,
+        widget.itemLeiloado);
+
+    setState(() {
+      messageList.clear();
+      messageList.addAll(Provider.of<LeilaoController>(context).mensagensForum);
     });
+  }
+
+  _enviarLance() {
+    Provider.of<LeilaoController>(context, listen: false).proporLance(
+        widget.itemLeiloado,
+        widget.nomeLeilao,
+        double.parse(inputController.text),
+        Provider.of<Autenticacao>(context, listen: false).userNome);
   }
 
   _bottomChatArea() {
@@ -42,7 +54,7 @@ class _ChatState extends State<Chat> {
               color: Colors.amber,
             ),
             onPressed: () {
-              // _sendMessageBtnTap();
+              widget.tipoChat == 'forum' ? _enviaMensagem() : _enviarLance();
             },
           ),
         ],
@@ -77,6 +89,8 @@ class _ChatState extends State<Chat> {
     final alturaTotal = MediaQuery.of(context).size.height * 0.8;
     List<Map<String, String>> lances =
         Provider.of<LeilaoController>(context).lancesLeilao;
+    List<String> mensagens =
+        Provider.of<LeilaoController>(context).mensagensForum;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -97,47 +111,10 @@ class _ChatState extends State<Chat> {
               padding: const EdgeInsets.all(8.0),
               child: lances.isEmpty
                   ? Center(child: Text('Não há mensagens'))
-                  : Expanded(child: getMessageList())
-              /*ListView.builder(
-                    padding: const EdgeInsets.all(5),
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: lances.length,
-                    itemBuilder: (ctx, index) {
-                      final lance = lances[index];
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            elevation: 3.0,
-                            shadowColor: Colors.amber,
-                            color: Colors.amber[400],
-                            child: ListTile(
-                              title: Text(lance.keys.toString()),
-                              //subtitle: Text,
-                              trailing: Text(
-                                lance.values.toString(),
-                                style: TextStyle(
-                                  fontSize: 20.0,
-                                  color: Colors.purple,
-                                ),
-                              ),
-                            )),
-                      ); //CardLeilao(leilao); //Text('ok'); //CardLeilao(leilao);
-                    },
-                  ),*/
-              ),
+                  : Expanded(child: getMessageList())),
           _bottomChatArea(),
         ],
       ),
-      /* bottomNavigationBar: BottomAppBar(
-        color: Colors.purple,
-        shape: CircularNotchedRectangle(),
-        notchMargin: 5.0,
-        child: _bottomChatArea(),
-      ),*/
     );
   }
 

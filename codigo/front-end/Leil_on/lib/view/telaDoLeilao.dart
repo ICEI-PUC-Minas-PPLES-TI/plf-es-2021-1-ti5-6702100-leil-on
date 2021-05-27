@@ -89,6 +89,7 @@ class _TelaDoLeilaoState extends State<TelaDoLeilao> {
                     final item =
                         widget.leilaoSelecionado.itensAnunciados[index];
                     return CardItemLeilaoSelecionado(
+                        widget.leilaoSelecionado.nomeLeilao,
                         item); //CardLeilao(leilao); //Text('ok'); //CardLeilao(leilao);
                   },
                 ),

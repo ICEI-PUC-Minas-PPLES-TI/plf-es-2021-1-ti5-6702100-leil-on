@@ -30,14 +30,7 @@ class CardItem extends StatelessWidget {
                   topLeft: Radius.circular(25),
                   topRight: Radius.circular(25),
                 ),
-                child:
-                    /* Image.network(
-                  'https://a-static.mlcdn.com.br/618x463/kit-computador-desktop-dell-vostro-3681-m20m-10a-geracao-intel-core-i5-8gb-1tb-windows-10-monitor-21/dell/v3681w209w1/dede26e9bf2c75467333e9201ea2d6d1.jpg',
-                  height: alturaTotal * 0.25,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),*/
-                    Image.memory(
+                child: Image.memory(
                   imagem,
                   height: alturaTotal * 0.3,
                   width: double.infinity,

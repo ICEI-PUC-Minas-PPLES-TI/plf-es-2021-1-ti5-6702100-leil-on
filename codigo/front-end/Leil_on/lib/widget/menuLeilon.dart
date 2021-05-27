@@ -87,8 +87,6 @@ class MenuLeilon extends StatelessWidget {
                   _createItem(Icons.add_to_photos, 'Criar leilão', () {
                     Navigator.of(context).pushNamed(AppRoutes.CADASTROLEILAO);
                   }),
-                  _createItem(Icons.chat, 'Chat', () {}),
-                  _createItem(Icons.settings, 'Configurações', () {}),
                   _createItem(Icons.exit_to_app, 'Sair', () {
                     Autenticacao sair =
                         Provider.of<Autenticacao>(context, listen: false);
