@@ -1,12 +1,8 @@
 import 'dart:convert';
-
 import 'package:Leil_on/model/item.dart';
 import 'package:Leil_on/model/leilao.dart';
-//import 'package:dio/dio.dart' as dio;
-
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-//import 'package:dio/dio.dart' as dio;
 
 class CadastroLeilao with ChangeNotifier {
   Leilao novoLeilao = new Leilao();
@@ -48,7 +44,7 @@ class CadastroLeilao with ChangeNotifier {
   Future<void> addLeilao() async {
     novoLeilao.itensCadastrados = itens;
     final urlCadastroLeilao = 'http://leil-on.herokuapp.com/addauction';
-    print('diferenca em horas : ' + novoLeilao.time);
+
     final response = await http.post(
       urlCadastroLeilao,
       headers: {
@@ -69,20 +65,9 @@ class CadastroLeilao with ChangeNotifier {
         'description': novoLeilao.descricao,
       }),
     );
-
-    var responseBody = json.decode(response.body);
-
-    print(responseBody);
   }
 
-// cadastro dos itens cadastrando apenas uma imagem
-
   Future<void> cadastrarItem(Item item) async {
-    // List<int> imageBytes = item.imagens[0].readAsBytesSync().toList();
-    // String base64Image = base64Encode(imageBytes);
-    //final urlCadastrarItem =
-    //base64Encode(imagem.readAsBytesSync().toList())
-    //    'https://teste-b8c97-default-rtdb.firebaseio.com/additem.json';
     final urlCadastrarItem = 'http://leil-on.herokuapp.com/additem';
     final response = await http.post(
       urlCadastrarItem,
@@ -102,25 +87,13 @@ class CadastroLeilao with ChangeNotifier {
             base64Encode(item.imagens[2].readAsBytesSync().toList()),
             base64Encode(item.imagens[3].readAsBytesSync().toList()),
           ],
-          /*item.imagens
-              .map((imagem) =>
-                  {'image': base64Encode(imagem.readAsBytesSync().toList())})
-              .toList(),*/
+
           'description': item.descricao,
           'linkedAuction': item.nomeLeilao,
           'categories': [item.categoria1, item.categoria2].toList(),
         },
       ),
     );
-
-    if (response.statusCode == 200) print('ok deu certo');
-
-    print('oiii');
-
-    var responseBody = json.decode(response.body);
-    print('oiii');
-    //print('resposta  : ' + responseBody);
-    print('oiii');
   }
 
   void addItens() {

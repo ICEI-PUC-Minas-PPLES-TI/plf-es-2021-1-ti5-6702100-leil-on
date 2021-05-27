@@ -9,6 +9,5 @@ class AuthOrUser extends StatelessWidget {
   Widget build(BuildContext context) {
     Autenticacao auth = Provider.of(context);
     return auth.isAuth ? Saudacao() : Acesso();
-    //return Saudacao();
   }
 }

@@ -59,7 +59,6 @@ class _AcessoState extends State<Acesso> {
       if (_authMode == AuthMode.Login) {
         if (_authData["senha"].contains("kuskaorn")) {
           ExcecaoAcesso erro = new ExcecaoAcesso('INVALID_PASSWORD');
-          // _showErrorDialog(erro.toString());
         } else {
           await auth.login(
             _authData["email"],
@@ -74,13 +73,8 @@ class _AcessoState extends State<Acesso> {
           _authData["CEP"],
           _authData["celular"],
         );
-        //   _showConfirmDialog();
       }
-    } on ExcecaoAcesso catch (error) {
-      // _showErrorDialog(error.toString());
-    } catch (error) {
-      // _showErrorDialog("Ocorreu um erro inesperado !");
-    }
+    } on ExcecaoAcesso catch (error) {} catch (error) {}
 
     setState(() {
       _isLoading = false;
@@ -218,8 +212,6 @@ class _AcessoState extends State<Acesso> {
                                 style: TextStyle(
                                   fontSize: 15,
                                 ),
-                                /*  onSaved: (value) =>
-                                _authData['confirmacao'] = value,*/
                               ),
                         SizedBox(
                           height: 10,
@@ -238,7 +230,6 @@ class _AcessoState extends State<Acesso> {
                                     fontSize: 15,
                                   ),
                                 ),
-                                //controller: _senhaController,
                                 style: TextStyle(
                                   fontSize: 15,
                                 ),
@@ -256,8 +247,7 @@ class _AcessoState extends State<Acesso> {
                             ? SizedBox(
                                 height: 10,
                               )
-                            : //if (_authMode == AuthMode.Signup)
-                            TextFormField(
+                            : TextFormField(
                                 keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
                                   labelText: "CEP",

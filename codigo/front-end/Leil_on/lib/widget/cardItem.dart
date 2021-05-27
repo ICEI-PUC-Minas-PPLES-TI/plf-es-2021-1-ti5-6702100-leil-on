@@ -23,7 +23,6 @@ class CardItem extends StatelessWidget {
           elevation: 4,
           margin: const EdgeInsets.all(2),
           child: Column(
-            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.only(

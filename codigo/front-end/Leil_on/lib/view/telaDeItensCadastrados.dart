@@ -1,8 +1,6 @@
 import 'dart:io';
-
 import 'package:Leil_on/controller/cadastroLeilao.dart';
 import 'package:Leil_on/model/item.dart';
-import 'package:Leil_on/model/leilao.dart';
 import 'package:Leil_on/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,10 +13,6 @@ class TelaDeItensCadastrados extends StatefulWidget {
 }
 
 class _TelaDeItensCadastradosState extends State<TelaDeItensCadastrados> {
-  // bool _isLoading = true;
-  //CadastroLeilao cadastroLeilao;
-  //Leilao dadosLeilao;
-
   Widget _criarFotoConainer(double largura, double altura, File imagem) {
     return Container(
       width: largura,
@@ -46,15 +40,12 @@ class _TelaDeItensCadastradosState extends State<TelaDeItensCadastrados> {
   @override
   void initState() {
     super.initState();
-    print('sera?');
-    // _isLoading = false;
   }
 
   @override
   Widget build(BuildContext context) {
-    //Leilao dadosLeilao = Provider.of<CadastroLeilao>(context).novoLeilao;
     List<Item> itens = Provider.of<CadastroLeilao>(context).itens;
-    Leilao novoLeilao = Provider.of<CadastroLeilao>(context).novoLeilao;
+
     final larguraTotal = MediaQuery.of(context).size.width;
     final alturaTotal = MediaQuery.of(context).size.height * 0.8;
     return Scaffold(
@@ -144,8 +135,6 @@ class _TelaDeItensCadastradosState extends State<TelaDeItensCadastrados> {
                               ],
                             ),
                           );
-
-                          //Text('${item.descricao}');
                         },
                       ),
                 Row(

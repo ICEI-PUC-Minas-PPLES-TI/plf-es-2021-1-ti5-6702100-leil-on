@@ -80,32 +80,14 @@ class Categoria {
     {'catregoria1': 'Antiguidades e Coleções', 'categoria2': 'Pósteres'},
     {'catregoria1': 'Antiguidades e Coleções', 'categoria2': 'Outros'},
   ];
-  /*
-  List <String> categoria1=['Informatica','Celular','Eletrodomésticos'];
-  print('categoria1'+categoria1[0]);
-  print('categoria1'+categoria1[1]);
-  print('categoria1'+categoria1[2]);
 
-  */
   List<String> categoria2 = [];
 
   List<String> retornarCategoriaCorrespondene(String categoriaSelecionada) {
-    print('3');
     categoria.forEach((categorias) => {
-          //print(categorias.values.toString()),
-          print('4'),
           if (categorias.values.elementAt(0) == categoriaSelecionada)
-            {
-              print('5'),
-              //print(categorias.values.elementAt(0))
-              //print(categorias.values.elementAt(1)),
-              categoria2.add(categorias.values.elementAt(1))
-            }
+            {categoria2.add(categorias.values.elementAt(1))}
         });
     return categoria2;
   }
-  /*
-  print(categoria2[1].toString());
-
-*/
 }

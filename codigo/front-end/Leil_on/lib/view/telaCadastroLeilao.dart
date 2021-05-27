@@ -128,7 +128,6 @@ class _TelaCadastroLeilaoState extends State<TelaCadastroLeilao> {
                         : Row(
                             children: [
                               Text(
-                                //  _dataTermino.toString(),
                                 '${_dataTermino.day}/${_dataTermino.month}/${_dataTermino.year}',
                                 style: TextStyle(
                                     fontSize: 17.0,

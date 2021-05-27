@@ -9,8 +9,7 @@ class Leilao {
   List<Item> itensCadastrados = [];
   List<String> itensAnunciados = [];
   String time;
-  //
-  //
+
   Leilao({
     this.nomeLeilao,
     this.nomeVendedor,
@@ -21,13 +20,3 @@ class Leilao {
     this.itensAnunciados,
   });
 }
-
-/*
-{
-    this.nomeLeilao,
-    this.nomeVendedor,
-    this.descricao,
-    this.dataTermino,
-    this.itensCadastrados,
-  }
-  */

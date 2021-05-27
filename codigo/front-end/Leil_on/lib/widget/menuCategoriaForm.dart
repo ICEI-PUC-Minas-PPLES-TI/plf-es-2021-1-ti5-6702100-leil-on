@@ -46,7 +46,6 @@ class _MenuCategoriaFormState extends State<MenuCategoriaForm> {
                       new Categoria().retornarCategoriaCorrespondene(_category);
                   _vazio = true;
                 });
-                //setState(() => _category = newValue);
               },
               value: _category,
               decoration: InputDecoration(
@@ -75,13 +74,11 @@ class _MenuCategoriaFormState extends State<MenuCategoriaForm> {
                     ));
               }).toList(),
               onChanged: (newValue) {
-                // do other stuff with _category
                 setState(() {
                   _category1 = newValue;
                   Provider.of<CadastroItem>(context, listen: false)
                       .adicionarCategorias(_category, _category1);
                 });
-                //setState(() => _category1 = newValue);
               },
               value: _category1,
               decoration: InputDecoration(

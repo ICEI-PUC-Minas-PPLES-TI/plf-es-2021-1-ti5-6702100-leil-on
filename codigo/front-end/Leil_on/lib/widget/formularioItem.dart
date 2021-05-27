@@ -1,7 +1,5 @@
-import 'package:Leil_on/model/item.dart';
 import 'package:Leil_on/widget/menuCategoriaForm.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class FormularioItem extends StatefulWidget {
   //FormularioItem({Key key}) : super(key: key);
@@ -20,10 +18,7 @@ class _FormularioItemState extends State<FormularioItem> {
   void _dispose() {
     // TODO: implement dispose
     _form.currentState.save();
-    Item itemCadastrado = new Item();
   }
-
-  void _salvarFormulario() {}
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +28,6 @@ class _FormularioItemState extends State<FormularioItem> {
         child: Form(
           key: _form,
           child: Column(
-            //shrinkWrap: true,
             children: [
               Container(
                 child: TextFormField(
@@ -45,10 +39,8 @@ class _FormularioItemState extends State<FormularioItem> {
                     labelText: 'Nome do produto : ',
                     labelStyle: TextStyle(
                       fontSize: 15.0,
-                      //fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
-                    // hoverColor: Colors.purple,
                   ),
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.next,
@@ -118,10 +110,6 @@ class _FormularioItemState extends State<FormularioItem> {
                     icon: Icon(Icons.navigate_next),
                     onPressed: () {
                       setState(() {});
-//_salvarFormulario();
-/*
-                      Navigator.of(context)
-                          .pushNamed(AppRoutes.TELADEDADOSLEILAO);*/
                     },
                   ),
                 ],

@@ -10,10 +10,7 @@ import 'package:Leil_on/view/dashBoardUser.dart';
 import 'package:Leil_on/view/telaCadastroLeilao.dart';
 import 'package:Leil_on/view/telaDeCadastroDeItem.dart';
 import 'package:Leil_on/view/telaDeDadosLeilao.dart';
-import 'package:Leil_on/view/telaDeItemCadastrado.dart';
 import 'package:Leil_on/view/telaDeItensCadastrados.dart';
-import 'package:Leil_on/view/telaDePesquisa.dart';
-import 'package:Leil_on/view/telaDoLeilao.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -62,7 +59,7 @@ class MyApp extends StatelessWidget {
             AppRoutes.CADASTROLEILAO: (ctx) => TelaCadastroLeilao(),
             AppRoutes.TELADEDADOSLEILAO: (ctx) => TelaDeDadosLeilao(),
             AppRoutes.TELADEITENSCADASTRADOS: (ctx) => TelaDeItensCadastrados(),
-            AppRoutes.TELADEITEMCADASTRADO: (ctx) => TelaDeItemCadastrado(),
+
             AppRoutes.CADASTRARITEM: (ctx) => TelaDeCadastroDeitem(),
             // AppRoutes.TELADOLEILAO: (ctx) => TelaDoLeilao(),
             //AppRoutes.TELADEPESQUISA: (ctx) => TelaDePesquisa(),

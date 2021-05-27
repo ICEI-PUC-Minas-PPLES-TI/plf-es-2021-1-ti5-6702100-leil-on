@@ -22,7 +22,6 @@ class _TelaDePesquisaState extends State<TelaDePesquisa> {
   _pesquisar() {
     _form.currentState.save();
 
-    print('palavra pesquisada eh ... ' + pesquisa);
     Provider.of<Listagem>(context, listen: false)
         .retornarPesquisa(pesquisa, widget.tipoPesquisa);
   }
@@ -87,8 +86,7 @@ class _TelaDePesquisaState extends State<TelaDePesquisa> {
                         itemCount: listaDeLeiloes.length,
                         itemBuilder: (ctx, index) {
                           final leilao = listaDeLeiloes[index];
-                          return CardLeilao(
-                              leilao); //Text('ok'); //CardLeilao(leilao);
+                          return CardLeilao(leilao);
                         },
                       ),
               ),

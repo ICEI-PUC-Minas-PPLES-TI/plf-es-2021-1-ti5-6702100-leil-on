@@ -3,7 +3,6 @@ import 'package:Leil_on/widget/cardItemDoLeilao.dart';
 import 'package:flutter/material.dart';
 
 class TelaDoLeilao extends StatefulWidget {
-  //TelaDoLeilao({Key key}) : super(key: key);
   final Leilao leilaoSelecionado;
   TelaDoLeilao(this.leilaoSelecionado);
   @override
@@ -13,9 +12,6 @@ class TelaDoLeilao extends StatefulWidget {
 class _TelaDoLeilaoState extends State<TelaDoLeilao> {
   @override
   Widget build(BuildContext context) {
-    // Leilao leilaoSelecionado =
-    //   Provider.of<LeilaoController>(context).leilaoSelecionado;
-    //List<Item>
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -34,10 +30,7 @@ class _TelaDoLeilaoState extends State<TelaDoLeilao> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              //descricao do leilao
-
               Container(
-                // color: Colors.amber,
                 decoration: BoxDecoration(
                   color: Colors.amber,
                   border: Border.all(
@@ -89,8 +82,7 @@ class _TelaDoLeilaoState extends State<TelaDoLeilao> {
                     final item =
                         widget.leilaoSelecionado.itensAnunciados[index];
                     return CardItemLeilaoSelecionado(
-                        widget.leilaoSelecionado.nomeLeilao,
-                        item); //CardLeilao(leilao); //Text('ok'); //CardLeilao(leilao);
+                        widget.leilaoSelecionado.nomeLeilao, item);
                   },
                 ),
               )

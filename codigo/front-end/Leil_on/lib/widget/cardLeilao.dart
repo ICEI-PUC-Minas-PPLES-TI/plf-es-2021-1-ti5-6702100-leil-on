@@ -10,8 +10,7 @@ class CardLeilao extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.purple,
-        child: //Text('leilao'),
-            Card(
+        child: Card(
           color: Colors.amber,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),

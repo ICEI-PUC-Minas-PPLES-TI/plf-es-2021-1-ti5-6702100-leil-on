@@ -2,14 +2,10 @@ import 'package:Leil_on/controller/autenticacao.dart';
 import 'package:Leil_on/controller/leilaoController.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:socket_io_client/socket_io_client.dart' as io;
 
 class Chat extends StatefulWidget {
-  //TelaDeLances({Key key}) : super(key: key);
-  //final Item itemLeiloado;
   final String itemLeiloado, tipoChat, nomeLeilao;
 
-  // TelaDeLances(this.itemLeiloado);
   Chat(this.nomeLeilao, this.itemLeiloado, this.tipoChat);
 
   @override
@@ -17,7 +13,6 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
-  //TextEditingController _chatTextController = TextEditingController();
   final inputController = TextEditingController();
   List<String> messageList = [];
 
@@ -85,8 +80,6 @@ class _ChatState extends State<Chat> {
 
   @override
   Widget build(BuildContext context) {
-    // final larguraTotal = MediaQuery.of(context).size.width * 0.7;
-    final alturaTotal = MediaQuery.of(context).size.height * 0.8;
     List<Map<String, String>> lances =
         Provider.of<LeilaoController>(context).lancesLeilao;
     List<String> mensagens =
@@ -96,7 +89,6 @@ class _ChatState extends State<Chat> {
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.purple, size: 50.0),
         title: Text(
-          //'${widget.itemLeiloado.nomeProduto}',
           widget.itemLeiloado,
           style: TextStyle(
             color: Colors.black87,

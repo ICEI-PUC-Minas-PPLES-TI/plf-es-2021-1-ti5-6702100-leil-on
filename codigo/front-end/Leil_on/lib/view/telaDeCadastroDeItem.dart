@@ -25,9 +25,6 @@ class _TelaDeCadastroDeitemState extends State<TelaDeCadastroDeitem> {
     super.dispose();
     _precoMinimoFocusNode.dispose();
     _descricaoFocusNode.dispose();
-    //_form.currentState.save();
-
-    // Item itemCadastrado = new Item();
   }
 
   void _salvarFormulario(String nomeLeilao) {
@@ -59,14 +56,12 @@ class _TelaDeCadastroDeitemState extends State<TelaDeCadastroDeitem> {
             child: Column(
               children: [
                 ImagensProduto(),
-                // FormularioItem(),
                 Container(
                   child: Padding(
                     padding: EdgeInsets.all(5.0),
                     child: Form(
                       key: _form,
                       child: Column(
-                        //shrinkWrap: true,
                         children: [
                           Container(
                             child: TextFormField(
@@ -78,10 +73,8 @@ class _TelaDeCadastroDeitemState extends State<TelaDeCadastroDeitem> {
                                 labelText: 'Nome do produto : ',
                                 labelStyle: TextStyle(
                                   fontSize: 15.0,
-                                  //fontWeight: FontWeight.bold,
                                   color: Colors.black,
                                 ),
-                                // hoverColor: Colors.purple,
                               ),
                               keyboardType: TextInputType.text,
                               textInputAction: TextInputAction.next,
@@ -99,7 +92,6 @@ class _TelaDeCadastroDeitemState extends State<TelaDeCadastroDeitem> {
                                 labelText: 'Preço mínimo: ',
                                 labelStyle: TextStyle(
                                   fontSize: 15.0,
-                                  //fontWeight: FontWeight.bold,
                                   color: Colors.black,
                                 ),
                                 hoverColor: Colors.purple,
@@ -160,10 +152,6 @@ class _TelaDeCadastroDeitemState extends State<TelaDeCadastroDeitem> {
                                     _salvarFormulario(novoLeilao.nomeLeilao);
                                     Navigator.of(context).pop();
                                   });
-//_salvarFormulario();
-/*
-                      Navigator.of(context)
-                          .pushNamed(AppRoutes.TELADEDADOSLEILAO);*/
                                 },
                               ),
                             ],

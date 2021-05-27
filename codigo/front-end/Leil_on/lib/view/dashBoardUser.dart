@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:Leil_on/controller/cadastroLeilao.dart';
-import 'package:Leil_on/utils/app_routes.dart';
 import 'package:Leil_on/view/telaDePesquisa.dart';
 import 'package:Leil_on/widget/menuLeilon.dart';
 import 'package:flutter/material.dart';
@@ -15,15 +14,7 @@ class Saudacao extends StatelessWidget {
     String nomeUsuario = Provider.of<CadastroLeilao>(context).nomeUsuario;
     final larguraTotal = MediaQuery.of(context).size.width * 0.7;
     final alturaTotal = MediaQuery.of(context).size.height * 0.8;
-    //String emailUsuario = Provider.of<CadastroLeilao>(context).nomeEmail;
-    /*var agora =
-        ((new DateTime.utc(2021, DateTime.april, 18).millisecondsSinceEpoch) -
-                DateTime.now().millisecondsSinceEpoch) /
-            1000;
-    var horas = DateTime.now().hour.toString();*/
 
-    //var domingo =
-    //
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
@@ -49,8 +40,6 @@ class Saudacao extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
               child: InkWell(
                 onTap: () {
-                  /*Navigator.of(context).pushNamed(AppRoutes.TELADEPESQUISA,
-                      arguments: {'leilao'});*/
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (_) => TelaDePesquisa('auction'),
